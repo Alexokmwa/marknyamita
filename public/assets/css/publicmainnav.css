@@ -1,0 +1,28 @@
+/*style navbar*/
+.myclass{
+    margin-right: 30px;
+    font-size: 22px;   
+}
+/* .myclass:hover{
+    background: rgb(224, 224, 239);
+} */
+/*separate logo and pages */
+.myclasslogomarginright{
+    margin-right: 20px;
+       
+}
+.mylogobariconsfirst{
+margin-right: 40px;
+}
+.mylogobariconssecond{
+    margin-right: 20px;
+
+}
+.mylogobariconssecondform{
+    margin-right: 40px;
+
+}
+.mysmalign{
+    display: flex;
+    flex-direction: row;
+}
