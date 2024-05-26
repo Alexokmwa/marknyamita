@@ -1,10 +1,11 @@
-<?php 
+<?php
 /**
  * header nav file combined inclusion.
  */
 renderpageHeader();
 ?>
 
+<h1 class="myclassmargintop">public home view page design of tabs and subpages goes here</h1>
 
 <?php
 /**
