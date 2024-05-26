@@ -11,18 +11,17 @@
     margin-right: 20px;
        
 }
-.mylogobariconsfirst{
-margin-right: 40px;
-}
-.mylogobariconssecond{
-    margin-right: 20px;
 
-}
-.mylogobariconssecondform{
-    margin-right: 40px;
-
-}
-.mysmalign{
-    display: flex;
+.myiconsstyle{
+    display:flex;
     flex-direction: row;
+}
+.myclassmargintop{
+    margin-top: 80px;
+}
+@media (max-width:991.99px) {
+    .myclassmargintop{
+    margin-top: 120px;
+
+    }
 }
