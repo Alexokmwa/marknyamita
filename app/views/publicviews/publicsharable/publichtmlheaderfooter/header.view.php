@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?=ROOT?>/assets/css/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="<?=ROOT?>/assets/css/publicmainnav.css">
 	<link rel="stylesheet" href="<?=ROOT?>/assets/css/sign-in.css.css">
+	<link rel="stylesheet" href="<?=ROOT?>/assets/css/publicsmfooter.css">
 	 
 </head>
 
