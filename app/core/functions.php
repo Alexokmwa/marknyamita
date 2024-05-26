@@ -379,11 +379,7 @@ function renderHeader()
     }
 }
 
-/**
- * mainnav loading fuction
- *
- * @return void
- */
+
 /**
  * smaller screen footer
  *
@@ -399,6 +395,24 @@ function rendersmfooter()
         include($mfooter);
     } else {
         echo "Footer file not found: " . $mfooter;
+    }
+}
+/**
+ * main nav when logged in
+ *
+ * @return void
+ */
+//todo: test this function.
+function renderMainNavloggedin()
+{
+    // Define the path to the footer file
+    $mainnavloggedin = '../app/views/publicviews/publicsharable/publicnavfooters/mainnavloggedin.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($mainnavloggedin)) {
+        include($mainnavloggedin);
+    } else {
+        echo "Footer file not found: " . $mainnavloggedin;
     }
 }
 function renderMainNav()
