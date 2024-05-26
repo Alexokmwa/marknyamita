@@ -1,4 +1,13 @@
-<h1>Signup page view</h1>
+
+<?php 
+/**
+ * header nav file combined inclusion.
+ */
+renderpageHeader();
+?>
+
+<h1 class="myclassmargintop">public home view page design of tabs and subpages goes here</h1>
+<!-- <h1>Signup page view</h1>
 <form method="post">
 	
 	<input value="<?=old_value('username')?>" name="username" placeHolder="Username"><br>
@@ -8,4 +17,11 @@
 	<input value="<?=old_value('password')?>" name="password" placeHolder="Password"><br>
 	<div><?=$user->getError('password')?></div><br>
 	<button>Signup</button>
-</form>
+</form> -->
+<?php
+/**
+ * html footer function
+ */
+renderHtmlFooter();
+rendersmfooter();
+?>
