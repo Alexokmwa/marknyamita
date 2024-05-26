@@ -4,7 +4,13 @@
 defined('ROOTPATH') or exit('Access Denied!');
 
 spl_autoload_register(function ($classname) {
-    require $filename = "../".$classname.".php";
+    $filename = '../' . str_replace('\\', '/', $classname) . '.php';
+    if (file_exists($filename)) {
+        require $filename;
+    } else {
+        // Error handling for missing files
+        error_log("Failed to load class: $classname. File not found: $filename");
+    }
 });
 require 'config.php';
 require 'functions.php';
