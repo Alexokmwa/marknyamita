@@ -17,7 +17,7 @@ if($_SERVER['SERVER_NAME'] === 'localhost') {
     define('DBUSER', 'root');
     define('DBPASS', '');
     define('DBDRIVER', '');
-    define('ROOT', 'https://yourwesite.com');
+    define('ROOT', 'https://honmarknyamita.free.nf/marknyamita/Public/');
 }
 
 define('APP_NAME', 'Mark nyamita');
