@@ -10,17 +10,36 @@ if($_SERVER['SERVER_NAME'] === 'localhost') {
     define('DBPASS', '');
     define('DBDRIVER', '');
     //asserts loading cnfig
+    /**
+     * user root
+     */
     define('ROOT', 'http://localhost/marknyamita/Public/');
+    /**
+     * adminroot
+     */
+    define('ROOTADMIN', 'http://localhost/marknyamita/admin/');
+    /**
+     * adminsupport root
+     */
+    define('ROOTADMINSUPPORT', 'http://localhost/marknyamita/adminsupport/');
 } else {
     define('DBNAME', 'nyamitamark');
     define('DBHOST', 'localhost');
     define('DBUSER', 'root');
     define('DBPASS', '');
     define('DBDRIVER', '');
+    // user root
     define('ROOT', 'https://honmarknyamita.free.nf/marknyamita/Public/');
+    // admin root
+    define('ROOTADMIN', 'https://honmarknyamita.free.nf/marknyamita/admin/');
+    // admin support
+    define('ROOTADMINSUPPORT', 'https://honmarknyamita.free.nf/marknyamita/adminsupport/');
 }
 
+define('APP_NAMEADMIN', 'ADMIN');
+define('APP_NAMEADMINSUPPORT', 'SUPPORT');
 define('APP_NAME', 'Mark nyamita');
+define('APP_DESCRIPTIONADMIN', 'ADMIN');
 define('APP_DESCRIPTION', 'Mark nyamita campaign platform');
 //true shows errors
 define('DEBUG', true);
