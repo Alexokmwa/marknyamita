@@ -336,6 +336,10 @@ function delete_images_from_content(string $content, string $content_new = ''): 
 
 }
 
+/**
+ * all public rendering functions are defined here
+ */
+
 //html headermainnav render function
 function renderpageHeader()
 {
@@ -425,5 +429,204 @@ function renderMainNav()
         include($mainnav);
     } else {
         echo "Footer file not found: " . $mainnav;
+    }
+}
+
+/**
+ * all admin rendering functions are defined here
+ */
+
+//html admin headermainnav render function
+
+function adminrenderpageHeader()
+{
+    // Define the path to the footer file
+    $adminheadermainnav = '../app/views/adminviews/adminsharablepages/admincombined/adminmainnavhtmlheader.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminheadermainnav)) {
+        include($adminheadermainnav);
+    } else {
+        echo "Footer file not found: " . $adminheadermainnav;
+    }
+}
+//html admin htmlfooter render function
+
+function adminrenderHtmlFooter()
+{
+    // Define the path to the footer file
+    $adminfooterPath = '../app/views/adminviews/adminsharablepages/adminhtmlheaderfooter/adminfooter.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminfooterPath)) {
+        include($adminfooterPath);
+    } else {
+        echo "Footer file not found: " . $adminfooterPath;
+    }
+}
+
+//html admin headerhtml render function
+
+function adminrenderHeader()
+{
+    // Define the path to the footer file
+    $adminheaderhtml = '../app/views/adminviews/adminsharablepages/adminhtmlheaderfooter/adminheader.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminheaderhtml)) {
+        include($adminheaderhtml);
+    } else {
+        echo "Footer file not found: " . $adminheaderhtml;
+    }
+}
+
+
+/**
+ * admin smaller screen footer
+ *
+ * @return void
+ */
+function adminrendersmfooter()
+{
+    // Define the path to the footer file
+    $adminsmfooter = '../app/views/adminviews/adminsharablepages/adminsmallerscreens/adminsmfooter.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsmfooter)) {
+        include($adminsmfooter);
+    } else {
+        echo "Footer file not found: " . $adminsmfooter;
+    }
+}
+/**
+ * main admin nav when logged in
+ *
+ * @return void
+ */
+//todo: test this function.
+function adminrenderMainNavloggedin()
+{
+    // Define the path to the footer file
+    $adminmainnavloggedin = '../app/views/adminviews/adminsharablepages/adminnavfooters/adminmainnavloggedin.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminmainnavloggedin)) {
+        include($adminmainnavloggedin);
+    } else {
+        echo "Footer file not found: " . $adminmainnavloggedin;
+    }
+}
+/**
+ * mainnav when not in session
+ */
+function adminrenderMainNav()
+{
+    // Define the path to the footer file
+    $adminmainnav = '../app/views/adminviews/adminsharablepages/adminnavfooters/adminmainnav.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminmainnav)) {
+        include($adminmainnav);
+    } else {
+        echo "Footer file not found: " . $adminmainnav;
+    }
+}
+/**
+ * all admin support rendering functions are defined here
+ */
+
+//html admin support headermainnav render function
+
+function adminsupportrenderpageHeader()
+{
+    // Define the path to the footer file
+    $adminsupportheadermainnav = '../app/views/adminsupportviews/adminsupportsharablepages/adminsupportcombined/adminsupportmainnavhtmlheader.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsupportheadermainnav)) {
+        include($adminsupportheadermainnav);
+    } else {
+        echo "Footer file not found: " . $adminsupportheadermainnav;
+    }
+}
+//html admin support htmlfooter render function
+
+function adminsupportrenderHtmlFooter()
+{
+    // Define the path to the footer file
+    $adminsupportfooterPath = '../app/views/adminsupportviews/adminsupportsharablepages/adminsupporthtmlheaderfooter/adminsupportfooter.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsupportfooterPath)) {
+        include($adminsupportfooterPath);
+    } else {
+        echo "Footer file not found: " . $adminsupportfooterPath;
+    }
+}
+
+//html admin support headerhtml render function
+
+function adminsupportrenderHeader()
+{
+    // Define the path to the footer file
+    $adminsupportheaderhtml = '../app/views/adminsupportviews/adminsupportsharablepages/adminsupporthtmlheaderfooter/adminsupportheader.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsupportheaderhtml)) {
+        include($adminsupportheaderhtml);
+    } else {
+        echo "Footer file not found: " . $adminsupportheaderhtml;
+    }
+}
+
+
+/**
+ * admin support smaller screen footer
+ *
+ * @return void
+ */
+function adminsupportrendersmfooter()
+{
+    // Define the path to the footer file
+    $adminsupportsmfooter = '../app/views/adminsupportviews/adminsupportsharablepages/adminsupportsmallerscreens/adminsupportsmfooter.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsupportsmfooter)) {
+        include($adminsupportsmfooter);
+    } else {
+        echo "Footer file not found: " . $adminsupportsmfooter;
+    }
+}
+/**
+ * main admin support nav when logged in
+ *
+ * @return void
+ */
+//todo: test this function.
+function adminsupportrenderMainNavloggedin()
+{
+    // Define the path to the footer file
+    $adminsupportmainnavloggedin = '../app/views/adminsupportviews/adminsupportsharablepages/adminsupportnavfooters/adminsupportmainnavloggedin.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsupportmainnavloggedin)) {
+        include($adminsupportmainnavloggedin);
+    } else {
+        echo "Footer file not found: " . $adminsupportmainnavloggedin;
+    }
+}
+/**
+ * mainnav when not in session
+ */
+function adminsupportrenderMainNav()
+{
+    // Define the path to the footer file
+    $adminsupportmainnav = '../app/views/adminsupportviews/adminsupportsharablepages/adminsupportnavfooters/adminsupportmainnav.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($adminsupportmainnav)) {
+        include($adminsupportmainnav);
+    } else {
+        echo "Footer file not found: " . $adminsupportmainnav;
     }
 }
