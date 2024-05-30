@@ -1,0 +1,27 @@
+/*style navbar*/
+.myclass{
+    margin-right: 30px;
+    font-size: 22px;   
+}
+/* .myclass:hover{
+    background: rgb(224, 224, 239);
+} */
+/*separate logo and pages */
+.myclasslogomarginright{
+    margin-right: 20px;
+       
+}
+
+.myiconsstyle{
+    display:flex;
+    flex-direction: row;
+}
+.myclassmargintop{
+    margin-top: 80px;
+}
+@media (max-width:991.99px) {
+    .myclassmargintop{
+    margin-top: 120px;
+
+    }
+}
