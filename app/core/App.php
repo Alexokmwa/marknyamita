@@ -52,7 +52,7 @@ class App
 
         // If not found in any directory, load the NotFound404 controller
         if (!$found) {
-            require("../app/controllers/NotFound404.php");
+            require("../app/controllers/publicviews/NotFound404.php");
             $this->controller = "NotFound404";
         }
         // $filename = "../app/controllers/". $controllerName.".php";
