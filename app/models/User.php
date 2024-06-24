@@ -21,6 +21,8 @@ class User
 
     protected $allowedColumns = [
 
+        'firstname',
+        'lastname',
         'username',
         'email',
         'password',
@@ -45,6 +47,14 @@ class User
         'email' => [
             'email',
             'unique',
+            'required',
+        ],
+        'firstname' => [
+            'alpha',
+            'required',
+        ],
+        'lastname' => [
+            'alpha',
             'required',
         ],
         'username' => [
@@ -82,7 +92,7 @@ class User
                 $ses->auth($row);
                 redirect('home');
             } else {
-                $this->errors[$this->loginUniqueColumn] = "Wrong $this->loginUniqueColumn or password";
+                $this->errors[$this->loginUniqueColumn] = "Wrong $this->loginUniqueColumn";
             }
         } else {
             $this->errors[$this->loginUniqueColumn] = "Wrong $this->loginUniqueColumn or password";
