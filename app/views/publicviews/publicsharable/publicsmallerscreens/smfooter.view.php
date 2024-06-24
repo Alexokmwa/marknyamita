@@ -1,4 +1,4 @@
-<div class="d-lg-none fixed-bottom">
+<div class="d-lg-none fixed-bottom ">
   <nav class="navbar navbar-expand-lg bg-success navbar-dark">
     <div class="container-fluid">
       <div class="navbar-nav d-flex w-100" style="overflow-x: auto;">

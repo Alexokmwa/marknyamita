@@ -1,204 +1,262 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top ">
-  <div class="container-fluid ">
-    <a class="navbar-brand myclasslogomarginright" href="<?=ROOT?>Home"><?php echo esc(APP_NAME);?></a>
-    <!--  -->
-    <h1 class=" mylogobariconssecond d-lg-none" style="margin-left: -20px; margin-right: 60px; margin-bottom: 46px; ">
-      <svg xmlns="http://www.w3.org/2000/svg" class="d-none " >
-            <symbol id="check2" viewBox="0 0 16 16">
-              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-            </symbol>
-            <symbol id="circle-half" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-            </symbol>
-            <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-              <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
-              <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
-            </symbol>
-            <symbol id="sun-fill" viewBox="0 0 16 16">
-              <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-            </symbol>
-          </svg>
-              <div class="dropdown position-fixed  mb-3 me-3 bd-mode-toggle">
-                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-                        id="bd-theme"
-                        type="button"
-                        aria-expanded="false"
-                        data-bs-toggle="dropdown"
-                        aria-label="Toggle theme (auto)">
-                  <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                  <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                      <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-                      Light
-                      <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                      <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-                      Dark
-                      <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                      <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                      Auto
-                      <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </h1>
-    <!--  -->
-    <li class="nav-item dropdown d-lg-none" style ="margin-bottom: 46px;padding: 0; margin: 0; list-style: none;">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="bi bi-person-circle"></i>
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="<?=ROOT?>Signup">Signup</a></li>
-    <li><a class="dropdown-item" href="<?=ROOT?>Login">Login</a></li>
-  </ul>
-</li>
+<!-- =======================
+Header START -->
+<header class="navbar-light navbar-sticky header-static">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="<?=ROOT?>Home">
+				<img class="navbar-brand-item light-mode-item" src="<?=ROOT?>assets/asset/images/image.png" alt="<?=APP_NAME?>">			
+				<img class="navbar-brand-item dark-mode-item" src="<?=ROOT?>assets/asset/images/image.png" alt="<?=APP_NAME?>">			
+			</a>
+			<!-- Logo END -->
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="navbarSupportedContent" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-    <div class="offcanvas-header ">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo esc(APP_NAME);?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div> 
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="text-body h6 d-none d-sm-inline-block">Menu</span>
+			  <span class="navbar-toggler-icon"></span>
+		  </button>
 
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end  pe-3">
-        <li class="nav-item  myclass  ">
-          <a class="nav-link active" aria-current="page"  href="<?=ROOT?>Home">Home</a>
-        </li>
-        <li class="nav-item myclass">
-          <a class="nav-link"  href="<?=ROOT?>Aboutus">About</a>
-        </li>
-        <li class="nav-item myclass">
-          <a class="nav-link"  href="<?=ROOT?>Events">Events</a>
-        </li>
-        <li class="nav-item myclass">
-          <a class="nav-link" href="<?=ROOT?>Resource">Resource</a>
-        </li>
-        <li class="nav-item myclass">
-          <a class="nav-link" href="<?=ROOT?>Blog">Blog</a>
-        </li>
-        <li class="nav-item myclass d-none d-lg-block">
-          <!--  -->
-    <h1 class=" mylogobariconssecond " style="margin-left: 10px; margin-right: 60px; margin-bottom: 46px; ">
-      <svg xmlns="http://www.w3.org/2000/svg" class="d-none " >
-            <symbol id="check2" viewBox="0 0 16 16">
-              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-            </symbol>
-            <symbol id="circle-half" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-            </symbol>
-            <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-              <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
-              <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
-            </symbol>
-            <symbol id="sun-fill" viewBox="0 0 16 16">
-              <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-            </symbol>
-          </svg>
-              <div class="dropdown position-fixed  mb-3 me-3 bd-mode-toggle">
-                <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-                        id="bd-theme"
-                        type="button"
-                        aria-expanded="false"
-                        data-bs-toggle="dropdown"
-                        aria-label="Toggle theme (auto)">
-                  <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                  <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                      <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-                      Light
-                      <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                      <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-                      Dark
-                      <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                      <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                      Auto
-                      <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </h1>
-    <!--  -->
-          </li>
+			<!-- Main navbar START -->
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+					
+					<!-- Nav item 1 home link-->
+					<li class="nav-item"> <a class="nav-link" href="<?=ROOT?>Home">Home</a></li>
+					
+					<!-- Nav item 2 about link-->
 
-          <li class="nav-item myclass d-none d-lg-block">
-            <button type="button" class="btn position-relative">
-              <i class="bi bi-bell" style="font-size: 1.5rem;"></i>  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2">
-                99+
-                <span class="visually-hidden">unread messages</span>
-              </span>
-            </button>
-          </li>
- 
-          <li class="nav-item dropdown myclass d-none d-lg-block" style ="margin-bottom: 46px;padding: 0; margin: 0; list-style: none;">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-person-circle"></i>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="<?=ROOT?>Signup">Signup</a></li>
-          <li><a class="dropdown-item" href="<?=ROOT?>Login">Login</a></li>
-        </ul>
-        </li>
-              
-        
-        
-      </ul>
-      
-      <form class="d-flex mt-3 ms-auto"   role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      </div>
+					<li class="nav-item"> <a class="nav-link" href="<?=ROOT?>Aboutus">About</a></li>
+					
+					<!-- Nav item 3 blog link-->
+					<li class="nav-item"> <a class="nav-link" href="<?=ROOT?>Events">Events</a></li>
+					<!-- Nav item 3 blog link-->
+					<li class="nav-item"> <a class="nav-link" href="<?=ROOT?>Resource">Library</a></li>
+					<!-- Nav item 3 blog link-->
+					<li class="nav-item"> <a class="nav-link" href="<?=ROOT?>Blog">Blog</a></li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
 
-    </div>
-  </div>
-  <div class="container-fluid d-lg-none">
-  <div class="offcanvas-body d-flex align-items-center">
-    <ul class="navbar-nav justify-content-end pe-3 me-4 myiconsstyle">
-      
-      <li class="nav-item">
-        <button type="button" class="btn position-relative ">
-          <h1 style="height:20px"><i class="bi bi-bell"></i></h1>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2">  99+
-            <span class="visually-hidden">unread messages</span>
-          </span>
-        </button>
-      </li>
-     
-      
-    </ul>
-    <form class="d-flex ms-auto flex-grow-1" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</div>
+			<!-- Nav right START -->
+			<div class="nav ms-sm-3 flex-nowrap align-items-center">
+				<!-- Dark mode options START -->
+				<div class="nav-item dropdown ms-3">
+					<!-- Switch button -->
+					<button class="modeswitch" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+						<svg class="theme-icon-active"><use href="#"></use></svg>
+					</button>
+					<!-- Dropdown items -->
+					<ul class="dropdown-menu min-w-auto dropdown-menu-end" aria-labelledby="bd-theme">
+						<li class="mb-1">
+							<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+								<svg width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+									<path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+									<use href="#"></use>
+								</svg>Light
+							</button>
+						</li>
+						<li class="mb-1">
+							<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+									<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+									<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+									<use href="#"></use>
+								</svg>Dark
+							</button>
+						</li>
+						<li>
+							<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
+									<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+									<use href="#"></use>
+								</svg>Auto
+							</button>
+						</li>
+					</ul>
+				</div>
+				<!-- Dark mode options END -->
+				 <!-- Notification dropdown START -->
+				<div class="nav-item ms-2 ms-md-3 dropdown">
+					<!-- Notification button -->
+					<a class="btn btn-primary-soft btn-round mb-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+						<i class="bi bi-bell fa-fw"></i>
+					</a>
+					<!-- Notification dote -->
+					<span class="notif-badge animation-blink"></span>
 
-</nav>
+					<!-- Notification dropdown menu START -->
+					<div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0">
+						<div class="card bg-transparent">
+							<div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
+								<h6 class="m-0">Notifications <span class="badge bg-danger bg-opacity-10 text-danger ms-2">2 new</span></h6>
+								<a class="small" href="#">Clear all</a>
+							</div>
+							<div class="card-body p-0">
+								<ul class="list-group list-unstyled list-group-flush">
+									<!-- Notif item -->
+									<li>
+										<a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
+											<div class="me-3">
+												<div class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
+												</div>
+											</div>
+											<div>
+                        <h6 class="mb-1">12 new members joined</h6>
+												<span class="small"> <i class="bi bi-clock"></i> 3 min ago</span>
+											</div>
+										</a>
+									</li>
+
+									<!-- Notif item -->
+									<li>
+										<a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
+											<div class="me-3">
+												<div class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
+												</div>
+											</div>
+											<div>
+												<h6 class="mb-1">Larry Lawson deleted account</h6>
+												<span class="small"> <i class="bi bi-clock"></i> 6 min ago</span>
+											</div>
+										</a>
+									</li>
+
+									<!-- Notif item -->
+									<li>
+										<a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
+											<div class="me-3">
+												<div class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
+												</div>
+											</div>
+											<div>
+												<h6 class="mb-1">Byan commented on your post</h6>
+												<span class="small"> <i class="bi bi-clock"></i> 10 min ago</span>
+											</div>
+										</a>
+									</li>
+
+									<!-- Notif item -->
+									<li>
+										<a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
+											<div class="me-3">
+												<div class="avatar avatar-sm">
+													<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
+												</div>
+											</div>
+											<div>
+												<h6 class="mb-1">Settings updated</h6>
+												<span class="small"> <i class="bi bi-clock"></i> Yesterday</span>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- Button -->
+							<div class="card-footer bg-transparent border-0 py-3 text-center position-relative">
+								<a href="#" class="stretched-link">See all incoming activity</a>
+							</div>
+						</div>
+						
+					</div>
+					<!-- Notification dropdown menu END -->
+				</div>
+				<!-- Notification dropdown END -->
+				 <!-- Profile dropdown START -->
+				<div class="nav-item ms-2 ms-md-3 dropdown">
+					<!-- Avatar -->
+					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+						<img class="avatar-img rounded-circle" src="<?=ROOT?>assets/asset/images/avatar/03.jpg" alt="avatar">
+					</a>
+
+					<!-- Profile dropdown START -->
+					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+						<!-- Profile info -->
+						<li class="px-3">
+							<div class="d-flex align-items-center">
+								<!-- Avatar -->
+								<div class="avatar me-3">
+									<img class="avatar-img rounded-circle shadow" src="assets/images/avatar/03.jpg" alt="avatar">
+								</div>
+								<div>
+									<a class="h6 mt-2 mt-sm-0" href="#"> Louis Ferguson</a>
+									<p class="small m-0">example@gmail.com</p>
+								</div>
+							</div>
+							<hr>
+						</li>
+						<!-- Links -->
+						<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
+						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
+						<li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+						<li class="dropdown-divider mb-2"></li>
+						<li>
+							<div class="align-items-center text-center py-0">
+								<span class="me-3">mode:</span>
+								<div class="btn-group theme-icon-active" role="group" aria-label="Default button group">
+									<button type="button" class="btn btn-light btn-sm mb-0" data-bs-theme-value="light">
+										<svg width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill fa-fw mode-switch" viewBox="0 0 16 16">
+											<path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+											<use href="#"></use>
+										</svg>
+									</button>
+									<button type="button" class="btn btn-light btn-sm mb-0" data-bs-theme-value="dark">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill fa-fw mode-switch" viewBox="0 0 16 16">
+											<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+											<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+											<use href="#"></use>
+										</svg>
+									</button>
+									<button type="button" class="btn btn-light btn-sm mb-0 active" data-bs-theme-value="auto">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch" viewBox="0 0 16 16">
+											<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+											<use href="#"></use>
+										</svg>
+									</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- Profile dropdown END -->
+				</div>
+				<!-- Profile dropdown END -->
+				<!-- Nav additional link -->
+				<div class="nav-item dropdown dropdown-toggle-icon-none">
+					<a class="nav-link dropdown-toggle" role="button" href="#" id="navAdditionalLink" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="bi bi-three-dots fs-4"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded text-end" aria-labelledby="navAdditionalLink">
+						<li><a class="dropdown-item fw-normal" href="#">About</a></li>
+						<li><a class="dropdown-item fw-normal" href="#">Newsletter</a></li>
+						<li><a class="dropdown-item fw-normal" href="#">Author</a></li>
+						<li><a class="dropdown-item fw-normal" href="#">#Tags</a></li>
+						<li><a class="dropdown-item fw-normal" href="#">Contact</a></li>
+						<li><a class="dropdown-item fw-normal" href="#"><span class="badge bg-danger me-2 align-middle">2 Job</span>Careers</a></li>
+					</ul>
+				</div>
+
+				<!-- Nav Button -->
+				<div class="nav-item d-none d-md-block">
+					<a href="<?=ROOT?>Logout" class="btn btn-sm btn-danger mb-0 mx-2">LOG OUT!</a>
+				</div>
+				<!-- Nav Search -->
+				<div class="nav-item dropdown nav-search dropdown-toggle-icon-none">
+					<a class="nav-link pe-0 dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="bi bi-search fs-4"> </i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
+					  <form class="input-group">
+					    <input class="form-control border-success" type="search" placeholder="Search" aria-label="Search">
+					    <button class="btn btn-success m-0" type="submit">Search</button>
+					  </form>
+					</div>
+				</div>
+			</div>
+			<!-- Nav right END -->
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
