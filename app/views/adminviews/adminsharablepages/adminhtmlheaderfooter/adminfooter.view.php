@@ -1,8 +1,22 @@
+<!-- =======================
+JS libraries, plugins and custom scripts -->
+
+
+<!-- cdn start -->
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.32.0/apexcharts.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/js/OverlayScrollbars.min.js"></script>
+
+<!-- Template Functions -->
+<script src="<?=ROOTADMIN?>/assets/adminassets/js/functions.js"></script>
 
 </body>
-<!-- on remote server -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-<!-- script files -->
-<script src="<?=ROOTADMIN?>/assets/js/bootstrap.bundle.min.js"></script>
-<script src="<?=ROOTADMIN?>/assets/js/color-modes.js"></script>
 </html>
+
+ <!-- cdn end -->
