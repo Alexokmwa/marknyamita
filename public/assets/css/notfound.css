@@ -1,0 +1,29 @@
+.fill-primary{
+    opacity: 0.1;
+    color:rgb(89, 93, 105)
+}
+.z-index-9 {
+  z-index: 9 !important;
+}
+
+.z-index-99 {
+  z-index: 99 !important;
+}
+
+.z-index-n9 {
+  z-index: -9 !important;
+}
+.btn-danger-soft {
+  color: #d6293e;
+  background-color: rgba(214, 41, 62, 0.1);
+}
+.btn-danger-soft:active, .btn-danger-soft:hover {
+  color: #fff;
+  background-color: #d6293e;
+  border-color: #d6293e;
+}
+.btn-danger-soft:focus {
+  color: #d6293e;
+  background-color: rgba(214, 41, 62, 0.1);
+  border-color: transparent;
+}
