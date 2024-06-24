@@ -353,12 +353,48 @@ function renderpageHeader()
         echo "Footer file not found: " . $headermainnav;
     }
 }
+function renderblogpageHeader()
+{
+    // Define the path to the footer file
+    $blogheadermainnav = '../app/views/publicviews/publicsharable/publiccombined/blogmainnavhtmlheader.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($blogheadermainnav)) {
+        include($blogheadermainnav);
+    } else {
+        echo "Footer file not found: " . $blogheadermainnav;
+    }
+}
 //html htmlfooter render function
 
 function renderHtmlFooter()
 {
     // Define the path to the footer file
     $footerPath = '../app/views/publicviews/publicsharable/publichtmlheaderfooter/footer.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($footerPath)) {
+        include($footerPath);
+    } else {
+        echo "Footer file not found: " . $footerPath;
+    }
+}
+function renderblogHtmlFooter()
+{
+    // Define the path to the footer file
+    $blogfooterPath = '../app/views/publicviews/publicsharable/publichtmlheaderfooter/blogfooter.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($blogfooterPath)) {
+        include($blogfooterPath);
+    } else {
+        echo "Footer file not found: " . $blogfooterPath;
+    }
+}
+function rendermainFooter()
+{
+    // Define the path to the footer file
+    $footerPath = '../app/views/publicviews/publicsharable/publicnavfooters/mainfooter.view.php';
 
     // Check if the file exists before including it
     if (file_exists($footerPath)) {
@@ -380,6 +416,18 @@ function renderHeader()
         include($headerhtml);
     } else {
         echo "Footer file not found: " . $headerhtml;
+    }
+}
+function renderblogHeader()
+{
+    // Define the path to the footer file
+    $blogheaderhtml = '../app/views/publicviews/publicsharable/publichtmlheaderfooter/blogheader.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($blogheaderhtml)) {
+        include($blogheaderhtml);
+    } else {
+        echo "Footer file not found: " . $blogheaderhtml;
     }
 }
 
@@ -429,6 +477,18 @@ function renderMainNav()
         include($mainnav);
     } else {
         echo "Footer file not found: " . $mainnav;
+    }
+}
+function renderblogMainNav()
+{
+    // Define the path to the footer file
+    $blogmainnav = '../app/views/publicviews/publicsharable/publicnavfooters/blognav.view.php';
+
+    // Check if the file exists before including it
+    if (file_exists($blogmainnav)) {
+        include($blogmainnav);
+    } else {
+        echo "Footer file not found: " . $blogmainnav;
     }
 }
 
