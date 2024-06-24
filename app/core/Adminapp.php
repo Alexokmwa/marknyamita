@@ -33,6 +33,8 @@ class Adminapp
              * admin controllers
              */
             "../app/controllers/adminviews/admingeneralpagesctrl/",
+            "../app/controllers/adminviews/admingeneralpagesctrl/pages/",
+            "../app/controllers/adminviews/admingeneralpagesctrl/posts/",
         
         ];
 
