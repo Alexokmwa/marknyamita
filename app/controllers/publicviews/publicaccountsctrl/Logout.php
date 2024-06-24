@@ -1,6 +1,7 @@
 <?php 
 
-namespace Controller;
+namespace app\controllers;
+
 
 defined('ROOTPATH') OR exit('Access Denied!');
 use app\core\Controller;
