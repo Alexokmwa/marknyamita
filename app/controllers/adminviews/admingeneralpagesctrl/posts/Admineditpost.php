@@ -8,13 +8,13 @@ defined('ROOTPATH') or exit('Access Denied!');
 use app\core\Admincontroller;
 
 /**
- * admin blog management class
+ * admin Admineditpost management class
  */
-class Adminblog extends Admincontroller
+class Admineditpost extends Admincontroller
 {
     public function adminindex()
     {
 
-        $this ->adminview('adminviews/admingeneralpages/adminblog');
+        $this ->adminview('adminviews/admingeneralpages/adminpost/admineditpost');
     }
 }
