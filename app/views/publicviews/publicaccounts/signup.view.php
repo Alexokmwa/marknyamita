@@ -1,27 +1,156 @@
-
-<?php 
+<?php
 /**
  * header nav file combined inclusion.
  */
 renderpageHeader();
 ?>
 
-<h1 class="myclassmargintop">public home view page design of tabs and subpages goes here</h1>
-<!-- <h1>Signup page view</h1>
-<form method="post">
-	
-	<input value="<?=old_value('username')?>" name="username" placeHolder="Username"><br>
-	<div><?=$user->getError('username')?></div><br>
-	<input value="<?=old_value('email')?>" name="email" placeHolder="Email"><br>
-	<div><?=$user->getError('email')?></div><br>
-	<input value="<?=old_value('password')?>" name="password" placeHolder="Password"><br>
-	<div><?=$user->getError('password')?></div><br>
-	<button>Signup</button>
-</form> -->
-<?php
+<div class="patternsquare">
+	<div class="mysmbottomspace">
+
+
+
+		<div class="card shadow-sm container-fluid border col-lg-4 col-md-6 col-sm-10 pt-2   myclassmargintop ">
+
+			<form method="post">
+
+				<h3 id="mysignupheader"><i class="bi bi-person-circle"></i>user signup</h3>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label for="signupFullnameInput1" class="form-label">First Name
+								<span class="text-danger">*</span>
+
+							</label>
+							<input
+								value="<?=old_value('username')?>"
+								name="firstname" type="text" class="form-control" id="signupFullnameInput1" required />
+							<div class="text-danger">
+								<?=$user->getError('firstname')?>
+							</div>
+							<div class="invalid-feedback">Please enter first name</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label for="signupFullnameInput2" class="form-label">last Name
+								<span class="text-danger">*</span>
+
+							</label>
+							<input
+								value="<?=old_value('username')?>"
+								name="lastname" type="text" class="form-control" id="signupFullnameInput2" required />
+							<div class="text-danger">
+								<?=$user->getError('lastname')?>
+							</div>
+							<div class="invalid-feedback">Please enter last name</div>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="signupFullnameInput" class="form-label">Username Name
+
+						<span class="text-danger">*</span>
+
+					</label>
+					<input
+						value="<?=old_value('username')?>"
+						name="username" type="text" class="form-control" id="signupFullnameInput1" required />
+					<div class="text-danger">
+						<?=$user->getError('username')?>
+					</div>
+					<div class="invalid-feedback">Please enter user name</div>
+				</div>
+				<div class="mb-3">
+					<label for="signupEmailInput" class="form-label">
+						Email
+						<span class="text-danger">*</span>
+					</label>
+					<input
+						value="<?=old_value('email')?>"
+						name="email" type="email" class="form-control" id="signupEmailInput" required />
+
+					<div class="text-danger">
+						<?=$user->getError('email')?>
+					</div>
+
+					<div class="invalid-feedback">Please enter email.</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label for="formSignUpPassword" class="form-label">Password
+								<span class="text-danger">*</span>
+
+							</label>
+							<div class="password-field position-relative">
+								<input type="password" class="form-control fakePassword" id="formSignUpConfirmPassword"
+									required
+									value="<?=old_value('password')?>"
+									name="password" />
+								<div class="text-danger">
+									<?=$user->getError('password')?>
+								</div>
+								<div class="invalid-feedback">Please enter password.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-3">
+							<label for="formSignUpConfirmPassword" class="form-label">Confirm Password
+								<span class="text-danger">*</span>
+
+							</label>
+							<div class="password-field position-relative">
+								<input type="password" class="form-control fakePassword" id="formSignUpConfirmPassword"
+									required
+									value="<?=old_value('password')?>"
+									name="password" />
+								<div class="text-danger">
+									<?=$user->getError('password')?>
+								</div>
+								<div class="invalid-feedback">Please enter password.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<div class="mb-4 d-flex align-items-center justify-content-between">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" id="signupCheckTextCheckbox" required />
+							<label class="form-check-label ms-2" for="signupCheckTextCheckbox">
+								<a href="#">Terms of Use</a>
+								&
+								<a href="#">Privacy Policy</a>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="d-grid">
+					<button class="btn btn-primary" type="submit">Sign Up</button>
+				</div>
+			</form>
+			<div class="p-3">
+				<div>
+					<p>Already Registered <a
+							href="<?=ROOT?>Login">Login
+							Here</a></p>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div>
+		<?php
 /**
  * html footer function
  */
-renderHtmlFooter();
+rendermainFooter();
 rendersmfooter();
+renderHtmlFooter();
 ?>
+	</div>
+</div>
