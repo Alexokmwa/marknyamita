@@ -13,7 +13,9 @@ class Adminnotfound extends Admincontroller
 {
     public function adminindex()
     {
-        $this->adminView('adminviews/admin404.view.php');
+        $data['admintitle'] = "Admin Signup";
+
+        $this->adminView('adminviews/admin404.view.php',$data);
 
         // echo  "404 error page not found";
     }
