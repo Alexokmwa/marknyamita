@@ -4,6 +4,7 @@
 defined('ROOTPATH') or exit('Access Denied!');
 
 use app\models\Session;
+use app\models\Adminsession;
 use app\models\Image;
 
 /** check which php extensions are required **/
@@ -39,7 +40,34 @@ function check_extensions()
     }
 }
 
+function user(string $key = '')
+{
 
+    $ses = new Session();
+
+    $row = $ses->user();
+
+    if(!empty($row->$key)) {
+
+        return $row->$key;
+    }
+
+    return '';
+}
+function adminuser(string $key = '')
+{
+
+    $ses = new Adminsession();
+
+    $row = $ses-> adminuser();
+
+    if(!empty($row->$key)) {
+
+        return $row->$key;
+    }
+
+    return '';
+}
 function show($stuff)
 {
     echo "<pre>";
@@ -54,7 +82,14 @@ function esc($str)
 
 function redirect($path)
 {
-    header("Location: " . ROOT."/".$path);
+    header("Location: " . ROOT.$path);
+    // header("Location: " . ROOT."/".$path);
+    die;
+}
+function redirectadmin($path)
+{
+    // header("Location: " . ROOTADMIN."/".$path);
+    header("Location: " . ROOTADMIN.$path);
     die;
 }
 
@@ -68,9 +103,9 @@ function get_image(mixed $file = '', string $type = 'post'): string
     }
 
     if($type == 'user') {
-        return ROOT."/assets/images/user.webp";
+        return ROOT."assets/images/user.webp";
     } else {
-        return ROOT."/assets/images/no_image.jpg";
+        return ROOT."assets/images/no_image.jpg";
     }
 
 }
@@ -92,6 +127,8 @@ function get_pagination_vars(): array
 /** saves or displays a saved message to the user **/
 function message(string $msg = null, bool $clear = false)
 {
+
+
     $ses 	= new Session();
 
     if(!empty($msg)) {
@@ -102,6 +139,27 @@ function message(string $msg = null, bool $clear = false)
 
         if($clear) {
             $ses->pop('message');
+        }
+        return $msg;
+    }
+
+    return false;
+}
+function adminmessage(string $msg = null, bool $clear = false)
+{
+
+
+    $ses = new Adminsession();
+
+
+    if(!empty($msg)) {
+        $ses->set('adminmessage', $msg);
+    } elseif(!empty($ses->get('adminmessage'))) {
+
+        $msg = $ses->get('adminmessage');
+
+        if($clear) {
+            $ses->pop('adminmessage');
         }
         return $msg;
     }
