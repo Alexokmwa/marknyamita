@@ -75,6 +75,32 @@ trait Model
 
         return false;
     }
+    public function firstadminkeys($data, $data_not = [])
+    {
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+        $query = "select * from $this->tablekeys where ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . " && ";
+        }
+
+        foreach ($keys_not as $key) {
+            $query .= $key . " != :". $key . " && ";
+        }
+
+        $query = trim($query, " && ");
+
+        $query .= " limit $this->limit offset $this->offset";
+        $data = array_merge($data, $data_not);
+
+        $result = $this->query($query, $data);
+        if($result) {
+            return $result[0];
+        }
+
+        return false;
+    }
 
     public function insert($data)
     {
@@ -147,6 +173,34 @@ trait Model
 
         return "";
     }
+    protected function addError($key, $message)
+    {
+        $this->errors[$key] = $message;
+        return $this->errors;
+    }
+
+    public function getUniqueID($condition)
+    {
+        // Fetch the unique ID from the database based on the provided condition
+        $result = $this->firstadminkeys($condition);
+
+        if ($result) {
+            return $result->uniqueID; // Adjust based on your actual column name
+        }
+
+        return null;
+    }
+    public function getUniquepassword($condition)
+    {
+        // Fetch the unique ID from the database based on the provided condition
+        $result = $this->first($condition);
+
+        if ($result) {
+            return $result->password; // Adjust based on your actual column name
+        }
+
+        return null;
+    }
 
     protected function getPrimaryKey()
     {
@@ -175,18 +229,52 @@ trait Model
                                 $this->errors[$column] = ucfirst($column) . " is required";
                             }
                             break;
+                        case 'requiredterms':
+
+                            if(empty($data[$column])) {
+                                $this->errors[$column] = ucfirst($column) . " Please accept the terms and conditions";
+                            }
+                            break;
                         case 'email':
 
                             if(!filter_var(trim($data[$column]), FILTER_VALIDATE_EMAIL)) {
                                 $this->errors[$column] = "Invalid email address";
                             }
                             break;
+                        case 'adminidcheck':
+
+                            // Fetch the unique ID from the database based on the provided condition (e.g., email or any other condition)
+                            $uniqueID = $this->getUniqueID(['uniqueID' => $data['uniqueID']]); // Adjust the condition as needed
+
+                            // Check if the provided unique ID matches the fetched unique ID
+                            if ($data['uniqueID'] !== $uniqueID) {
+                                $this->errors['uniqueID'] = "Unique ID does not match.";
+                                return false;
+                            }
+                            break;
+                        // case 'passwordcheck':
+
+                        //     // Fetch the unique ID from the database based on the provided condition (e.g., email or any other condition)
+                        //     $password = $this->getUniquepassword(['password' => $data['password']]); // Adjust the condition as needed
+                        //     // Check if the provided unique ID matches the fetched unique ID
+                        //     if ($data['password'] !== $password) {
+                        //         $this->errors['password'] = "Unique ID does not match.";
+                        //         return false;
+                        //     }
+                        //     break;
                         case 'alpha':
 
                             if(!preg_match("/^[a-zA-Z]+$/", trim($data[$column]))) {
                                 $this->errors[$column] = ucfirst($column) . " should only have aphabetical letters without spaces";
                             }
                             break;
+                        case 'numeric':
+
+                            if (!preg_match("/^[0-9]+$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should only contain numeric digits without spaces";
+                            }
+                            break;
+
                         case 'alpha_space':
 
                             if(!preg_match("/^[a-zA-Z ]+$/", trim($data[$column]))) {
@@ -218,19 +306,23 @@ trait Model
                                 $this->errors[$column] = ucfirst($column) . " should not be less than 8 characters";
                             }
                             break;
-
+                        case 'passwordmatch':
+                            if ($data['password'] !== $data['confirmpassword']) {
+                                $this->errors[$column] = "Passwords do not match";
+                            }
+                            break;
                         case 'unique':
 
                             $key = $this->getPrimaryKey();
                             if(!empty($data[$key])) {
                                 //edit mode
                                 if($this->first([$column => $data[$column]], [$key => $data[$key]])) {
-                                    $this->errors[$column] = ucfirst($column) . " should be unique";
+                                    $this->errors[$column] = ucfirst($column) . " already taken";
                                 }
                             } else {
                                 //insert mode
                                 if($this->first([$column => $data[$column]])) {
-                                    $this->errors[$column] = ucfirst($column) . " should be unique";
+                                    $this->errors[$column] = ucfirst($column) . " already taken";
                                 }
                             }
                             break;
