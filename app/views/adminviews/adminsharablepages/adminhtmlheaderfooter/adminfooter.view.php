@@ -15,8 +15,10 @@ JS libraries, plugins and custom scripts -->
 
 <!-- Template Functions -->
 <script src="<?=ROOTADMIN?>/assets/adminassets/js/functions.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/password.js"></script>
 
 </body>
+
 </html>
 
  <!-- cdn end -->
