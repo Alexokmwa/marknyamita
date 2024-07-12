@@ -169,7 +169,7 @@ Header START -->
 				<div class="nav-item ms-2 ms-md-3 dropdown">
 					<!-- Avatar -->
 					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="avatar-img rounded-circle" src="<?=ROOT?>assets/asset/images/avatar/03.jpg" alt="avatar">
+						<img class="avatar-img rounded-circle" src="<?=get_image(user('image'))?>" alt="avatar">
 					</a>
 
 					<!-- Profile dropdown START -->
@@ -179,7 +179,7 @@ Header START -->
 							<div class="d-flex align-items-center">
 								<!-- Avatar -->
 								<div class="avatar me-3">
-									<img class="avatar-img rounded-circle shadow" src="assets/images/avatar/03.jpg" alt="avatar">
+									<img class="avatar-img rounded-circle shadow" src="<?=get_image(user('image'))?>" alt="avatar">
 								</div>
 								<div>
 									<a class="h6 mt-2 mt-sm-0" href="#"> Louis Ferguson</a>
