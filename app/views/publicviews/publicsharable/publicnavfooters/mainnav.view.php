@@ -166,7 +166,7 @@ Header START -->
 				<!-- Notification dropdown END -->
 				 
 				<!-- Nav additional link -->
-				<div class="nav-item dropdown dropdown-toggle-icon-none">
+				<!-- <div class="nav-item dropdown dropdown-toggle-icon-none">
 					<a class="nav-link dropdown-toggle" role="button" href="#" id="navAdditionalLink" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="bi bi-three-dots fs-4"></i>
 					</a>
@@ -178,7 +178,7 @@ Header START -->
 						<li><a class="dropdown-item fw-normal" href="#">Contact</a></li>
 						<li><a class="dropdown-item fw-normal" href="#"><span class="badge bg-danger me-2 align-middle">2 Job</span>Careers</a></li>
 					</ul>
-				</div>
+				</div> -->
 
 				<!-- Nav Button -->
 				<div class="nav-item d-none d-md-block">
