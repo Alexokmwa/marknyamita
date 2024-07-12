@@ -14,7 +14,8 @@ class Adminmedia extends Admincontroller
 {
     public function adminindex()
     {
+        $data['admintitle'] = "Admin Media";
 
-        $this ->adminview('adminviews/admingeneralpages/adminpages/adminmedia');
+        $this ->adminview('adminviews/admingeneralpages/adminpages/adminmedia',$data);
     }
 }

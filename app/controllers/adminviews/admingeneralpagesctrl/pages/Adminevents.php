@@ -14,7 +14,9 @@ class Adminevents extends Admincontroller
 {
     public function adminindex()
     {
+        $data['admintitle'] = "Admin Events";
 
-        $this ->adminview('adminviews/admingeneralpages/adminpages/adminevents');
+
+        $this ->adminview('adminviews/admingeneralpages/adminpages/adminevents',$data);
     }
 }

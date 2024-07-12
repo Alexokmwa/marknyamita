@@ -14,7 +14,9 @@ class Adminhome extends Admincontroller
 {
     public function adminindex()
     {
+        $data['admintitle'] = "Admin Home";
 
-        $this ->adminview('adminviews/admingeneralpages/adminpages/adminhome');
+
+        $this ->adminview('adminviews/admingeneralpages/adminpages/adminhome',$data);
     }
 }

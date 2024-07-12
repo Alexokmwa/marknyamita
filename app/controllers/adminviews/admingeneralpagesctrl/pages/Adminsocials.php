@@ -14,7 +14,8 @@ class Adminsocials extends Admincontroller
 {
     public function adminindex()
     {
+        $data['admintitle'] = "Admin Socials";
 
-        $this ->adminview('adminviews/admingeneralpages/adminpages/adminsocials');
+        $this ->adminview('adminviews/admingeneralpages/adminpages/adminsocials',$data);
     }
 }
