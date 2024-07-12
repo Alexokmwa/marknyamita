@@ -14,7 +14,9 @@ class Adminblog extends Admincontroller
 {
     public function adminindex()
     {
+        $data['admintitle'] = "Admin Blog";
 
-        $this ->adminview('adminviews/admingeneralpages/adminpages/adminblog');
+
+        $this ->adminview('adminviews/admingeneralpages/adminpages/adminblog',$data);
     }
 }
