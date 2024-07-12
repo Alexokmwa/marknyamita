@@ -14,7 +14,8 @@ class Home extends Controller
 {
     public function index()
     {
+        $data['usertitle'] = "Home";
 
-        $this ->view('publicviews/publicgeneralpages/home');
+        $this ->view('publicviews/publicgeneralpages/home', $data);
     }
 }

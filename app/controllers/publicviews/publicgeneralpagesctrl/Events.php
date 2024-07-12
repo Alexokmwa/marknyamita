@@ -14,7 +14,9 @@ class Events extends Controller
 {
     public function index()
     {
+        $data['usertitle'] = "Events";
 
-        $this ->view('publicviews/publicgeneralpages/events');
+
+        $this ->view('publicviews/publicgeneralpages/events', $data);
     }
 }

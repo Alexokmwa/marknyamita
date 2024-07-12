@@ -16,6 +16,7 @@ class Signup extends Controller
 {
     public function index()
     {
+        $data['usertitle'] = "signup";
         $data['user'] = new User();
         $req = new Request();
         if($req->posted()) {
