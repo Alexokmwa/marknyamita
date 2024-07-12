@@ -3,7 +3,7 @@
 
 <head>
 	<title>
-		<?="Admin". " " .APP_NAME?>
+		<?=$admintitle ?? "Admin"?> | <?=APP_NAME?>
 	</title>
 
 	<!-- Meta Tags -->
@@ -74,32 +74,45 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon"
 		href="<?=ROOTADMIN?>assets/adminassets/images/favicon.ico">
-		<!-- cdns start-->
-		 <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com/">
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+	<!-- cdns start-->
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Rubik:wght@400;500;700&display=swap"
+		rel="stylesheet">
 
-<!-- Plugins CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.32.0/apexcharts.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
-<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.32.0/apexcharts.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
+	<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
 
-<!-- Theme CSS -->
-<link rel="stylesheet" href="<?=ROOTADMIN?>assets/adminassets/css/style.css">
+	<!-- Theme CSS -->
+	<link rel="stylesheet"
+		href="<?=ROOTADMIN?>assets/adminassets/css/style.css">
 
-<!-- Additional CSS -->
-<link rel="stylesheet" href="<?=ROOTADMIN?>/assets/css/adminmainnav.css">
-<link rel="stylesheet" href="<?=ROOTADMIN?>/assets/css/adminsign-in.css.css">
-<link rel="stylesheet" href="<?=ROOTADMIN?>/assets/css/adminsmfooter.css">
+	<!-- Additional CSS -->
 
-<!-- Quill JS -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	<link rel="stylesheet"
+		href="<?=ROOTADMIN?>/assets/css/adminsignup.css">
+	<link rel="stylesheet"
+		href="<?=ROOTADMIN?>/assets/css/adminsmfooter.css">
 
-		<!-- cdns end-->
+	<!-- Quill JS -->
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-	
+	<!-- cdns end-->
+
+
 </head>
 
 <body>
+<!-- Pre loader -->
+<!-- <div class="preloader">
+	<div class="preloader-item">
+		<div class="spinner-grow text-primary"></div>
+	</div>
+</div> -->
