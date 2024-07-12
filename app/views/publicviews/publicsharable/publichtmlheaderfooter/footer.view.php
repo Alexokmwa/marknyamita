@@ -1,18 +1,18 @@
 <!-- script files -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+<!-- Bootstrap JS (using CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<!-- =======================
-JS libraries, plugins and custom scripts -->
 
-<!-- Bootstrap JS -->
-<script src="<?=ROOT?>/assets/asset/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Sticky.js (using CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js" integrity="sha512-somehash" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<!-- Vendors -->
-<script src="<?=ROOT?>/assets/asset/vendor/sticky-js/sticky.min.js"></script>
+<!-- Template Functions (local file) -->
+<script src="<?=ROOT?>assets/asset/js/functions.js"></script>
+<script src="<?=ROOT?>assets/js/password.js"></script>
 
-<!-- Template Functions -->
-<script src="<?=ROOT?>/assets/asset/js/functions.js"></script>
+<!-- Uncomment if needed -->
 <!-- <script src="<?=ROOT?>/assets/asset/js/navbarssticky.js"></script> -->
+
 
 </body>
 
