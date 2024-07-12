@@ -180,7 +180,7 @@ Header START -->
 				<div class="nav-item ms-2 ms-md-3 dropdown">
 					<!-- Avatar -->
 					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="avatar-img rounded-circle" src="<?=ROOTADMIN?>assets/adminassets/images/avatar/03.jpg" alt="avatar">
+						<img class="avatar-img rounded-circle" src="<?=get_image(adminuser('image'))?>" alt="avatar">
 					</a>
 
 					<!-- Profile dropdown START -->
@@ -190,7 +190,7 @@ Header START -->
 							<div class="d-flex align-items-center">
 								<!-- Avatar -->
 								<div class="avatar me-3">
-									<img class="avatar-img rounded-circle shadow" src="<?=ROOTADMIN?>assets/adminassets/images/avatar/03.jpg" alt="avatar">
+									<img class="avatar-img rounded-circle shadow" src="<?=get_image(adminuser('image'))?>" alt="avatar">
 								</div>
 								<div>
 									<a class="h6 mt-2 mt-sm-0" href="<?=ROOTADMIN?>Adminsignup">Add Name</a>
@@ -201,8 +201,8 @@ Header START -->
 						</li>
 						<!-- Links -->
 						
-						<li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign up</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign in</a></li>
+						<li><a class="dropdown-item" href="<?=ROOTADMIN?>Adminsignup"><i class="bi bi-power fa-fw me-2"></i>Sign up</a></li>
+						<li><a class="dropdown-item" href="<?=ROOTADMIN?>Adminsignin"><i class="bi bi-power fa-fw me-2"></i>Sign in</a></li>
 						<li class="dropdown-divider mb-2"></li>
 						<li>
 							<div class="align-items-center text-center py-0">
