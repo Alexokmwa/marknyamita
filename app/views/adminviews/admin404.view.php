@@ -52,6 +52,6 @@ adminrenderpageHeader();
 /**
  * html footer function
  */
-adminrenderHtmlFooter();
 adminrendersmfooter();
+adminrenderHtmlFooter();
 ?>
