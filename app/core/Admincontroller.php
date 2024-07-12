@@ -15,6 +15,7 @@ class Admincontroller
         if(!empty($data)) {
             extract($data);
         }
+        include "../app/views/adminviews/adminsharablepages/adminhtmlheaderfooter/adminheader.view.php";
         $filename = "../app/views/".$name.".view.php";
         if (file_exists($filename)) {
             require($filename);
