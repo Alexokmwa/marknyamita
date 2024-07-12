@@ -2,19 +2,19 @@
 
 namespace admincombined;
 
-use app\models\Session;
+use app\models\Adminsession;
 
 /**
  * HTML pages header and main nav inclusion
  */
 adminrenderHeader();
 
-class AdminShownav extends Session
+class AdminShownav extends Adminsession
 {
     public function adminshowexpectednav()
     {
         // Instantiate the Session object
-        $ses = new Session();
+        $ses = new Adminsession();
 
         // Check if the user is logged in
         if ($ses->isLoggedIn()) {
