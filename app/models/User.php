@@ -59,11 +59,22 @@ class User
         ],
         'username' => [
             'alpha',
+            'unique',
+
             'required',
         ],
         'password' => [
             'not_less_than_8_chars',
             'required',
+        ],
+        'confirmpassword' => [
+            'required',
+            'not_less_than_8_chars',
+
+            'passwordmatch',
+        ],
+        'terms' => [
+            'requiredterms',
         ],
     ];
 
@@ -92,10 +103,10 @@ class User
                 $ses->auth($row);
                 redirect('home');
             } else {
-                $this->errors[$this->loginUniqueColumn] = "Wrong $this->loginUniqueColumn";
+                $this->addError('password', "Incorrect password");
             }
         } else {
-            $this->errors[$this->loginUniqueColumn] = "Wrong $this->loginUniqueColumn or password";
+            $this->addError($this->loginUniqueColumn, "Incorect email");
         }
     }
 
