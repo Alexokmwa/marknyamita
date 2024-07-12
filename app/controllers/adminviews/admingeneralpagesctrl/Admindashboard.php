@@ -14,7 +14,9 @@ class Admindashboard extends Admincontroller
 {
     public function adminindex()
     {
+        $data['admintitle'] = "Admin Dashboard";
 
-        $this ->adminview('adminviews/admingeneralpages/admindashboard');
+
+        $this ->adminview('adminviews/admingeneralpages/admindashboard',$data);
     }
 }
