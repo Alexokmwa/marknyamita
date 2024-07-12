@@ -10,7 +10,7 @@ renderpageHeader();
 
 
 
-		<div class="card shadow-sm container-fluid border col-lg-4 col-md-6 col-sm-10 pt-2   myclassmargintop ">
+		<div class="card shadow-sm container-fluid border col-lg-4 col-md-6 col-sm-10 pt-2 ">
 
 			<form method="post">
 
@@ -24,7 +24,7 @@ renderpageHeader();
 
 							</label>
 							<input
-								value="<?=old_value('username')?>"
+								value="<?=old_value('firstname')?>"
 								name="firstname" type="text" class="form-control" id="signupFullnameInput1" required />
 							<div class="text-danger">
 								<?=$user->getError('firstname')?>
@@ -39,7 +39,7 @@ renderpageHeader();
 
 							</label>
 							<input
-								value="<?=old_value('username')?>"
+								value="<?=old_value('lastname')?>"
 								name="lastname" type="text" class="form-control" id="signupFullnameInput2" required />
 							<div class="text-danger">
 								<?=$user->getError('lastname')?>
@@ -82,13 +82,13 @@ renderpageHeader();
 						<div class="mb-3">
 							<label for="formSignUpPassword" class="form-label">Password
 								<span class="text-danger">*</span>
-
 							</label>
 							<div class="password-field position-relative">
-								<input type="password" class="form-control fakePassword" id="formSignUpConfirmPassword"
+								<input type="password" class="form-control fakePassword" id="formSignUpPassword"
 									required
 									value="<?=old_value('password')?>"
 									name="password" />
+									<span><i class="bi bi-eye-slash passwordToggler"></i></span>
 								<div class="text-danger">
 									<?=$user->getError('password')?>
 								</div>
@@ -100,31 +100,39 @@ renderpageHeader();
 						<div class="mb-3">
 							<label for="formSignUpConfirmPassword" class="form-label">Confirm Password
 								<span class="text-danger">*</span>
-
 							</label>
 							<div class="password-field position-relative">
 								<input type="password" class="form-control fakePassword" id="formSignUpConfirmPassword"
 									required
-									value="<?=old_value('password')?>"
-									name="password" />
+									value="<?=old_value('confirmpassword')?>"
+									name="confirmpassword" />
+									<span><i class="bi bi-eye-slash passwordToggler"></i></span>
 								<div class="text-danger">
-									<?=$user->getError('password')?>
+									<?=$user->getError('confirmpassword')?>
 								</div>
-								<div class="invalid-feedback">Please enter password.</div>
+								<div class="invalid-feedback">Please enter confirm password.</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
+
 				<div class="mb-3">
 					<div class="mb-4 d-flex align-items-center justify-content-between">
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="signupCheckTextCheckbox" required />
+							<input
+								<?=old_checked('terms', 1)?>
+							class="form-check-input" type="checkbox" id="signupCheckTextCheckbox" name="terms"
+							value="1" required/>
+
 							<label class="form-check-label ms-2" for="signupCheckTextCheckbox">
 								<a href="#">Terms of Use</a>
 								&
 								<a href="#">Privacy Policy</a>
 							</label>
+							<div class="text-danger">
+								<?=$user->getError('terms')?>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -148,7 +156,7 @@ renderpageHeader();
 /**
  * html footer function
  */
-rendermainFooter();
+// rendermainFooter();
 rendersmfooter();
 renderHtmlFooter();
 ?>

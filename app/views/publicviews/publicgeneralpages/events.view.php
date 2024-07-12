@@ -5,7 +5,7 @@
 renderpageHeader();
 ?>
 
-<h1 class="myclassmargintop">public events view page design of tabs and subpages goes here</h1>
+<h1 class="myclassmargintop">public events view page design of tabs and subpages goes here <?=$usertitle?></h1>
 <?php
 /**
  * html footer function
