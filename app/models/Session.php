@@ -11,8 +11,8 @@ defined('ROOTPATH') or exit('Access Denied!');
 
 class Session
 {
-    public $mainkey = 'APP';
-    public $userkey = 'USER';
+    public $mainkey = 'APPPUBLIC';
+    public $userkey = 'USERPUBLIC';
 
     /** activate session if not yet started **/
     private function startSession(): int
