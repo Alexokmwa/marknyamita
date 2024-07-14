@@ -6,8 +6,8 @@ Header START -->
 		<div class="container">
 			<!-- Logo START -->
 			<a class="navbar-brand me-3" href="<?=ROOTADMIN?>Admindashboard">
-				<img class="navbar-brand-item light-mode-item" src="<?=ROOTADMIN?>assets/adminassets/images/image.png" alt="logo">			
-				<img class="navbar-brand-item dark-mode-item" src="<?=ROOTADMIN?>assets/adminassets/images/logo-light.svg" alt="logo">			
+				<img class="navbar-brand-item light-mode-item" src="<?=ROOTADMIN?>assets/adminassets/images/image.png" alt="<?=APP_NAMEADMIN?>">			
+				<img class="navbar-brand-item dark-mode-item" src="<?=ROOTADMIN?>assets/adminassets/images/logo-light.svg" alt="<?=APP_NAMEADMIN?>">			
 			</a>
 			<!-- Logo END -->
 
@@ -29,9 +29,9 @@ Header START -->
 						<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>Post</a>
 						<ul class="dropdown-menu" aria-labelledby="postMenu">
 							<!-- dropdown submenu -->
-							<li> <a class="dropdown-item" href="dashboard-post-list.html">Post List</a> </li>
-							<li> <a class="dropdown-item" href="dashboard-post-categories.html">Post Categories</a> </li>
-							<li> <a class="dropdown-item" href="dashboard-post-create.html">Create a Post</a> </li>
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Adminpostlist">Post List</a> </li>
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Adminpostcategories">Post Categories</a> </li>
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Admincreatepost">Create a Post</a> </li>
 							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Admineditpost">Edit Post</a> </li>
 						</ul>
 					</li>
@@ -39,6 +39,23 @@ Header START -->
 					<!-- Nav item 3 Pages -->
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-folder me-1"></i>Pages</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Adminevents">Events</a></li>
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Adminmedia">Media</a></li>
+							<li class="dropdown-divider"></li>
+
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Adminblog">Blog</a></li>
+							<li> <a class="dropdown-item" href="<?=ROOTADMIN?>Adminsocials">Socials</a></li>
+						
+							
+							
+							
+						</ul>
+					</li>
+					<!-- Nav item 4 Pages -->
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-folder me-1"></i>More</a>
 						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
 							<li> <a class="dropdown-item" href="dashboard-author-list.html">Author List</a></li>
 							<li> <a class="dropdown-item" href="dashboard-author-single.html">Author Single</a></li>
@@ -163,7 +180,7 @@ Header START -->
 				<div class="nav-item ms-2 ms-md-3 dropdown">
 					<!-- Avatar -->
 					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="avatar-img rounded-circle" src="<?=get_image(adminuser('image'))?>" alt="avatar">
+						<img class="avatar-img rounded-circle" src="<?=get_imageadmin(adminuser('image'))?>" alt="avatar">
 					</a>
 
 					<!-- Profile dropdown START -->
@@ -173,11 +190,12 @@ Header START -->
 							<div class="d-flex align-items-center">
 								<!-- Avatar -->
 								<div class="avatar me-3">
-									<img class="avatar-img rounded-circle shadow" src="<?=get_image(adminuser('image'))?>" alt="avatar">
+									<img class="avatar-img rounded-circle shadow" src="<?=get_imageadmin(adminuser('image'))?>" alt="avatar">
 								</div>
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="#"> Louis Ferguson</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6 mt-2 mt-sm-0" href="#"><?=esc(get_username(adminuser("username")) ?? 'no username found')?></a>
+									<p class="small m-0"><?=esc(get_email(adminuser("email")) ?? 'no email found')?></p>
+
 								</div>
 							</div>
 							<hr>
