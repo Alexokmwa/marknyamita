@@ -14,6 +14,7 @@ Main contain START -->
 	<div class="container">
     <div class="row pb-4">
 			<div class="col-12">
+				
         <!-- Title -->
 				<div class="d-sm-flex justify-content-sm-between align-items-center">
 					<h1 class="mb-2 mb-sm-0 h2">Categories <span class="badge bg-primary bg-opacity-10 text-primary">07</span></h1>			
@@ -23,6 +24,7 @@ Main contain START -->
 		</div>
 		<div class="row g-4">
 			<div class="col-md-6 col-xl-4">
+				
 				<!-- Category item START -->
 				<div class="card border h-100">
 					<!-- Card header -->
@@ -175,158 +177,7 @@ Main contain START -->
 				<!-- Category item END -->
 			</div>
 
-			<div class="col-md-6 col-xl-4">
-				<!-- Category item START -->
-				<div class="card border h-100">
-					<!-- Card header -->
-					<div class="card-header border-bottom p-3">
-						<div class="d-flex align-items-center">
-							<div class="icon-lg shadow bg-body rounded-circle">🤖</div>
-							<h3 class="mb-0 ms-3">Technology</h3>
-						</div>
-					</div>
-
-					<!-- Card body START -->
-					<div class="card-body p-3">
-						<p>Meant balls it if up doubt small purse. Required his you put the outlived answered position.</p>
-
-						<!-- Followers and Post -->
-						<div class="d-flex justify-content-between">
-							<!-- Total post -->
-							<div>
-								<h5 class="mb-0">846</h5>
-								<h6 class="mb-0 fw-light">Total posts</h6>
-							</div>
-
-							<!-- Avatar group -->
-							<ul class="avatar-group mb-0">
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/10.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/12.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<div class="avatar-img rounded-circle bg-primary"><i class="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
-								</li>
-							</ul>
-						</div>
-						
-					</div>
-					<!-- Card body END -->
-
-					<!-- Card footer -->
-					<div class="card-footer border-top text-center p-3">
-            <a href="#" class="btn btn-primary-soft w-100 mb-0">View posts</a>
-					</div>
-				</div>
-				<!-- Category item END -->
-			</div>
-
-			<div class="col-md-6 col-xl-4">
-				<!-- Category item START -->
-				<div class="card border h-100">
-					<!-- Card header -->
-					<div class="card-header border-bottom p-3">
-						<div class="d-flex align-items-center">
-							<div class="icon-lg shadow bg-body rounded-circle">🔥</div>
-							<h3 class="mb-0 ms-3">Marketing</h3>
-						</div>
-					</div>
-
-					<!-- Card body START -->
-					<div class="card-body p-3">
-						<p>Saw met applauded favorite deficient engrossed concealed and her.</p>
-
-						<!-- Followers and Post -->
-						<div class="d-flex justify-content-between">
-							<!-- Total post -->
-							<div>
-								<h5 class="mb-0">486</h5>
-								<h6 class="mb-0 fw-light">Total posts</h6>
-							</div>
-
-							<!-- Avatar group -->
-							<ul class="avatar-group mb-0">
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/05.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/08.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/10.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<div class="avatar-img rounded-circle bg-primary"><i class="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
-								</li>
-							</ul>
-						</div>
-						
-					</div>
-					<!-- Card body END -->
-
-					<!-- Card footer -->
-					<div class="card-footer border-top text-center p-3">
-            <a href="#" class="btn btn-primary-soft w-100 mb-0">View posts</a>
-					</div>
-				</div>
-				<!-- Category item END -->
-			</div>
-
-			<div class="col-md-6 col-xl-4">
-				<!-- Category item START -->
-				<div class="card border h-100">
-					<!-- Card header -->
-					<div class="card-header border-bottom p-3">
-						<div class="d-flex align-items-center">
-							<div class="icon-lg shadow bg-body rounded-circle">📷</div>
-							<h3 class="mb-0 ms-3">Photography</h3>
-						</div>
-					</div>
-
-					<!-- Card body START -->
-					<div class="card-body p-3">
-						<p>Existence certainly explained how improving the household pretended.</p>
-
-						<!-- Followers and Post -->
-						<div class="d-flex justify-content-between">
-							<!-- Total post -->
-							<div>
-								<h5 class="mb-0">657</h5>
-								<h6 class="mb-0 fw-light">Total posts</h6>
-							</div>
-
-							<!-- Avatar group -->
-							<ul class="avatar-group mb-0">
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/02.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/10.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<img class="avatar-img rounded-circle" src="assets/images/avatar/12.html" alt="avatar">
-								</li>
-								<li class="avatar avatar-xs">
-									<div class="avatar-img rounded-circle bg-primary"><i class="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
-								</li>
-							</ul>
-						</div>
-						
-					</div>
-					<!-- Card body END -->
-
-					<!-- Card footer -->
-					<div class="card-footer border-top text-center p-3">
-            <a href="#" class="btn btn-primary-soft w-100 mb-0">View posts</a>
-					</div>
-				</div>
-				<!-- Category item END -->
-			</div>
+			
 			
 			<div class="col-12">
 				<!-- Blog list table START -->
@@ -335,7 +186,7 @@ Main contain START -->
 					<div class="card-header bg-transparent border-bottom p-3">
 						<div class="d-sm-flex justify-content-sm-between align-items-center">
 							<h5 class="mb-2 mb-sm-0">Technology <span class="badge bg-primary bg-opacity-10 text-primary">105</span></h5>
-							<a href="#" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Create a post</a>
+							<a href="<?=ROOTADMIN?>Admincreatepost" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Create a post</a>
 						</div>
 					</div>
 					<!-- Card header END -->
@@ -412,140 +263,7 @@ Main contain START -->
 										</td>
 									</tr>
 
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td>
-											<h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">Dirty little secrets about the business industry</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>
-											<h6 class="mb-0"><a href="#">Dennis Barrett</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>Jan 19, 2022</td>
-										<!-- Table data -->
-										<td>1,456</td>
-										<!-- Table data -->
-										<td>
-											<span class="badge bg-warning bg-opacity-15 text-warning mb-2">Draft</span>
-										</td>
-										<!-- Table data -->
-										<td>
-                      <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                      </div>
-										</td>
-									</tr>
-
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td>
-											<h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">7 common mistakes everyone makes while traveling</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>
-											<h6 class="mb-0"><a href="#">Billy Vasquez</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>Nov 11, 2022</td>
-										<!-- Table data -->
-										<td>3,456</td>
-										<!-- Table data -->
-										<td>
-											<span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
-										</td>
-										<!-- Table data -->
-										<td>
-                      <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                      </div>
-										</td>
-									</tr>
-
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td>
-											<h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">5 investment doubts you should clarify</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>
-											<h6 class="mb-0"><a href="#">Lori Stevens</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>Jan 22, 2022</td>
-										<!-- Table data -->
-										<td>5,456</td>
-										<!-- Table data -->
-										<td>
-											<span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
-										</td>
-										<!-- Table data -->
-										<td>
-                      <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                      </div>
-										</td>
-									</tr>
-
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td>
-											<h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">Bad habits that people in the industry need to quit</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>
-											<h6 class="mb-0"><a href="#">Larry Lawson</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>Oct 21, 2022</td>
-										<!-- Table data -->
-										<td>2,845</td>
-										<!-- Table data -->
-										<td>
-											<span class="badge bg-warning bg-opacity-10 text-warning mb-2">Draft</span>
-										</td>
-										<!-- Table data -->
-										<td>
-                      <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                      </div>
-										</td>
-									</tr>
-
-									<!-- Table item -->
-									<tr>
-										<!-- Table data -->
-										<td>
-											<h6 class="course-title mt-2 mt-md-0 mb-0"><a href="#">Around the web: 20 fabulous infographics about business</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>
-											<h6 class="mb-0"><a href="#">Carolyn Ortiz</a></h6>
-										</td>
-										<!-- Table data -->
-										<td>Feb 10, 2022</td>
-										<!-- Table data -->
-										<td>1,456</td>
-										<!-- Table data -->
-										<td>
-											<span class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
-										</td>
-										<!-- Table data -->
-										<td>
-                      <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></a>
-                        <a href="#" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                      </div>
-										</td>
-									</tr>
+									
 
 								</tbody>
 								<!-- Table body END -->
