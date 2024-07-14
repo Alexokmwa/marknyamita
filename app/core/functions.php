@@ -109,6 +109,35 @@ function get_image(mixed $file = '', string $type = 'post'): string
     }
 
 }
+function get_imageadmin(mixed $file = '', string $type = 'post'): string
+{
+
+    $file = $file ?? '';
+    if(file_exists($file)) {
+        return ROOT . "/". $file;
+    }
+
+    if($type == 'user') {
+        return ROOT."assets/images/user.webp";
+    } else {
+        return ROOT."assets/images/no_image.jpg";
+    }
+
+}
+function get_username($username = '', $default = 'no user name found') {
+    if (!empty($username)) {
+        return $username;
+    } else {
+        return $default;
+    }
+}
+function get_email($email = '', $default = 'no email found') {
+    if (!empty($email)) {
+        return $email;
+    } else {
+        return $default;
+    }
+}
 
 
 /** returns pagination links **/
