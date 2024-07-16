@@ -3,7 +3,8 @@
 
 <head>
 	<title>
-		<?=$admintitle ?? "Admin"?> | <?=APP_NAME?>
+		<?=$admintitle ?? "Admin"?> |
+		<?=APP_NAME?>
 	</title>
 
 	<!-- Meta Tags -->
@@ -101,8 +102,7 @@
 	<link rel="stylesheet"
 		href="<?=ROOTADMIN?>/assets/css/adminsmfooter.css">
 
-	<!-- Quill JS -->
-	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
 
 	<!-- cdns end-->
 
@@ -110,8 +110,8 @@
 </head>
 
 <body>
-<!-- Pre loader -->
-<!-- <div class="preloader">
+	<!-- Pre loader -->
+	<!-- <div class="preloader">
 	<div class="preloader-item">
 		<div class="spinner-grow text-primary"></div>
 	</div>
