@@ -16,13 +16,21 @@ trait Model
     public $limit 		= 10;
     public $offset 		= 0;
     public $order_type 	= "desc";
-    public $order_column = "id";
+    public $order_column = "id" ;
+    public $order_columncategories = "categoryID" ;
     public $errors 		= [];
 
     public function findAll()
     {
 
         $query = "select * from $this->table order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
+    public function findAllcategories()
+    {
+
+        $query = "select * from $this->table order by $this->order_columncategories $this->order_type limit $this->limit offset $this->offset";
 
         return $this->query($query);
     }
@@ -252,16 +260,7 @@ trait Model
                                 return false;
                             }
                             break;
-                        // case 'passwordcheck':
 
-                        //     // Fetch the unique ID from the database based on the provided condition (e.g., email or any other condition)
-                        //     $password = $this->getUniquepassword(['password' => $data['password']]); // Adjust the condition as needed
-                        //     // Check if the provided unique ID matches the fetched unique ID
-                        //     if ($data['password'] !== $password) {
-                        //         $this->errors['password'] = "Unique ID does not match.";
-                        //         return false;
-                        //     }
-                        //     break;
                         case 'alpha':
 
                             if(!preg_match("/^[a-zA-Z]+$/", trim($data[$column]))) {
@@ -276,29 +275,29 @@ trait Model
                             break;
 
                         case 'alpha_space':
-
-                            if(!preg_match("/^[a-zA-Z ]+$/", trim($data[$column]))) {
-                                $this->errors[$column] = ucfirst($column) . " should only have aphabetical letters & spaces";
+                            if (!preg_match("/^[a-zA-Z ]+$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should only contain alphabetical letters and spaces.";
                             }
                             break;
+
                         case 'alpha_numeric':
-
-                            if(!preg_match("/^[a-zA-Z0-9]+$/", trim($data[$column]))) {
-                                $this->errors[$column] = ucfirst($column) . " should only have aphabetical letters & spaces";
+                            if (!preg_match("/^[a-zA-Z0-9]+$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should only contain alphanumeric characters.";
                             }
                             break;
+
                         case 'alpha_numeric_symbol':
-
                             if(!preg_match("/^[a-zA-Z0-9\-\_\$\%\*\[\]\(\)\& ]+$/", trim($data[$column]))) {
-                                $this->errors[$column] = ucfirst($column) . " should only have aphabetical letters & spaces";
+                                $this->errors[$column] = ucfirst($column) . " should only contain alphanumeric characters, hyphens, underscores, dollar signs, percent signs, asterisks, square brackets, parentheses, ampersands, and spaces.";
                             }
                             break;
-                        case 'alpha_symbol':
 
-                            if(!preg_match("/^[a-zA-Z\-\_\$\%\*\[\]\(\)\& ]+$/", trim($data[$column]))) {
-                                $this->errors[$column] = ucfirst($column) . " should only have aphabetical letters & spaces";
+                        case 'alpha_symbol':
+                            if (!preg_match("/^[a-zA-Z\-\_\$\%\*\[\]\(\)\& ]+$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should only contain alphabetical letters, hyphens, underscores, dollar signs, percent signs, asterisks, square brackets, parentheses, ampersands, and spaces.";
                             }
                             break;
+
 
                         case 'not_less_than_8_chars':
 
