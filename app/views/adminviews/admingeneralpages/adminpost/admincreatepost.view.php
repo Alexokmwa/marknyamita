@@ -26,7 +26,7 @@ Main contain START -->
 						<!-- Card body -->
 						<div class="card-body">
 							<!-- Form START -->
-							<form>
+							<form method="post">
 								<!-- Main form -->
 								<div class="row">
 									<div class="col-12">
