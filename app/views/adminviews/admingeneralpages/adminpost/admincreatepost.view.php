@@ -7,10 +7,10 @@ adminrenderpageHeader();
 
 <!-- <h1 class="myclassmargintop">admin create POST</h1> -->
 <!-- **************** MAIN CONTENT START **************** -->
-<main>
+<main class="mysmbottomspace">
 
 	<!-- =======================
-Main contain START -->
+    Main contain START -->
 	<section class="py-4">
 		<div class="container">
 			<div class="row pb-4">
@@ -26,73 +26,42 @@ Main contain START -->
 						<!-- Card body -->
 						<div class="card-body">
 							<!-- Form START -->
-							<form method="post">
+							<form id="postForm" method="post" enctype="multipart/form-data">
 								<!-- Main form -->
 								<div class="row">
 									<div class="col-12">
 										<!-- Post name -->
 										<div class="mb-3">
 											<label class="form-label">Post name</label>
-											<input required id="con-name" name="name" type="text" class="form-control"
-												placeholder="Post name">
-											<small>Moving heaven divide two sea female great midst spirit</small>
+											<input id="postName" type="text" class="form-control"
+												value="<?= old_value('postname') ?>"
+												name="postname">
+											<div class="text-danger" id="postnameError">
+												<?= $admin->getError('postname') ?>
+											</div>
 										</div>
+										<!-- Post name end -->
 									</div>
+
 									<!-- Post type START -->
-									<div class="col-12">
+									<div class="col-12 ">
 										<div class="mb-3">
 											<label class="form-label">Post type</label>
-											<div class="d-flex flex-wrap gap-3">
+											<div class="d-flex flex-wrap gap-3 border border-primary p-2 rounded">
 												<!-- Post type item -->
 												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="poll" id="option">
+													<input type="radio" class="btn-check" name="posttype" id="option"
+														value="1"
+														<?= old_checked('posttype', 1) ?>
+													required checked>
 													<label class="btn btn-outline-light w-100" for="option">
+														<div class="text-danger" id="posttypeError">
+															<?= $admin->getError('posttype') ?>
+														</div>
 														<i class="bi bi-chat-left-text fs-1"></i>
 														<span class="d-block"> Post </span>
 													</label>
 												</div>
-												<!-- Post type item -->
-												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="poll" id="option2">
-													<label class="btn btn-outline-light w-100" for="option2">
-														<i class="bi bi-patch-question fs-1"></i>
-														<span class="d-block"> Question </span>
-													</label>
-												</div>
-												<!-- Post type item -->
-												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="poll" id="option3"
-														checked>
-													<label class="btn btn-outline-light w-100" for="option3">
-														<i class="bi bi-chat-right-dots fs-1"></i>
-														<span class="d-block"> Poll </span>
-													</label>
-												</div>
-												<!-- Post type item -->
-												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="poll" id="option4">
-													<label class="btn btn-outline-light w-100" for="option4">
-														<i class="bi bi-ui-checks-grid fs-1"></i>
-														<span class="d-block"> Images </span>
-													</label>
-												</div>
-												<!-- Post type item -->
-												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="poll" id="option5">
-													<label class="btn btn-outline-light w-100" for="option5">
-														<i class="bi bi-camera-reels fs-1"></i>
-														<span class="d-block"> Video </span>
-													</label>
-												</div>
-												<!-- Post type item -->
-												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="poll" id="option6">
-													<label class="btn btn-outline-light w-100" for="option6">
-														<i class="bi bi-chat-square fs-1"></i>
-														<span class="d-block"> Other </span>
-													</label>
-												</div>
-												<!-- Post type item -->
 											</div>
 										</div>
 									</div>
@@ -102,12 +71,16 @@ Main contain START -->
 									<div class="col-12">
 										<div class="mb-3">
 											<label class="form-label">Short description </label>
-											<textarea class="form-control" rows="3"
-												placeholder="Add description"></textarea>
+											<textarea class="form-control" rows="3" placeholder="Add description"
+												name="shortdescription"><?= old_value('shortdescription') ?></textarea>
+											<div class="text-danger" id="shortdescriptionError">
+												<?= $admin->getError('shortdescription') ?>
+											</div>
 										</div>
 									</div>
+									<!-- Short description end -->
 
-									<!-- Main toolbar -->
+									<!-- Quill start -->
 									<div class="col-md-12">
 										<!-- Subject -->
 										<div class="mb-3">
@@ -148,10 +121,19 @@ Main contain START -->
 											<!-- Main toolbar -->
 											<div class="bg-body border rounded-bottom h-300 overflow-hidden"
 												id="quilleditor">
+												<!-- Quill editor content will be initialized here -->
+												<?= old_value('postbody') ?>
 											</div>
+											<input type="hidden" name="postbody" id="quilleditor-input">
+										</div>
+
+										<div class="text-danger" id="postbodyError">
+											<?= $admin->getError('postbody') ?>
 										</div>
 									</div>
-									<div class="col-12">
+									<!-- End Quill -->
+
+									<div class="col-lg-7">
 										<div class="mb-3">
 											<!-- Image -->
 											<div class="position-relative">
@@ -160,45 +142,86 @@ Main contain START -->
 												<label class="w-100" style="cursor:pointer;">
 													<span>
 														<input class="form-control stretched-link" type="file"
-															name="my-image" id="image"
-															accept="image/gif, image/jpeg, image/png">
+															id="image"
+															value="<?= old_value('imageurl') ?>"
+															name="imageurl">
 													</span>
 												</label>
+											</div>
+											<div class="text-danger" id="imageurlError">
+												<?=$admin->getError('imageurl') ?>
 											</div>
 											<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG and PNG. Our
 												suggested dimensions are 600px * 450px. Larger image will be cropped to
 												4:3 to fit our thumbnails/previews.</p>
 										</div>
 									</div>
+									<div class="col-lg-5">
+										<!-- Category -->
+										<div class="mb-3">
+											<label class="form-label">Category</label>
+											<select class="form-select" name="category"
+												aria-label="Default select example">
+												<option value="" disabled selected>--Select--</option>
+												<?php if (is_array($data['row']) && count($data['row'])): ?>
+												<?php foreach ($data['row'] as $row): ?>
+												<option
+													value="<?= esc($row->categoryname) ?>"
+													<?= old_value('category') === esc($row->categoryname) ? 'selected' : '' ?>>
+													<?= esc($row->categoryname) ?>
+												</option>
+												<?php endforeach; ?>
+												<?php endif; ?>
+											</select>
+											<div class="text-danger" id="categoryError">
+												<?= $admin->getError('category') ?>
+											</div>
+										</div>
+									</div>
 									<div class="col-lg-7">
 										<!-- Tags -->
 										<div class="mb-3">
 											<label class="form-label">Tags</label>
-											<textarea class="form-control" rows="1"
-												placeholder="business, sports ..."></textarea>
+											<textarea class="form-control" rows="1" name="tags"
+												placeholder="business, sports ..."><?= old_value('tags') ?></textarea>
+											<div class="text-danger" id="tagsError">
+												<?= $admin->getError('tags') ?>
+											</div>
 											<small>Maximum of 14 keywords. Keywords should all be in lowercase and
 												separated by commas. e.g. javascript, react, marketing.</small>
 										</div>
 									</div>
 									<div class="col-lg-5">
-										<!-- Message -->
+										<!-- Category -->
 										<div class="mb-3">
-											<label class="form-label">Category</label>
-											<select class="form-select" aria-label="Default select example">
-												<option selected>Lifestyle</option>
-												<option value="1">Technology</option>
-												<option value="2">Travel</option>
-												<option value="3">Business</option>
-												<option value="4">Sports</option>
-												<option value="5">Marketing</option>
+											<label class="form-label">status</label>
+											<select class="form-select" name="status"
+												aria-label="Default select example">
+												<option value="" disabled selected>--Select--</option>
+
+												<option value="live">live</option>
+												<option value="draft">draft</option>
+												<option value="removed">removed</option>
+
+
 											</select>
+											<div class="text-danger" id="categoryError">
+												<?= $admin->getError('status') ?>
+											</div>
 										</div>
 									</div>
+
 									<div class="col-12">
 										<div class="form-check mb-3">
-											<input class="form-check-input" type="checkbox" value="" id="postCheck">
+											<input class="form-check-input" type="checkbox" name="featured"
+												id="postCheck" value="1"
+												<?= old_checked('featured', 1) ?>>
+											<div class="text-danger" id="featuredError">
+												<?= $admin->getError('featured') ?>
+											</div>
 											<label class="form-check-label" for="postCheck">
-												Make this post featured?
+												Make this post featured? a featured post category appears as a trending
+												topic
 											</label>
 										</div>
 									</div>
@@ -217,7 +240,7 @@ Main contain START -->
 		</div>
 	</section>
 	<!-- =======================
-Main contain END -->
+    Main contain END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
@@ -229,3 +252,29 @@ Main contain END -->
 adminrendersmfooter();
 adminrenderHtmlFooter();
 ?>
+
+<script>
+	var quill = new Quill('#quilleditor', {
+		modules: {
+			toolbar: '#quilltoolbar'
+		},
+		theme: 'snow'
+	});
+
+	// Load old value into the Quill editor if available
+	var
+		oldPostBody = <?= json_encode(old_value('postbody', '')) ?> ;
+	if (oldPostBody) {
+		quill.setContents(JSON.parse(oldPostBody));
+	}
+
+	document.querySelector('#postForm').onsubmit = function() {
+		// Clean up the content: remove empty <p> tags
+		// Extract HTML content from Quill editor
+		var postbody = quill.root.innerHTML;
+		postbody = postbody.replace(/<p>\s*<\/p>/g, '');
+		// Optionally, remove all HTML tags
+		postbody = quill.getText(); // Use plain text if you prefer
+		document.getElementById('quilleditor-input').value = postbody;
+	};
+</script>
