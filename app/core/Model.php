@@ -17,7 +17,9 @@ trait Model
     public $offset 		= 0;
     public $order_type 	= "desc";
     public $order_column = "id" ;
+    public $order_columnadmin = "adminID" ;
     public $order_columncategories = "categoryID" ;
+    public $order_columnpost = "postID" ;
     public $errors 		= [];
 
     public function findAll()
@@ -27,10 +29,24 @@ trait Model
 
         return $this->query($query);
     }
+    public function findAlladmin()
+    {
+
+        $query = "select * from $this->table order by $this->order_columnadmin $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
     public function findAllcategories()
     {
 
         $query = "select * from $this->table order by $this->order_columncategories $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
+    public function findAllposts()
+    {
+
+        $query = "select * from $this->table order by $this->order_columnpost $this->order_type limit $this->limit offset $this->offset";
 
         return $this->query($query);
     }
@@ -237,6 +253,7 @@ trait Model
                                 $this->errors[$column] = ucfirst($column) . " is required";
                             }
                             break;
+
                         case 'requiredterms':
 
                             if(empty($data[$column])) {
@@ -273,7 +290,11 @@ trait Model
                                 $this->errors[$column] = ucfirst($column) . " should only contain numeric digits without spaces";
                             }
                             break;
-
+                        case 'max_14_keywords_lowercase':
+                            if (!preg_match("/^([a-z]+)(,[a-z]+){0,13}$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should contain a maximum of 14 keywords, all in lowercase and separated by commas. E.g., 'javascript, react, marketing'.";
+                            }
+                            break;
                         case 'alpha_space':
                             if (!preg_match("/^[a-zA-Z ]+$/", trim($data[$column]))) {
                                 $this->errors[$column] = ucfirst($column) . " should only contain alphabetical letters and spaces.";
