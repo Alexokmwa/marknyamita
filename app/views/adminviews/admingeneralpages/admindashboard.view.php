@@ -92,18 +92,18 @@ Main contain START -->
 
 			<div class="col-xl-8">
 				<!-- Chart START -->
-				<div class="card border h-100">
+				<!-- <div class="card border h-100"> -->
 
 					<!-- Card header -->
-					<div class="card-header p-3 border-bottom">
+					<!-- <div class="card-header p-3 border-bottom">
 						<h5 class="card-header-title mb-0">Traffic stats</h5>
-					</div>
+					</div> -->
 					<!-- Card body -->
-					<div class="card-body">
+					<!-- <div class="card-body"> -->
 						<!-- Apex chart -->
-						<div id="apexChartTrafficStats" class="mt-2"></div>
+						<!-- <div id="apexChartTrafficStats" class="mt-2"></div>
 					</div>
-				</div>
+				</div> -->
 				<!-- Chart END -->
 			</div>
 
@@ -376,29 +376,29 @@ Main contain START -->
 			</div>
 
 			<div class="col-md-6 col-xxl-4">
-				<div class="card border h-100">
+				<!-- <div class="card border h-100"> -->
 
 					<!-- Card header -->
-					<div class="card-header border-bottom d-flex justify-content-between align-items-center p-3">
+					<!-- <div class="card-header border-bottom d-flex justify-content-between align-items-center p-3">
 						<h5 class="card-header-title mb-0">Traffic sources</h5>
 						<a href="#" class="btn btn-sm btn-link p-0 mb-0 text-reset">View all</a>
-					</div>
+					</div> -->
 
 					<!-- Card body START -->
-					<div class="card-body p-4">
+					<!-- <div class="card-body p-4"> -->
 						<!-- Chart -->
-						<div class=" mx-auto">
-							<div id="apexChartTrafficSources"></div>
-						</div>
+						<!-- <div class=" mx-auto">
+							<div id="apexChartTrafficSources"></div> -->
+						<!-- </div> -->
 						<!-- Content -->
-						<ul class="list-inline text-center mt-3">
+						<!-- <ul class="list-inline text-center mt-3">
 							<li class="list-inline-item pe-2"><i class="text-primary fas fa-circle pe-1"></i> Search </li>
 							<li class="list-inline-item pe-2"><i class="text-success fas fa-circle pe-1"></i> Direct </li>
 							<li class="list-inline-item pe-2"><i class="text-danger fas fa-circle pe-1"></i> Social </li>
 							<li class="list-inline-item pe-2"><i class="text-warning fas fa-circle pe-1"></i> Display ads </li>
 						</ul>
-					</div>
-				</div>
+					</div> -->
+				<!-- </div> -->
 			</div>
 
 			<div class="col-12">
