@@ -10,6 +10,8 @@ renderpageHeader();
 /**
  * html footer function
  */
+rendermainFooter();
+
 renderHtmlFooter();
 rendersmfooter();
 ?>
