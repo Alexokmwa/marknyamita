@@ -124,6 +124,21 @@ function get_imageadmin(mixed $file = '', string $type = 'post'): string
     }
 
 }
+function get_imageadminblog(mixed $file = '', string $type = 'post'): string
+{
+
+    $file = $file ?? '';
+    if(file_exists($file)) {
+        return ROOTADMIN .  $file;
+    }
+
+    if($type == 'user') {
+        return ROOTADMIN ."assets/images/user.webp";
+    } else {
+        return ROOTADMIN ."assets/images/no_image.jpg";
+    }
+
+}
 function get_username($username = '', $default = 'no user name found') {
     if (!empty($username)) {
         return $username;
