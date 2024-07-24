@@ -8,7 +8,7 @@
 [data-bs-theme=light] {
   --bs-blue: #007bff;
   --bs-indigo: #6610f2;
-  --bs-purple: #6f42c1;
+  --bs-purple: #b399e3;
   --bs-pink: #e83e8c;
   --bs-red: #d6293e;
   --bs-orange: #fd7e14;
@@ -191,7 +191,12 @@
     scroll-behavior: smooth;
   }
 }
+/*blog added start */
+.mybgblog{
+  /* background-color: var(  --bs-purple) */
 
+}
+/*blog added end */
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
