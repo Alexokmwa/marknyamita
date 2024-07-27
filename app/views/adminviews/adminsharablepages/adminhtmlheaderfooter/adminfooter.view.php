@@ -17,9 +17,10 @@ JS libraries, plugins and custom scripts -->
 <!-- Template Functions -->
  <!-- vanilla lazy load  -->
  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.5.2/dist/lazyload.min.js"></script>
-
-<script src="<?=ROOTADMIN?>/assets/adminassets/js/functions.js"></script>
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="<?=ROOTADMIN?>assets/adminassets/js/functions.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/password.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/editpost.js"></script>
 
 </body>
 
