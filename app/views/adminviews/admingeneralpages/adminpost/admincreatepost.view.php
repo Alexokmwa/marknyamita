@@ -137,23 +137,31 @@ adminrenderpageHeader();
 										<div class="mb-3">
 											<!-- Image -->
 											<div class="position-relative">
-												<h6 class="my-2">Upload post image here, or<a href="#!"
-														class="text-primary"> Browse</a></h6>
+												<h6 class="my-2">
+													Upload post image here, or
+													<a href="#!" class="text-primary">Browse</a>
+												</h6>
 												<label class="w-100" style="cursor:pointer;">
 													<span>
-														<input class="form-control stretched-link" type="file"
-															id="image"
+														<input onchange="display_image(this.files[0])"
+															class="form-control stretched-link" type="file" id="image"
 															value="<?= old_value('imageurl') ?>"
 															name="imageurl">
 													</span>
+													<div>
+														<img src="<?= get_imageadmin() ?>"
+															alt="img" class="img-thumbnail js-image-preview">
+													</div>
 												</label>
 											</div>
 											<div class="text-danger" id="imageurlError">
-												<?=$admin->getError('imageurl') ?>
+												<?= $admin->getError('imageurl') ?>
 											</div>
-											<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG and PNG. Our
-												suggested dimensions are 600px * 450px. Larger image will be cropped to
-												4:3 to fit our thumbnails/previews.</p>
+											<p class="small mb-0 mt-2">
+												<b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 600px
+												* 450px. Larger image will be cropped to 4:3 to fit our
+												thumbnails/previews.
+											</p>
 										</div>
 									</div>
 									<div class="col-lg-5">
@@ -161,7 +169,7 @@ adminrenderpageHeader();
 										<div class="mb-3">
 											<label class="form-label">Category</label>
 											<select class="form-select" name="category"
-												aria-label="Default select example">
+												aria-label="Default select example" required>
 												<option value="" disabled selected>--Select--</option>
 												<?php if (is_array($data['row']) && count($data['row'])): ?>
 												<?php foreach ($data['row'] as $row): ?>
@@ -196,7 +204,7 @@ adminrenderpageHeader();
 										<div class="mb-3">
 											<label class="form-label">status</label>
 											<select class="form-select" name="status"
-												aria-label="Default select example">
+												aria-label="Default select example" required>
 												<option value="" disabled selected>--Select--</option>
 
 												<option value="live">live</option>
@@ -205,7 +213,7 @@ adminrenderpageHeader();
 
 
 											</select>
-											<div class="text-danger" id="categoryError">
+											<div class="text-danger" id="statusError">
 												<?= $admin->getError('status') ?>
 											</div>
 										</div>
@@ -244,7 +252,18 @@ adminrenderpageHeader();
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
+<script>
+	function display_image(file) {
+		let allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+		if (!allowed.includes(file.type)) {
 
+			alert("the only file types supported are: " + allowed.toString().replaceAll("image/", ""));
+			return;
+		}
+
+		document.querySelector(".js-image-preview").src = URL.createObjectURL(file);
+	}
+</script>
 <?php
 /**
  * html footer function
