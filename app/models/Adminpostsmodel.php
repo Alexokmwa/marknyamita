@@ -77,16 +77,16 @@ class Adminpostsmodel
                     if (move_uploaded_file($files["imageurl"]['tmp_name'], $destination)) {
                         $data["imageurl"] = $destination;
                         $image = new Image();
-                        $image->resize($destination, 1000, 850);
-                        // $image->getThumbnail($destination, 1000, 750);
+                        $image->resize($data["imageurl"], 700);
                     }
+                    $this->insert($data);
+                    redirectadmin("Adminpostlist");
+                }else{
+                    $this->errors["imageurl"] ="the file type is not supported";
                 }
-                $this->insert($data);
-                redirectadmin("Adminpostlist");
-            } else {
-                $this->addError('imageurl', "no image found, upload at least one image");
-            }
+            } 
         } else {
+            $this->addError('imageurl', "no image found, upload at least one image");
             $this->addError('category', "select category");
             $this->addError('postbody', "please write main blog content");
             $this->addError('status', "select post status");
