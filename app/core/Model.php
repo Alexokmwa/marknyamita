@@ -177,6 +177,36 @@ trait Model
         return false;
 
     }
+    public function updateblog($id, $data, $id_column = 'postID')
+    {
+
+        /** remove unwanted data **/
+        if(!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+
+                if(!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+
+        $this->query($query, $data);
+        return false;
+
+    }
 
     public function delete($id, $id_column = 'id')
     {
