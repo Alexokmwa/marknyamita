@@ -37,40 +37,37 @@ Header END -->
 	<!-- =======================
 <section class="pt-4">
 Inner intro START -->
-<section class="pt-4 d-none d-sm-block">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-12 bg-primary bg-opacity-10 p-2 rounded">
-                <div class="d-sm-flex align-items-center text-center text-sm-start">
-                    <!-- Title -->
-                    <div class="me-3">
-                        <span class="badge bg-primary p-2 px-3">Trending:</span>
-                    </div>
-                    <!-- Slider -->
-                    <div class="tiny-slider arrow-end arrow-xs arrow-white arrow-round arrow-md-none">
-                        <div class="tiny-slider-inner"
-                            data-autoplay="true"
-                            data-hoverpause="true"
-                            data-gutter="0"
-                            data-arrow="true"
-                            data-dots="false"
-                            data-items="1">
-                            <!-- Slider items -->
-							<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
-						<?php foreach ($data['rowpost'] as $rowpost): ?>
-						<?php if ($rowpost->status === "live"): ?>
-                            <div> <a href="#" class="text-reset btn-link"><?= esc($rowpost->postname) ?></a></div>
-                            
-							<?php endif; ?>
-						<?php endforeach; ?>
-						<?php endif; ?>   
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- Row END -->
-    </div>
-</section>
+	<section class="pt-4 d-none d-sm-block">
+		<div class="container">
+			<div class="row g-0">
+				<div class="col-12 bg-primary bg-opacity-10 p-2 rounded">
+					<div class="d-sm-flex align-items-center text-center text-sm-start">
+						<!-- Title -->
+						<div class="me-3">
+							<span class="badge bg-primary p-2 px-3">Trending:</span>
+						</div>
+						<!-- Slider -->
+						<div class="tiny-slider arrow-end arrow-xs arrow-white arrow-round arrow-md-none">
+							<div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="0"
+								data-arrow="true" data-dots="false" data-items="1">
+								<!-- Slider items -->
+								<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
+								<?php foreach ($data['rowpost'] as $rowpost): ?>
+								<?php if ($rowpost->status === "live"): ?>
+								<div> <a href="#"
+										class="text-reset btn-link"><?= esc($rowpost->postname) ?></a>
+								</div>
+
+								<?php endif; ?>
+								<?php endforeach; ?>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> <!-- Row END -->
+		</div>
+	</section>
 
 	<!-- =======================
 Inner intro END -->
@@ -183,20 +180,24 @@ Main content START -->
 						<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
 						<?php foreach ($data['rowpost'] as $rowpost): ?>
 						<?php if ($rowpost->status === "live"): ?>
-							
+
 
 						<div class="card mb-4">
 							<div class="row">
-								<div class="col-md-5">
-									<!-- Debugging: Output the image URL to check if it's correct -->
-									<?php
+								<!-- Debugging: Output the image URL to check if it's correct -->
+								<?php
                     $imageSrc = ROOTADMIN . esc($rowpost->imageurl);
 						    // Check if the image URL is correctly formatted
 						    // echo '<!-- Debugging: Image URL --> ' . $imageSrc;
 						    ?>
+								<div class="col-md-5">
+
 									<img class="rounded-3"
-										src="<?= $imageSrc ?>"
-										alt="Post Image">
+										src="<?=$image->getThumbnail($imageSrc, 300, 437, ) ?>"
+										alt="Post Image" style="object-fit: cover;width: 437px; height: 300px;">
+									<!-- <img class="rounded-3"
+										src="<?=$image->getThumbnail($imageSrc, 300, 437, ) ?>"
+									alt="Post Image" style="object-fit: cover;width: 437px; height: 300px;"> -->
 								</div>
 								<div class="col-md-7 mt-3 mt-md-0">
 									<a href="#" class="badge text-bg-danger mb-2"><i
@@ -217,13 +218,13 @@ Main content START -->
 															alt="avatar">
 													</div>
 													<?php if (is_array($data['rowcreator']) && count($data['rowcreator'])): ?>
-														<?php foreach ($data['rowcreator'] as $rowcreator): ?>
+													<?php foreach ($data['rowcreator'] as $rowcreator): ?>
 													<?php if ($rowpost->adminID === $rowcreator->adminID): ?>
 													<span class="ms-3">by <a href="#"
 															class="stretched-link text-reset btn-link"><?= esc($rowcreator->firstname . " " . $rowcreator->lastname) ?></a></span>
-						<?php endif; ?>
-						<?php endforeach; ?>
-						<?php endif; ?>
+													<?php endif; ?>
+													<?php endforeach; ?>
+													<?php endif; ?>
 
 												</div>
 											</div>
@@ -244,20 +245,12 @@ Main content START -->
 
 
 						<!-- Pagination START -->
-						<nav class="my-5" aria-label="navigation">
-							<ul class="pagination d-inline-block d-md-flex justify-content-center">
-								<li class="page-item disabled">
-									<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-								</li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-								<li class="page-item"><a class="page-link" href="#">15</a></li>
-								<li class="page-item">
-									<a class="page-link" href="#">Next</a>
-								</li>
-							</ul>
-						</nav>
+						<div>
+							<?php
+						    $pager->display();
+?>
+						</div>
+
 						<!-- Pagination END -->
 					</div>
 					<!-- Main Post END -->
@@ -293,9 +286,9 @@ Main content START -->
 							</div>
 							<!-- View All Category button -->
 							<div class="text-center mt-3">
-									<a href="#" class="fw-bold text-body-secondary text-primary-hover"><u>View all
-											categories</u></a>
-								</div>
+								<a href="#" class="fw-bold text-body-secondary text-primary-hover"><u>View all
+										categories</u></a>
+							</div>
 							<!-- Trending topics widget END -->
 
 							<div class="row">
@@ -304,44 +297,47 @@ Main content START -->
 									<h4 class="mt-4 mb-3">Recent post</h4>
 									<!-- Recent post item -->
 									<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
-								<?php foreach ($data['rowpost'] as $rowpost): ?>
-								<?php if ($rowpost->status === "live"): ?>
-								<?php $imageSrc = ROOTADMIN . esc($rowpost->imageurl);
-								    // Check if the image URL is correctly formatted
-								    // echo '<!-- Debugging: Image URL --> ' . $imageSrc;
-								    ?>
+									<?php foreach ($data['rowpost'] as $rowpost): ?>
+									<?php if ($rowpost->status === "live"): ?>
+									<?php $imageSrc = ROOTADMIN . esc($rowpost->imageurl);
+									    // Check if the image URL is correctly formatted
+									    // echo '<!-- Debugging: Image URL --> ' . $imageSrc;
+									    ?>
 									<div class="card mb-3">
 										<li class="row g-3">
 											<div class="col-4">
-												<img class="rounded" src="<?=$imageSrc?>" alt="">
+												<img class="rounded"
+													src="<?=$imageSrc?>"
+													alt="">
 											</div>
 											<div class="col-8">
 												<h6><a href="post-single-2.html"
-														class="btn-link stretched-link text-reset fw-bold"><?=$rowpost->postname?></a></h6>
+														class="btn-link stretched-link text-reset fw-bold"><?=$rowpost->postname?></a>
+												</h6>
 												<div class="small mt-1">
-											<?= date('M d, Y', strtotime($rowpost->createdAt)); ?>
-										</div>
+													<?= date('M d, Y', strtotime($rowpost->createdAt)); ?>
+												</div>
 											</div>
-										</div>
 									</div>
-									<!-- Recent post item end-->
-									<?php endif; ?>
+								</div>
+								<!-- Recent post item end-->
+								<?php endif; ?>
 								<?php endforeach; ?>
 								<?php endif; ?>
-								</div>
-								<!-- Recent post widget END -->
-
-								<!-- ADV widget START -->
-								<!-- ads area -->
-								<!-- ADV widget END -->
 							</div>
+							<!-- Recent post widget END -->
+
+							<!-- ADV widget START -->
+							<!-- ads area -->
+							<!-- ADV widget END -->
 						</div>
 					</div>
-					<!-- Sidebar END -->
-				</div> <!-- Row end -->
-			</div>
-		</section>
-		<!-- =======================
+				</div>
+				<!-- Sidebar END -->
+			</div> <!-- Row end -->
+	</div>
+	</section>
+	<!-- =======================
 Main content END -->
 
 
