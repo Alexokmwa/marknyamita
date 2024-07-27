@@ -173,15 +173,15 @@ Post list START -->
 											<!-- Table data -->
 											<td>
 												<span
-													class="badge bg-success bg-opacity-10 text-success mb-2">Live</span>
+													class="badge bg-success bg-opacity-10 text-success mb-2"><?= esc($rowpost->status) ?></span>
 											</td>
 											<!-- Table data -->
 											<td>
 												<div class="d-flex gap-2">
-													<a href="#" class="btn btn-light btn-round mb-0"
+													<a href="#!" class="btn btn-light btn-round mb-0"
 														data-bs-toggle="tooltip" data-bs-placement="top"
 														title="Delete"><i class="bi bi-trash"></i></a>
-													<a href="dashboard-post-edit.html"
+													<a href="<?=ROOTADMIN?>Admineditpost/<?=$rowpost->postID?>"
 														class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip"
 														data-bs-placement="top" title="Edit"><i
 															class="bi bi-pencil-square"></i></a>

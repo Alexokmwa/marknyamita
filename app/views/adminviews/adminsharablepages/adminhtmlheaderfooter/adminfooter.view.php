@@ -20,7 +20,6 @@ JS libraries, plugins and custom scripts -->
 
 <script src="<?=ROOTADMIN?>/assets/adminassets/js/functions.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/password.js"></script>
-<script src="<?=ROOTADMIN?>assets/js/addcategory.js"></script>
 
 </body>
 
