@@ -9,6 +9,8 @@ use app\core\Controller;
 use app\models\Adminpostsmodel;
 use app\models\Admincategories;
 use app\models\Adminaccounts;
+use app\models\Image;
+use app\models\Pager;
 
 /**
  * Bloggrid class
@@ -18,12 +20,21 @@ class Bloggrid extends Controller
     public function index()
     {
         $user = new Admincategories();
-		$data['row'] = $user->findAllcategories();
+        $data['row'] = $user->findAllcategories();
         $userpost = new Adminpostsmodel();
-		$data['rowpost'] = $userpost->findAllposts();
+        // pager
+        $limit = 24;
+        $pager = new pager($limit);
+        $offset = $pager->offset;
+        $userpost->limit = $limit;
+        $userpost->offset = $offset;
+        $data['rowpost'] = $userpost->findAllposts();
         $adminpostdetail = new Adminaccounts();
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
-        
-        $this ->view('publicviews/publicblog/bloggrid',$data);
+        $data["image"] = new Image();
+        $data["pager"] = $pager;
+
+
+        $this ->view('publicviews/publicblog/bloggrid', $data);
     }
 }
