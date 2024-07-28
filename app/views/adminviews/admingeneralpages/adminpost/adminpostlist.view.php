@@ -15,80 +15,74 @@ Post list START -->
 			<div class="row pb-4">
 				<div class="col-12">
 					<!-- Title -->
+
 					<div class="d-sm-flex justify-content-sm-between align-items-center">
 						<h1 class="mb-2 mb-sm-0 h2">Post List <span
-								class="badge bg-primary bg-opacity-10 text-primary">110</span></h1>
-						<a href="#" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Add a post</a>
+								class="badge bg-primary bg-opacity-10 text-primary">todo</span></h1>
+						<a href="<?=ROOTADMIN?>Admincreatepost"
+							class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Add a post</a>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12">
 					<div class="row g-4 mb-4">
-						<div class="col-sm-4 col-lg-2">
-							<!-- Card START -->
-							<div class="card card-body border h-100">
-								<!-- Icon -->
-								<div class="fs-3 text-start text-success">
-									<i class="bi bi-file-earmark-text"></i>
-								</div>
-								<!-- Content -->
-								<div class="ms-0">
-									<h3 class="mb-0">305</h3>
-									<h6 class="mb-0">Document</h6>
-								</div>
-							</div>
-							<!-- Card END -->
-						</div>
-						<div class="col-sm-4 col-lg-2">
-							<!-- Card START -->
-							<div class="card card-body border h-100">
-								<!-- Icon -->
-								<div class="fs-3 text-start text-success">
-									<i class="bi bi-camera-reels"></i>
-								</div>
-								<!-- Content -->
-								<div class="ms-0">
-									<h3 class="mb-0">120</h3>
-									<h6 class="mb-0">Videos</h6>
-								</div>
-							</div>
-							<!-- Card END -->
-						</div>
-						<div class="col-sm-4 col-lg-2">
-							<!-- Card START -->
-							<div class="card card-body border h-100">
-								<!-- Icon -->
-								<div class="fs-3 text-start text-success">
-									<i class="bi bi-image"></i>
-								</div>
-								<!-- Content -->
-								<div class="ms-0">
-									<h3 class="mb-0">475</h3>
-									<h6 class="mb-0">Images</h6>
-								</div>
-							</div>
-							<!-- Card END -->
-						</div>
-						<div class="col-lg-6">
-							<!-- Card START -->
-							<div class="card card-body border h-100">
-								<h3>Storage space </h3>
-								<div>
-									<div class="d-flex">
-										<h6 class="mt-0">Storage 80%</h6>
-										<span class="ms-auto">6.80GB of 10GB</span>
+						<div class="col-sm-4 col-lg-3">
+							<a href="#!">
+								<div class="card card-body border h-100">
+									<div class="fs-3 text-start text-success">
+										<i class="bi bi-file-earmark-text"></i>
 									</div>
-									<div class="progress progress-percent-bg progress-md">
-										<div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
-											role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100"></div>
+									<div class="ms-0">
+										<h3 class="mb-0">0</h3>
+										<h6 class="mb-0">Document</h6>
 									</div>
-									<!-- Card END -->
 								</div>
-							</div>
+							</a>
+						</div>
+						<div class="col-sm-4 col-lg-3">
+							<a href="#!">
+								<div class="card card-body border h-100">
+									<div class="fs-3 text-start text-success">
+										<i class="bi bi-camera-reels"></i>
+									</div>
+									<div class="ms-0">
+										<h3 class="mb-0">0</h3>
+										<h6 class="mb-0">Videos</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-4 col-lg-3">
+							<a href="#!">
+								<div class="card card-body border h-100">
+									<div class="fs-3 text-start text-success">
+										<i class="bi bi-image"></i>
+									</div>
+									<div class="ms-0">
+										<h3 class="mb-0">0</h3>
+										<h6 class="mb-0">Images</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-4 col-lg-3">
+							<a href="<?=ROOTADMIN?>Adminpostlist">
+								<div class="card card-body border h-100">
+									<div class="fs-3 text-start text-success">
+										<i class="fa-solid fa-blog"></i>
+									</div>
+									<div class="ms-0">
+										<h3 class="mb-0">
+											<?=$blogpostCount?>
+										</h3>
+										<h6 class="mb-0">blogs</h6>
+									</div>
+								</div>
+							</a>
 						</div>
 					</div>
+
 					<!-- Post list table START -->
 					<div class="card border bg-transparent rounded-3">
 
@@ -135,6 +129,7 @@ Post list START -->
 											<th scope="col" class="border-0">Published Date</th>
 											<th scope="col" class="border-0">Category</th>
 											<th scope="col" class="border-0">Status</th>
+											<th scope="col" class="border-0">view</th>
 											<th scope="col" class="border-0 rounded-end">Action</th>
 										</tr>
 									</thead>
@@ -177,8 +172,13 @@ Post list START -->
 											</td>
 											<!-- Table data -->
 											<td>
+												<span class="badge bg-success bg-opacity-10 text-success mb-2"><a
+														href="<?=ROOTADMIN?>Adminviewblog/<?=$rowpost->postID?>">view</a></span>
+											</td>
+											<!-- Table data -->
+											<td>
 												<div class="d-flex gap-2">
-													<a href="#!" class="btn btn-light btn-round mb-0"
+													<a href="<?=ROOTADMIN?>Admindeletepost/<?=$rowpost->postID?>" class="btn btn-light btn-round mb-0"
 														data-bs-toggle="tooltip" data-bs-placement="top"
 														title="Delete"><i class="bi bi-trash"></i></a>
 													<a href="<?=ROOTADMIN?>Admineditpost/<?=$rowpost->postID?>"
@@ -201,20 +201,12 @@ Post list START -->
 							<!-- Pagination START -->
 							<div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
 								<!-- Content -->
-								<p class="mb-sm-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
+								<p class="mb-sm-0 text-center text-sm-start">Showing 1 to <?=$limitnumber?> of <?=$blogpostCount?> entries</p>
 								<!-- Pagination -->
 								<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
 									<ul class="pagination pagination-sm pagination-bordered mb-0">
-										<li class="page-item disabled">
-											<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-										</li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item active"><a class="page-link" href="#">2</a></li>
-										<li class="page-item disabled"><a class="page-link" href="#">..</a></li>
-										<li class="page-item"><a class="page-link" href="#">15</a></li>
-										<li class="page-item">
-											<a class="page-link" href="#">Next</a>
-										</li>
+									<?php
+                            $pager->display();?>
 									</ul>
 								</nav>
 							</div>
