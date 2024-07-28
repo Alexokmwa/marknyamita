@@ -13,7 +13,7 @@ adminrenderpageHeader();
         <div class="container">
             <div class="row">
                 <form id="postForm" method="post">
-                    <button class="btn btn-danger" type="submit" name="delete_post">Delete post</button>
+                    <button class="btn btn-danger deletepost" type="submit" name="delete_post" value="<?=$rowpost->postID?>">Delete post</button>
                 </form>
                 <div class="col-lg-9 mx-auto pt-md-5">
                     <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><?=$rowpost->category?></a>
