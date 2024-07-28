@@ -91,6 +91,9 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
 	<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
 	<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+	<!-- glightbox -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
 	<!-- Theme CSS -->
 	<link rel="stylesheet"
 		href="<?=ROOTADMIN?>assets/adminassets/css/style.css">
