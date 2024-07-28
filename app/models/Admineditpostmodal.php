@@ -64,6 +64,12 @@ class Admineditpostmodal
             $data['date'] = date("Y-m-d H:i:s");
             $data['date_updated'] = date("Y-m-d H:i:s");
             $data["adminID"] = $adminID;
+
+            // Fetch the current image URL from the database
+            $currentPost = $this->first([$this->primaryKey => $idupdate]);
+            if ($currentPost) {
+                $currentImageUrl = $currentPost->imageurl;
+            }
             if (!empty($files["imageurl"]["name"])) {
                 $folder = "admin/adminuploads/";
                 if (!file_exists($folder)) {
@@ -77,6 +83,11 @@ class Admineditpostmodal
                         $data["imageurl"] = $destination;
                         $image = new Image();
                         $image->resize($data["imageurl"], 700);
+
+                        // Delete the old image if it exists
+                        if (file_exists($currentImageUrl)) {
+                            unlink($currentImageUrl);
+                        }
                     }
                     $this->updateblog($idupdate, $data);
                     redirectadmin("Adminpostlist");
