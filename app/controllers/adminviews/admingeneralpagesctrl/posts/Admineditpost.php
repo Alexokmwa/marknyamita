@@ -46,6 +46,7 @@ class Admineditpost extends Admincontroller
             $postData["adminID"] = $adminID;
             $postData["postbody"] = $postDataquil; // Store plain text content
             $adminModel->admineditpost($idupdate, $postData, $files, $adminID);
+        
         }
 
         $data['admin'] = $adminModel;
