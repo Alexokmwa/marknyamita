@@ -8,7 +8,7 @@ namespace app\models;
 
 defined('ROOTPATH') or exit('Access Denied!');
 
-class Pager
+class Pageradmin
 {
     public $links 			= array();
     public $offset 			= 0;
@@ -56,7 +56,7 @@ class Pager
 
         $url = isset($_GET['url']) ? $_GET['url'] : '';
 
-        $current_link = ROOT. $url . '?' .trim(str_replace("url=", "", str_replace($url, "", $_SERVER['QUERY_STRING'])), '&');
+        $current_link = ROOTADMIN.  $url . '?' .trim(str_replace("url=", "", str_replace($url, "", $_SERVER['QUERY_STRING'])), '&');
         $current_link = !strstr($current_link, "page=") ? $current_link . "&page=1" : $current_link;
 
         if(!strstr($current_link, "?")) {
