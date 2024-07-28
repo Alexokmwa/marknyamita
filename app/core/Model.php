@@ -43,6 +43,7 @@ trait Model
 
         return $this->query($query);
     }
+
     public function findAllposts()
     {
 
@@ -50,7 +51,13 @@ trait Model
 
         return $this->query($query);
     }
-
+    // Method to count all posts
+    public function countAllposts()
+    {
+        $query = "SELECT COUNT(*) as total FROM {$this->table}";
+        $result = $this->query($query);
+        return $result[0]->total ?? 0;
+    }
     public function where($data, $data_not = [])
     {
         $keys = array_keys($data);
@@ -218,6 +225,17 @@ trait Model
         return false;
 
     }
+    public function deleteblog($id, $id_column = 'postID')
+    {
+
+        $data[$id_column] = $id;
+        $query = "delete from $this->table where $id_column = :$id_column ";
+        $this->query($query, $data);
+
+        return false;
+
+    }
+    
 
     public function getError($key)
     {
@@ -321,10 +339,11 @@ trait Model
                             }
                             break;
                         case 'max_14_keywords_lowercase':
-                            if (!preg_match("/^([a-z]+)(,[a-z]+){0,13}$/", trim($data[$column]))) {
-                                $this->errors[$column] = ucfirst($column) . " should contain a maximum of 14 keywords, all in lowercase and separated by commas. E.g., 'javascript, react, marketing'.";
+                            if (!preg_match("/^([a-zA-Z]+)(,[a-zA-Z]+){0,13}$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should contain a maximum of 14 keywords, all in alphabetic characters and separated by commas. E.g., 'JavaScript, React, Marketing'.";
                             }
                             break;
+
                         case 'alpha_space':
                             if (!preg_match("/^[a-zA-Z ]+$/", trim($data[$column]))) {
                                 $this->errors[$column] = ucfirst($column) . " should only contain alphabetical letters and spaces.";
