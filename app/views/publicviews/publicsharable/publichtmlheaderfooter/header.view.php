@@ -94,6 +94,8 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css">
 	<!-- tiny-slider cdn -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.4/dist/tiny-slider.css">
+<!-- glightbox -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
 		<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css"
