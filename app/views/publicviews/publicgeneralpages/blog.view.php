@@ -240,16 +240,19 @@ Main content START -->
 						<?php endif; ?>
 						<!-- Card item END -->
 
-
-
-						<!-- Pagination START -->
-						<div>
+<!-- Pagination START -->
+<nav class="my-5" aria-label="navigation">
+				  <ul class="pagination d-inline-block d-md-flex justify-content-center">
+				  <div>
 							<?php
 						    $pager->display();
 ?>
 						</div>
+				  </ul>
+				</nav>
+				<!-- Pagination END -->
 
-						<!-- Pagination END -->
+						
 					</div>
 					<!-- Main Post END -->
 
