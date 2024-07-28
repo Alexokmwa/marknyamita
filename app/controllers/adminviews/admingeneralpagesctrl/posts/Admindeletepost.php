@@ -1,10 +1,8 @@
 <?php
-
 namespace app\controllers;
 
-// deny access to app files and folders access.
 defined('ROOTPATH') or exit('Access Denied!');
-
+use Exception;
 use app\core\Admincontroller;
 use app\models\Adminsession;
 use app\models\Adminpostsmodel;
@@ -20,7 +18,7 @@ class Admindeletepost extends Admincontroller
     public function adminindex($id = null)
     {
         $ses = new Adminsession();
-        if(!$ses->isLoggedIn()) {
+        if (!$ses->isLoggedIn()) {
             redirectadmin('Adminsignin');
         }
 
@@ -30,19 +28,23 @@ class Admindeletepost extends Admincontroller
         $postsModel = new Adminpostsmodel();
         $data['rowpost'] = $rowid = $postsModel->first(['postID' => $id]);
 
-        if (!is_object($data['rowpost'])) {
-            redirectadmin('Blog'); // Redirect if post is not found
-        }
-
         $deleteModel = new Admindeletepostmodel();
         $req = new Request();
 
-        if ($req->posted() && isset($_POST['delete_post'])) {
-            $postID = $rowid->postID;
-            $deleteModel->admineditpost($postID);
+        if ($req->posted() && isset($_POST['deletepost'])) {
+            $postID = filter_input(INPUT_POST, 'postdeleteid', FILTER_SANITIZE_NUMBER_INT);
+            $result = $deleteModel->deletePost($postID);
+            if ($result){
+               echo 200;
+            }else{
+              echo 500;
+            }
+            
+           
+exit;
         }
 
-        $data['admintitle'] = "Admin Edit Post";
+        $data['admintitle'] = "Admin delete Post";
 
         $this->adminview('adminviews/admingeneralpages/adminpost/Admindeleteviewblog', $data);
     }

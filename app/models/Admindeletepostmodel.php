@@ -4,7 +4,7 @@ namespace app\models;
 
 defined('ROOTPATH') or exit('Access Denied!');
 use app\core\Model;
-
+use Exception;
 class Admindeletepostmodel
 {
     use Model;
@@ -56,10 +56,12 @@ class Admindeletepostmodel
         'featured' => [],
     ];
 
-    public function admineditpost($postID)
-    {
+    public function deletePost($postID)
+{
+    try {
         // Fetch the current image URL from the database
         $currentPost = $this->first([$this->primaryKey => $postID]);
+
         if ($currentPost) {
             $currentImageUrl = $currentPost->imageurl;
 
@@ -71,8 +73,12 @@ class Admindeletepostmodel
             // Delete the post from the database
             $this->deleteblog($postID);
 
-            // Redirect to the post list
-            redirectadmin('Adminpostlist');
+            return ['success' => true, 'message' => 'Delete successful'];
+        } else {
+            return ['success' => false, 'message' => 'Delete failed'];
         }
+    } catch (Exception $e) {
+        return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
     }
+}
 }
