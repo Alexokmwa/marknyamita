@@ -54,7 +54,7 @@ Inner intro START -->
 								<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
 								<?php foreach ($data['rowpost'] as $rowpost): ?>
 								<?php if ($rowpost->status === "live"): ?>
-								<div> <a href="#"
+								<div> <a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
 										class="text-reset btn-link"><?= esc($rowpost->postname) ?></a>
 								</div>
 
@@ -192,17 +192,15 @@ Main content START -->
 						    ?>
 								<div class="col-md-5">
 
-									<img class="rounded-3"
-										src="<?=$image->getThumbnail($imageSrc, 300, 437, ) ?>"
-										alt="Post Image" style="object-fit: cover;width: 437px; height: 300px;">
-									<!-- <img class="rounded-3"
-										src="<?=$image->getThumbnail($imageSrc, 300, 437, ) ?>"
-									alt="Post Image" style="object-fit: cover;width: 437px; height: 300px;"> -->
+									<img class="rounded-3 img-fluid"
+										src="<?=$image->getThumbnail($imageSrc, 300, 437) ?>"
+										alt="Post Image" style="object-fit: cover;width: 100%; height: 300px;">
+									
 								</div>
 								<div class="col-md-7 mt-3 mt-md-0">
-									<a href="#" class="badge text-bg-danger mb-2"><i
+									<a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>" class="badge text-bg-danger mb-2"><i
 											class="fas fa-circle me-2 small fw-bold"></i><?= esc($rowpost->category) ?></a>
-									<h3><a href="post-single-2.html"
+									<h3><a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
 											class="btn-link stretched-link text-reset"><?= esc($rowpost->postname) ?></a>
 									</h3>
 									<p><?= esc($rowpost->shortdescription) ?>
