@@ -50,7 +50,7 @@ Inner intro START -->
 								<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
 								<?php foreach ($data['rowpost'] as $rowpost): ?>
 								<?php if ($rowpost->status === "live"): ?>
-								<div> <a href="#"
+								<div> <a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
 										class="text-reset btn-link"><?= esc($rowpost->postname) ?></a>
 								</div>
 
@@ -151,13 +151,13 @@ Main content START -->
 											<!-- Card overlay bottom -->
 											<div class="w-100 mt-auto">
 												<!-- Card category -->
-												<a href="#" class="badge text-bg-warning mb-2"><i
+												<a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>" class="badge text-bg-warning mb-2"><i
 														class="fas fa-circle me-2 small fw-bold"></i><?= esc($rowpost->category) ?></a>
 											</div>
 										</div>
 									</div>
 									<div class="card-body px-0 pt-3">
-										<h4 class="card-title"><a href="post-single-4.html"
+										<h4 class="card-title"><a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
 												class="btn-link text-reset fw-bold"><?= esc($rowpost->postname) ?></a>
 										</h4>
 										<p class="card-text">
@@ -227,7 +227,7 @@ Main content START -->
 								<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded"
 									style="background-image:url(<?=$imageSrc;?>); background-position: center left; background-size: cover;">
 									<div class="bg-dark-overlay-4 p-4">
-										<a href="#" class="stretched-link btn-link fw-bold text-white h5"
+										<a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>" class="stretched-link btn-link fw-bold text-white h5"
 											style="font-size: 36px;text-transform: uppercase;"><?= esc($rowpost->category) ?></a>
 
 									</div>
@@ -261,10 +261,10 @@ Main content START -->
 										<div class="col-4">
 											<img class="rounded"
 												src="<?=$imageSrc?>"
-												alt="">
+												alt="recentpost photo">
 										</div>
 										<div class="col-8">
-											<h6><a href="post-single-2.html"
+											<h6><a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
 													class="btn-link stretched-link text-reset fw-bold"><?=$rowpost->postname?></a>
 											</h6>
 											<div class="small mt-1">
