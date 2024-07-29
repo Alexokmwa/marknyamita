@@ -28,7 +28,7 @@ class Adminapp
         // Array of directories to check for controller files
         $directories = [
             "../app/controllers/",
-            
+
             /**
              * admin controllers
              */
@@ -36,7 +36,8 @@ class Adminapp
             "../app/controllers/adminviews/admingeneralpagesctrl/",
             "../app/controllers/adminviews/admingeneralpagesctrl/pages/",
             "../app/controllers/adminviews/admingeneralpagesctrl/posts/",
-        
+            "../app/controllers/adminviews/admingeneralpagesctrl/posts/postssearchpages/",
+
         ];
 
         $found = false;

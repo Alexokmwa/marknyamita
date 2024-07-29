@@ -34,6 +34,7 @@ class App
             "../app/controllers/publicviews/publiceventsctrl/",
             "../app/controllers/publicviews/publicgeneralpagesctrl/",
             "../app/controllers/publicviews/publiclibraryctrl/",
+            "../app/controllers/publicviews/publicgeneralpagesctrl/publicsearch/",
         ];
 
         $found = false;
