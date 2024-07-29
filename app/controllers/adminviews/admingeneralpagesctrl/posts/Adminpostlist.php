@@ -10,6 +10,7 @@ use app\models\Adminsession;
 use app\models\Adminpostsmodel;
 use app\models\Adminaccounts;
 use app\models\Pageradmin;
+use app\models\Admincategories;
 
 /**
  * admin Adminpostlist management class
@@ -22,6 +23,9 @@ class Adminpostlist extends Admincontroller
         if(!$ses->isLoggedIn()) {
             redirectadmin('Adminsignin');
         }
+        // category data
+        $user = new Admincategories();
+        $data['rowcategories'] = $user->findAllcategories();
         $userpost = new Adminpostsmodel();
         $userpost = new Adminpostsmodel();
         // pager
@@ -38,6 +42,7 @@ class Adminpostlist extends Admincontroller
         $data["pager"] = $pager;
 
         $data['admintitle'] = "Admin Postlist";
+        // show($data);
         $this ->adminview('adminviews/admingeneralpages/adminpost/adminpostlist', $data);
     }
 }
