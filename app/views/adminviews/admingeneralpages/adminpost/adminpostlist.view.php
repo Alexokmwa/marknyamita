@@ -93,11 +93,14 @@ Post list START -->
 							<div class="row g-3 align-items-center justify-content-between mb-3">
 								<!-- Search -->
 								<div class="col-md-8">
-									<form class="rounded position-relative">
+									<form
+										action="<?=ROOTADMIN?>Adminpostlistsearch"
+										method="get" role="search" class="rounded position-relative">
 										<input class="form-control pe-5 bg-transparent" type="search"
-											placeholder="Search" aria-label="Search">
+											placeholder="Search" aria-label="Search" name="findblog"
+											value="<?=$_GET["findblog"] ?? ""?>">
 										<button
-											class="btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
+											class=" btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
 											type="submit"><i class="fas fa-search fs-6 "></i></button>
 									</form>
 								</div>
@@ -178,9 +181,10 @@ Post list START -->
 											<!-- Table data -->
 											<td>
 												<div class="d-flex gap-2">
-													<a href="<?=ROOTADMIN?>Admindeletepost/<?=$rowpost->postID?>" class="btn btn-light btn-round mb-0"
-														data-bs-toggle="tooltip" data-bs-placement="top"
-														title="Delete"><i class="bi bi-trash"></i></a>
+													<a href="<?=ROOTADMIN?>Admindeletepost/<?=$rowpost->postID?>"
+														class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip"
+														data-bs-placement="top" title="Delete"><i
+															class="bi bi-trash"></i></a>
 													<a href="<?=ROOTADMIN?>Admineditpost/<?=$rowpost->postID?>"
 														class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip"
 														data-bs-placement="top" title="Edit"><i
@@ -201,11 +205,14 @@ Post list START -->
 							<!-- Pagination START -->
 							<div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
 								<!-- Content -->
-								<p class="mb-sm-0 text-center text-sm-start">Showing 1 to <?=$limitnumber?> of <?=$blogpostCount?> entries</p>
+								<p class="mb-sm-0 text-center text-sm-start">Showing 1 to
+									<?=$limitnumber?> of
+									<?=$blogpostCount?> entries
+								</p>
 								<!-- Pagination -->
 								<nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
 									<ul class="pagination pagination-sm pagination-bordered mb-0">
-									<?php
+										<?php
                             $pager->display();?>
 									</ul>
 								</nav>

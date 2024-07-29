@@ -72,10 +72,16 @@ Inner intro END -->
 				<div class="row g-2 g-sm-3 align-items-center">
 					<div class="col-lg-6 col-md-6 col-6">
 						<label class="form-label">search</label>
-						<form>
-							<label for="searchInput" class="form-label visually-hidden">Search Blog</label>
-							<input type="search" class="form-control" id="searchInput" placeholder="Search Blog" />
-						</form>
+						<form
+										action="<?=ROOT?>Bloggridsearch"
+										method="get" role="search" class="rounded position-relative">
+										<input class="form-control pe-5 bg-transparent" type="search"
+											placeholder="Search" aria-label="Search" name="findblogpublic"
+											value="<?=$_GET["findblogpublic"] ?? ""?>">
+										<button
+											class=" btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
+											type="submit"><i class="fas fa-search fs-6 "></i></button>
+									</form>
 					</div>
 					<div class="col-lg-6 col-md-6 col-6">
 						<label class="form-label">select Category</label>
