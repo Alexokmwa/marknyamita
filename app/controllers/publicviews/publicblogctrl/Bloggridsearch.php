@@ -33,7 +33,15 @@ class Bloggridsearch extends Controller
         if(!empty($find)){
 
             $find ="%$find%";
-            $query ="select * from blogposts where postname like :findblogpublic limit $limit offset $offset" ;
+            $query ="select * from blogposts where 
+            postname like :findblogpublic
+            posttype like :findblogpublic
+            tags like :findblogpublic
+            category like :findblogpublic
+            status like :findblogpublic
+            OR shortdescription LIKE :findblogpublic 
+            OR postbody LIKE :findblogpublic  
+            limit $limit offset $offset" ;
             $data['rowpost'] = $userpost->query($query,['findblogpublic'=>$find]);
 
         }

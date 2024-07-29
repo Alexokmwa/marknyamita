@@ -41,7 +41,15 @@ class Adminpostlistsearch extends Admincontroller
         if(!empty($find)){
 
             $find ="%$find%";
-            $query ="select * from blogposts where postname like :findblog limit $limit offset $offset" ;
+            $query ="select * from blogposts where 
+            postname like :findblog
+            posttype like :findblog
+            tags like :findblog
+            category like :findblog
+            status like :findblog
+            OR shortdescription LIKE :findblog 
+            OR postbody LIKE :findblog  
+            limit $limit offset $offset" ;
             $data['rowpost'] = $userpost->query($query,['findblog'=>$find]);
         }
         // end search
