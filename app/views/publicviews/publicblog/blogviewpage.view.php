@@ -21,7 +21,7 @@ renderpageHeader();
 <!-- =======================
 Header END -->
 <!-- **************** MAIN CONTENT START **************** -->
-<main>
+<main class="mysmbottomspace">
 
 <!-- =======================
 Inner intro START -->
