@@ -30,6 +30,7 @@ class App
             "../app/controllers/",
             "../app/controllers/publicviews/",
             "../app/controllers/publicviews/publicaccountsctrl/",
+            "../app/controllers/publicviews/publicaccountsctrl/publicprofile/",
             "../app/controllers/publicviews/publicblogctrl/",
             "../app/controllers/publicviews/publiceventsctrl/",
             "../app/controllers/publicviews/publicgeneralpagesctrl/",
