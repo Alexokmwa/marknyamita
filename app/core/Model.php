@@ -214,6 +214,36 @@ trait Model
         return false;
 
     }
+    public function updatebloglikes($id, $data, $id_column = 'likeID')
+    {
+
+        /** remove unwanted data **/
+        if(!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+
+                if(!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+
+        $this->query($query, $data);
+        return false;
+
+    }
 
     public function delete($id, $id_column = 'id')
     {
@@ -235,7 +265,7 @@ trait Model
         return false;
 
     }
-    
+
 
     public function getError($key)
     {
@@ -357,10 +387,11 @@ trait Model
                             break;
 
                         case 'alpha_numeric_symbol':
-                            if(!preg_match("/^[a-zA-Z0-9\-\_\$\%\*\[\]\(\)\& ]+$/", trim($data[$column]))) {
-                                $this->errors[$column] = ucfirst($column) . " should only contain alphanumeric characters, hyphens, underscores, dollar signs, percent signs, asterisks, square brackets, parentheses, ampersands, and spaces.";
+                            if (!preg_match("/^[\p{L}\p{N}\p{P}\p{S}\p{Zs}]+$/u", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should only contain alphanumeric characters, punctuation, symbols, and spaces.";
                             }
                             break;
+
 
                         case 'alpha_symbol':
                             if (!preg_match("/^[a-zA-Z\-\_\$\%\*\[\]\(\)\& ]+$/", trim($data[$column]))) {
