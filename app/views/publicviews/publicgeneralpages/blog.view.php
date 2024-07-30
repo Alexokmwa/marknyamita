@@ -21,12 +21,37 @@ renderpageHeader();
 <!-- =======================
 Header END -->
 <!-- **************** MAIN CONTENT START **************** -->
-<main>
+<main class="mysmbottomspace">
 
 
 	<!-- join us btn -->
 	<div class="container-fluid d-md-none pt-4">
-		<ul class="navbar-nav navbar-nav-scroll d-flex flex-row flex-nowrap w-100">
+		<ul class="navbar-nav navbar-nav-scroll d-flex flex-row flex-nowrap">
+			<li class="nav-item col-8 ">
+				<div class="card bg-primary bg-opacity-10">
+					<div class="card-header">
+						<span class="badge bg-primary p-2 px-3">Trending:</span>
+					</div>
+					<div class="card-body" style="height: 50px; overflow-y: auto;">
+						<div class="tiny-slider arrow-end arrow-xs arrow-white arrow-round arrow-md-none">
+							<div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="0"
+								data-arrow="true" data-dots="false" data-items="1">
+								<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
+								<?php foreach ($data['rowpost'] as $rowpost): ?>
+								<?php if ($rowpost->status === "live"): ?>
+								<div>
+									<a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
+										class="text-reset btn-link"><?= esc($rowpost->postname) ?></a>
+								</div>
+								<?php endif; ?>
+								<?php endforeach; ?>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
 			<li class="nav-item ms-auto">
 				<a href="<?=ROOT?>Signup"
 					class="btn btn-sm btn-danger mb-0 mx-2">Join us!</a>
@@ -37,7 +62,7 @@ Header END -->
 	<!-- =======================
 <section class="pt-4">
 Inner intro START -->
-	<section class="pt-4 d-none d-sm-block">
+	<section class="pt-4 d-none d-md-block">
 		<div class="container">
 			<div class="row g-0">
 				<div class="col-12 bg-primary bg-opacity-10 p-2 rounded">
@@ -77,16 +102,15 @@ Inner intro END -->
 				<div class="row g-2 g-sm-3 align-items-center">
 					<div class="col-lg-6 col-md-6 col-6">
 						<label class="form-label">search</label>
-						<form
-										action="<?=ROOT?>Blogsearch"
-										method="get" role="search" class="rounded position-relative">
-										<input class="form-control pe-5 bg-transparent" type="search"
-											placeholder="Search" aria-label="Search" name="findblogpublic"
-											value="<?=$_GET["findblogpublic"] ?? ""?>">
-										<button
-											class=" btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
-											type="submit"><i class="fas fa-search fs-6 "></i></button>
-									</form>
+						<form action="<?=ROOT?>Blogsearch"
+							method="get" role="search" class="rounded position-relative">
+							<input class="form-control pe-5 bg-transparent" type="search" placeholder="Search"
+								aria-label="Search" name="findblogpublic"
+								value="<?=$_GET["findblogpublic"] ?? ""?>">
+							<button
+								class=" btn bg-transparent border-0 px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
+								type="submit"><i class="fas fa-search fs-6 "></i></button>
+						</form>
 					</div>
 					<div class="col-lg-6 col-md-6 col-6">
 						<label class="form-label">select Category</label>
@@ -138,50 +162,7 @@ Main content START -->
 				<div class="row">
 					<!-- Main Post START -->
 					<div class="col-lg-9">
-						<!-- Card item START -->
-						<div class="card mb-4">
-							<div class="row">
-								<div class="col-md-5">
-									<img class="rounded-3"
-										src="<?=ROOT;?>assets/asset/images/blog/4by3/01.jpg"
-										alt="">
-								</div>
-								<div class="col-md-7 mt-3 mt-md-0">
-									<a href="#" class="badge text-bg-danger mb-2"><i
-											class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
-									<h3><a href="post-single-2.html" class="btn-link stretched-link text-reset">The
-											pros
-											and cons of business agency</a></h3>
-									<p>Pleasure and so read the was hope entire first decided the so must have as on
-										was
-										want up of I will rival in came this touched got a physics to travelling so
-										all
-										especially refinement monstrous desk they was arrange the overall helplessly
-										out
-										of particularly ill are purer Person she control of to beginnings view
-										looked
-										eyes Than continues its and because</p>
-									<!-- Card info -->
-									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-										<li class="nav-item">
-											<div class="nav-link">
-												<div class="d-flex align-items-center position-relative">
-													<div class="avatar avatar-xs">
-														<img class="avatar-img rounded-circle"
-															src="<?=ROOT;?>assets/asset/images/avatar/01.jpg"
-															alt="avatar">
-													</div>
-													<span class="ms-3">by <a href="#"
-															class="stretched-link text-reset btn-link">Samuel</a></span>
-												</div>
-											</div>
-										</li>
-										<li class="nav-item">Jan 22, 2022</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- Card item END -->
+
 						<!-- Card item START -->
 						<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
 						<?php foreach ($data['rowpost'] as $rowpost): ?>
@@ -201,42 +182,81 @@ Main content START -->
 									<img class="rounded-3 img-fluid"
 										src="<?=$image->getThumbnail($imageSrc, 300, 437) ?>"
 										alt="Post Image" style="object-fit: cover;width: 100%; height: 300px;">
-									
+
 								</div>
 								<div class="col-md-7 mt-3 mt-md-0">
-									<a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>" class="badge text-bg-danger mb-2"><i
+									<a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
+										class="badge text-bg-danger mb-2"><i
 											class="fas fa-circle me-2 small fw-bold"></i><?= esc($rowpost->category) ?></a>
 									<h3><a href="<?=ROOT?>Blogview/<?=$rowpost->postID?>"
-											class="btn-link stretched-link text-reset"><?= esc($rowpost->postname) ?></a>
+											class="btn-link  text-reset"><?= esc($rowpost->postname) ?></a>
 									</h3>
 									<p><?= esc($rowpost->shortdescription) ?>
 									</p>
 									<!-- Card info -->
-									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-										<li class="nav-item">
-											<div class="nav-link">
-												<div class="d-flex align-items-center position-relative">
-													<div class="avatar avatar-xs">
-														<img class="avatar-img rounded-circle"
-															src="<?= ROOT; ?>assets/asset/images/avatar/01.jpg"
-															alt="avatar">
-													</div>
+									<div class="d-md-flex align-items-center justify-content-between">
+										<div class="d-flex align-items-center mb-3 mb-md-0">
+											<div class="d-flex align-items-center">
+												<img src="assets/images/avatar/avatar-1.jpg" alt="Avatar"
+													class="avatar avatar-xs rounded-circle" />
+												<div class="ms-2">
+
 													<?php if (is_array($data['rowcreator']) && count($data['rowcreator'])): ?>
 													<?php foreach ($data['rowcreator'] as $rowcreator): ?>
 													<?php if ($rowpost->adminID === $rowcreator->adminID): ?>
-													<span class="ms-3">by <a href="#"
-															class="stretched-link text-reset btn-link"><?= esc($rowcreator->firstname . " " . $rowcreator->lastname) ?></a></span>
+													<a href="#"
+														class="text-reset fs-6"><?= esc($rowcreator->firstname . " " . $rowcreator->lastname) ?></a>
 													<?php endif; ?>
 													<?php endforeach; ?>
 													<?php endif; ?>
-
 												</div>
+
 											</div>
-										</li>
-										<li class="nav-item">
-											<?= date('M d, Y', strtotime($rowpost->createdAt)); ?>
-										</li>
-									</ul>
+											<div class="ms-3"><span
+													class="fs-6"><?= date('M d, Y', strtotime($rowpost->createdAt)); ?></span>
+											</div>
+										</div>
+										<!-- content area -->
+										<div class="d-flex justify-content-between">
+											<!-- comments -->
+
+											<div class="likes me-3">
+												<a href="#!" class="text-reset ">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="blue" class="bi bi-chat-left-dots-fill"
+														viewBox="0 0 16 16">
+														<path
+															d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+													</svg>
+													<span class="ms-2 fs-6">24</span>
+												</a>
+											</div>
+											<?php
+        $like_color = $likes->userLiked(user('user_id'), $rowpost->postID) ? "#fd0dd8" : "#0d6efd";
+						    $postlikes = $likes->getLikes($rowpost->postID);
+						    if($postlikes == 0) {
+						        $postlikes = "";
+						    }
+						    ?>
+											<div onclick="post.like('<?=$rowpost->postID?>',this)"
+												class="likes me-3">
+												<a href="#!" class=" text-reset">
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+														fill="<?=$like_color?>"
+														class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+														<path
+															d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+													</svg>
+													<span
+														class="js-likes-count ms-2 fs-6"><?=$postlikes?></span>
+												</a>
+											</div>
+
+
+										</div>
+										<!-- content end -->
+									</div>
+
 								</div>
 							</div>
 						</div>
@@ -246,19 +266,19 @@ Main content START -->
 						<?php endif; ?>
 						<!-- Card item END -->
 
-<!-- Pagination START -->
-<nav class="my-5" aria-label="navigation">
-				  <ul class="pagination d-inline-block d-md-flex justify-content-center">
-				  <div>
-							<?php
-						    $pager->display();
+						<!-- Pagination START -->
+						<nav class="my-5" aria-label="navigation">
+							<ul class="pagination d-inline-block d-md-flex justify-content-center">
+								<div>
+									<?php
+						                            $pager->display();
 ?>
-						</div>
-				  </ul>
-				</nav>
-				<!-- Pagination END -->
+								</div>
+							</ul>
+						</nav>
+						<!-- Pagination END -->
 
-						
+
 					</div>
 					<!-- Main Post END -->
 
@@ -280,7 +300,7 @@ Main content START -->
 								<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded"
 									style="background-image:url(<?=$imageSrc;?>); background-position: center left; background-size: cover;">
 									<div class="bg-dark-overlay-4 p-4">
-										<a href="#" class="stretched-link btn-link fw-bold text-white h5"
+										<a href="#" class=" btn-link fw-bold text-white h5"
 											style="font-size: 36px;text-transform: uppercase;"><?= esc($rowpost->category) ?></a>
 
 									</div>
@@ -304,12 +324,14 @@ Main content START -->
 									<h4 class="mt-4 mb-3">Recent post</h4>
 									<!-- Recent post item -->
 									<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
-									<?php foreach ($data['rowpost'] as $rowpost): ?>
-									<?php if ($rowpost->status === "live"): ?>
-									<?php $imageSrc = ROOTADMIN . esc($rowpost->imageurl);
-									    // Check if the image URL is correctly formatted
-									    // echo '<!-- Debugging: Image URL --> ' . $imageSrc;
-									    ?>
+									<?php
+        $count = 0;
+									    foreach ($data['rowpost'] as $rowpost):
+									        if ($rowpost->status === "live" && $count < 4):
+									            $imageSrc = ROOTADMIN . esc($rowpost->imageurl);
+									            // Check if the image URL is correctly formatted
+									            // echo '<!-- Debugging: Image URL --> ' . $imageSrc;
+									            ?>
 									<div class="card mb-3">
 										<li class="row g-3">
 											<div class="col-4">
@@ -318,33 +340,38 @@ Main content START -->
 													alt="">
 											</div>
 											<div class="col-8">
-												<h6><a href="post-single-2.html"
-														class="btn-link stretched-link text-reset fw-bold"><?=$rowpost->postname?></a>
+												<h6>
+													<a href="post-single-2.html"
+														class="btn-link  text-reset fw-bold"><?=$rowpost->postname?></a>
 												</h6>
 												<div class="small mt-1">
 													<?= date('M d, Y', strtotime($rowpost->createdAt)); ?>
 												</div>
 											</div>
+										</li>
 									</div>
+									<!-- Recent post item end-->
+									<?php
+									            $count++;
+									        endif;
+									    endforeach;
+									    ?>
+									<?php endif; ?>
 								</div>
-								<!-- Recent post item end-->
-								<?php endif; ?>
-								<?php endforeach; ?>
-								<?php endif; ?>
-							</div>
-							<!-- Recent post widget END -->
+								<!-- Recent post widget END -->
 
-							<!-- ADV widget START -->
-							<!-- ads area -->
-							<!-- ADV widget END -->
+
+								<!-- ADV widget START -->
+								<!-- ads area -->
+								<!-- ADV widget END -->
+							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Sidebar END -->
-			</div> <!-- Row end -->
-	</div>
-	</section>
-	<!-- =======================
+					<!-- Sidebar END -->
+				</div> <!-- Row end -->
+			</div>
+		</section>
+		<!-- =======================
 Main content END -->
 
 
@@ -356,10 +383,67 @@ Main content END -->
 
 
 <!-- Back to top -->
+<script>
+	var root = '<?=ROOT?>';
+</script>
 
-<!-- =======================
-JS libraries, plugins and custom scripts -->
+<!-- <script>
+	var post = {
 
+		posting: false,
+		liked_element: null,
+
+
+		like: function(postID, ele) {
+			post.liked_element = ele;
+
+
+			let obj = {
+				postID,
+				data_type: 'like'
+			};
+
+			post.send_data(obj);
+		},
+
+		send_data: function(obj) {
+
+			if (post.posting)
+				return;
+
+			let xhr = new XMLHttpRequest();
+			post.posting = true;
+
+			xhr.addEventListener('readystatechange', function() {
+
+				if (xhr.readyState == 4) {
+					post.posting = false;
+					post.handle_result(xhr.responseText);
+				}
+			});
+
+			let myform = new FormData();
+			for (key in obj) {
+				myform.append(key, obj[key]);
+			}
+
+			xhr.open('post', '<?=ROOT?>Ajax');
+xhr.send(myform);
+},
+handle_result: function(result) {
+let obj = JSON.parse(result);
+if (obj.data_type == 'like') {
+let svg = post.liked_element.querySelector('svg');
+let color = obj.liked ? "#fd0dd8" : "#0d6efd";
+svg.setAttribute('fill', color);
+if (obj.likes == 0)
+obj.likes = "";
+
+post.liked_element.querySelector(".js-likes-count").innerHTML = obj.likes;
+}
+}
+}
+</script> -->
 
 
 <?php
