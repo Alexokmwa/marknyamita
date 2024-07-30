@@ -256,11 +256,11 @@ Header START -->
 							<hr>
 						</li>
 						<!-- Links -->
-						<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a>
+						<li><a class="dropdown-item" href="<?=ROOTADMIN?>Admineditprofile"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a>
 						</li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a>
+						<li><a class="dropdown-item text-danger" href="#"><i class="bi bi-slash-circle me-2 fw-icon"></i>Delete profile</a></li>
 						</li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
+						<li><a class="dropdown-item" href="<?=ROOTADMIN?>Adminhelp"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
 						<li><a class="dropdown-item"
 								href="<?=ROOTADMIN?>Adminsignout"><i
 									class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
