@@ -182,17 +182,17 @@ Header START -->
 									<img class="avatar-img rounded-circle shadow" src="<?=get_image(user('image'))?>" alt="avatar">
 								</div>
 								<div>
-									<a class="h6 mt-2 mt-sm-0" href="#"> Louis Ferguson</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6 mt-2 mt-sm-0" href="#"> <?=esc(get_username(adminuser("username")) ?? 'no username found')?></a>
+									<p class="small m-0"><?=esc(get_email(adminuser("email")) ?? 'no email found')?></p>
 								</div>
 							</div>
 							<hr>
 						</li>
 						<!-- Links -->
-						<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+						<li><a class="dropdown-item" href="<?ROOT?>"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-						<li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+						<li><a class="dropdown-item" href="<?ROOT?>"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
+						<li><a class="dropdown-item" href="<?ROOT?>Logout"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
 						<li class="dropdown-divider mb-2"></li>
 						<li>
 							<div class="align-items-center text-center py-0">
