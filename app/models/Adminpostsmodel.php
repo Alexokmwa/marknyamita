@@ -29,7 +29,8 @@ class Adminpostsmodel
 
     protected $validationRules = [
         'postname' => [
-            'alpha',
+            'alpha_numeric_symbol',
+
             'required',
         ],
         'posttype' => [
