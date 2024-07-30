@@ -196,6 +196,10 @@
   /* background-color: var(  --bs-purple) */
 
 }
+.likes:hover{
+  transform: scale(1.5);
+  transition: all 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
 /*blog added end */
 body {
   margin: 0;
