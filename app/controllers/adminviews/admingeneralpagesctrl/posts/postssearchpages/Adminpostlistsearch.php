@@ -41,11 +41,11 @@ class Adminpostlistsearch extends Admincontroller
         if(!empty($find)){
 
             $find ="%$find%";
-            $query ="select * from blogposts where 
-            postname like :findblog
-            posttype like :findblog
-            tags like :findblog
-            category like :findblog
+            $query ="SELECT * from blogposts where 
+            postname like :findblog OR
+            posttype like :findblog OR
+            tags like :findblog OR
+            category like :findblog OR
             status like :findblog
             OR shortdescription LIKE :findblog 
             OR postbody LIKE :findblog  
