@@ -15,6 +15,7 @@
 <!-- Template Functions (local file) -->
 <script src="<?=ROOT?>assets/asset/js/functions.js"></script>
 <script src="<?=ROOT?>assets/js/password.js"></script>
+<script src="<?=ROOT?>assets/js/likes.js"></script>
 
 <!-- Uncomment if needed -->
 <!-- <script src="<?=ROOT?>/assets/asset/js/navbarssticky.js"></script> -->
