@@ -11,6 +11,7 @@ use app\models\Admincategories;
 use app\models\Adminaccounts;
 use app\models\Image;
 use app\models\Pager;
+use app\models\Postlikesmodal;
 
 /**
  * Blog class
@@ -41,6 +42,7 @@ class Blog extends Controller
         // get admin
         $adminpostdetail = new Adminaccounts();
         $data["image"] = new Image();
+        $data["likes"] = new Postlikesmodal();
         $data["pager"] = $pager;
 
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
