@@ -39,11 +39,11 @@ class Blogsearch extends Controller
         if(!empty($find)){
 
             $find ="%$find%";
-            $query ="select * from blogposts where 
-            postname like :findblogpublic
-            posttype like :findblogpublic
-            tags like :findblogpublic
-            category like :findblogpublic
+            $query ="SELECT * from blogposts where 
+            postname like :findblogpublic OR
+            posttype like :findblogpublic OR
+            tags like :findblogpublic OR
+            category like :findblogpublic OR
             status like :findblogpublic
             OR shortdescription LIKE :findblogpublic 
             OR postbody LIKE :findblogpublic  
