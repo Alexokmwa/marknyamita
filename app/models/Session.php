@@ -14,6 +14,7 @@ class Session
     public $mainkey = 'APPPUBLIC';
     public $userkey = 'USERPUBLIC';
 
+    private $sessionIDKey = 'SESSIONID'; 
     /** activate session if not yet started **/
     private function startSession(): int
     {
@@ -107,6 +108,17 @@ class Session
 
         return $default;
     }
+    public function nonLoggedUserSession(string $user_id): array
+{
+    $this->startSession();
+
+    if (isset($_SESSION[$user_id])) {
+        return $_SESSION[$user_id];
+    }
+
+    return [];
+}
+
 
     /** returns data from a key and deletes it **/
     public function pop(string $key, mixed $default = ''): mixed
@@ -134,6 +146,17 @@ class Session
 
         return [];
     }
+      /** generate and get unique session ID for logged-out users **/
+      public function getSessionID(): string
+      {
+          $this->startSession();
+  
+          if (!isset($_SESSION[$this->sessionIDKey])) {
+              $_SESSION[$this->sessionIDKey] = bin2hex(random_bytes(16)); // Generate unique session ID
+          }
+  
+          return $_SESSION[$this->sessionIDKey];
+      }
 
 
 }
