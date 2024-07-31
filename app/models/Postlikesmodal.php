@@ -34,10 +34,26 @@ class Postlikesmodal
     }
     public function getLikes(int $postID)
     {
-        $query = "SELECT count(likeID) as total from postlikes where postID = :postID && disabled = 0";
-        $row = $this->query($query, ['postID' => $postID]);
+       $query = "
+    SELECT 
+        COALESCE(pl.likes_count, 0) + COALESCE(pnl.likes_count, 0) AS total_likes
+    FROM 
+        (SELECT postID, COUNT(*) AS likes_count
+         FROM postlikes
+         WHERE disabled = 0 AND postID = :postID
+         GROUP BY postID) AS pl
+    LEFT JOIN 
+        (SELECT postID, COUNT(*) AS likes_count
+         FROM postlikesnotlogged
+         WHERE disabled = 0 AND postID = :postID
+         GROUP BY postID) AS pnl
+    ON pl.postID = pnl.postID
+    GROUP BY pl.postID;
+    ";
 
-        return $row[0]->total;
+    $result = $this->query($query, ['postID' => $postID]);
+
+    return $result[0]->total_likes ?? 0;
     }
 
 }
