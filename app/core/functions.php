@@ -54,6 +54,20 @@ function user(string $key = '')
 
     return '';
 }
+function nonLoggedUser(string $key = '')
+{
+    $ses = new Session();
+
+    $user_id = $ses->getSessionID();
+    $row = $ses->nonLoggedUserSession($user_id);
+
+    if (!empty($row[$key])) {
+        return $row[$key];
+    }
+
+    return '';
+}
+
 function adminuser(string $key = '')
 {
 
