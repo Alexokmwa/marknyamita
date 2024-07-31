@@ -58,6 +58,21 @@ trait Model
         $result = $this->query($query);
         return $result[0]->total ?? 0;
     }
+    public function countPostLikesNotLogged()
+    {
+        $query = "SELECT COUNT(*) as total FROM postlikesnotlogged WHERE disabled = 0";
+        $result = $this->query($query);
+        return $result[0]->total ?? 0;
+    }
+    
+    public function countPostLikes()
+    {
+        $query = "SELECT COUNT(*) as total FROM postlikes WHERE disabled = 0";
+        $result = $this->query($query);
+        return $result[0]->total ?? 0;
+    }
+    
+
     public function where($data, $data_not = [])
     {
         $keys = array_keys($data);
