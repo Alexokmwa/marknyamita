@@ -7,6 +7,7 @@ defined('ROOTPATH') or exit('Access Denied!');
 
 use app\core\Controller;
 use app\models\Postlikesmodal;
+use app\models\Postlikesmodalnotloggedin;
 use app\models\Request;
 use app\models\Session;
 
@@ -20,10 +21,9 @@ class Ajax extends Controller
 
         $ses = new Session();
 
-        if (!$ses->isLoggedIn()) {
-            echo"please log in";
-            die;
-        }
+        if ($ses->isLoggedIn()) {
+            
+        
         $userlikes = new Postlikesmodal();
         $req = new Request();
         $info = [];
@@ -32,7 +32,6 @@ class Ajax extends Controller
             $post_data = $req->POST();
             $post_data["user_id"] = $ses->user("user_id");
 
-            // $info['data_type'] = $post_data['data_type'];
             if($post_data['data_type'] == 'like') {
                 $info['data_type'] = $post_data['data_type'];
 
@@ -60,5 +59,47 @@ class Ajax extends Controller
         echo json_encode($info);
 
 
+    }else{
+            
+        
+        $userlikesnotlogged = new Postlikesmodalnotloggedin();
+        $req = new Request();
+        $info = [];
+
+
+        if ($req->posted()) {
+            $post_data = $req->POST();
+            $user_id =$ses->getSessionID();
+            $post_data["user_id"] = $user_id;
+            // show($post_data);
+
+            if($post_data['data_type'] == 'like') {
+                $info['data_type'] = $post_data['data_type'];
+
+                $post_data['user_id'] = $user_id;
+                if($row = $userlikesnotlogged->first(['user_id' => $post_data['user_id'],'postID' => $post_data['postID']])) {
+                    $disabled = 1;
+                    $info['liked'] = false;
+                    if($row->disabled == 1) {
+                        $disabled = 0;
+                        $info['liked'] = true;
+                    }
+
+                    $userlikesnotlogged->updatebloglikes($row->likeID, ['disabled' => $disabled]);
+                } else {
+                    $post_data['disabled'] = 0;
+                    $userlikesnotlogged->insert($post_data);
+
+                    $info['liked'] = true;
+                }
+                $info['likes'] = $userlikesnotlogged->getLikesnotloggedin($post_data['postID']);
+
+            }
+
+        }
+        echo json_encode($info);
+
+
+    }
     }
 }
