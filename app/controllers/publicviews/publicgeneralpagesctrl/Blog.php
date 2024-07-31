@@ -12,6 +12,7 @@ use app\models\Adminaccounts;
 use app\models\Image;
 use app\models\Pager;
 use app\models\Postlikesmodal;
+use app\models\Postlikesmodalnotloggedin;
 
 /**
  * Blog class
@@ -43,6 +44,8 @@ class Blog extends Controller
         $adminpostdetail = new Adminaccounts();
         $data["image"] = new Image();
         $data["likes"] = new Postlikesmodal();
+        $data["likesnotlogged"] = new Postlikesmodalnotloggedin();
+        
         $data["pager"] = $pager;
 
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
