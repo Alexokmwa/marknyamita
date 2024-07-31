@@ -2,8 +2,9 @@
 Header START -->
 <header class="navbar-light navbar-sticky header-static">
 	<!-- Logo Nav START -->
-	<nav class="navbar navbar-expand-lg">
+	<nav class="navbar navbar-expand-lg" >
 		<div class="container">
+			<div class="container d-flex">
 			<!-- Logo START -->
 			<a class="navbar-brand" href="<?=ROOT?>Home">
 				<img class="navbar-brand-item light-mode-item" src="<?=ROOT?>assets/asset/images/image.png" alt="<?=APP_NAME?>">			
@@ -18,7 +19,7 @@ Header START -->
 		  </button>
 
 			<!-- Main navbar START -->
-			<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="collapse navbar-collapse pt-4 pt-md-0" id="navbarCollapse">
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
 					
 					<!-- Nav item 1 home link-->
@@ -189,10 +190,10 @@ Header START -->
 							<hr>
 						</li>
 						<!-- Links -->
-						<li><a class="dropdown-item" href="<?ROOT?>"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
+						<li><a class="dropdown-item" href="<?=ROOT?>"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
-						<li><a class="dropdown-item" href="<?ROOT?>"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-						<li><a class="dropdown-item" href="<?ROOT?>Logout"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+						<li><a class="dropdown-item" href="<?=ROOT?>"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
+						<li><a class="dropdown-item" href="<?=ROOT?>Logout"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
 						<li class="dropdown-divider mb-2"></li>
 						<li>
 							<div class="align-items-center text-center py-0">
@@ -225,26 +226,14 @@ Header START -->
 				</div>
 				<!-- Profile dropdown END -->
 				<!-- Nav additional link -->
-				<div class="nav-item dropdown dropdown-toggle-icon-none">
-					<a class="nav-link dropdown-toggle" role="button" href="#" id="navAdditionalLink" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="bi bi-three-dots fs-4"></i>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded text-end" aria-labelledby="navAdditionalLink">
-						<li><a class="dropdown-item fw-normal" href="#">About</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">Newsletter</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">Author</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">#Tags</a></li>
-						<li><a class="dropdown-item fw-normal" href="#">Contact</a></li>
-						<li><a class="dropdown-item fw-normal" href="#"><span class="badge bg-danger me-2 align-middle">2 Job</span>Careers</a></li>
-					</ul>
-				</div>
+				
 
 				<!-- Nav Button -->
 				<div class="nav-item d-none d-md-block">
 					<a href="<?=ROOT?>Logout" class="btn btn-sm btn-danger mb-0 mx-2">LOG OUT!</a>
 				</div>
 				<!-- Nav Search -->
-				<div class="nav-item dropdown nav-search dropdown-toggle-icon-none">
+				<div class="nav-item dropdown nav-search dropdown-toggle-icon-none d-none d-md-block">
 					<a class="nav-link pe-0 dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="bi bi-search fs-4"> </i>
 					</a>
