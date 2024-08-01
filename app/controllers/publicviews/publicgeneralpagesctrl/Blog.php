@@ -31,7 +31,7 @@ class Blog extends Controller
         $userpost = new Adminpostsmodel();
 
         // pager
-        $limit = 24;
+        $limit = 10;
         $pager = new pager($limit);
         $offset = $pager->offset;
         $userpost->limit = $limit;
