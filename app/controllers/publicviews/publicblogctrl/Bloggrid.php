@@ -23,7 +23,7 @@ class Bloggrid extends Controller
         $data['row'] = $user->findAllcategories();
         $userpost = new Adminpostsmodel();
         // pager
-        $limit = 24;
+        $limit = 10;
         $pager = new pager($limit);
         $offset = $pager->offset;
         $userpost->limit = $limit;
