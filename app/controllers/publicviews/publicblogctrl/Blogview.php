@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-// deny access to app files and folders access.
 defined('ROOTPATH') or exit('Access Denied!');
 
 use app\core\Controller;
@@ -12,10 +11,8 @@ use app\models\Pager;
 use app\models\Session;
 use app\models\Request;
 use app\models\Blogcomments;
+use app\models\Blogcommentsnotloggedin;
 
-/**
- * Blogview class
- */
 class Blogview extends Controller
 {
     public function index($id = null)
@@ -36,31 +33,30 @@ class Blogview extends Controller
 
         $adminpostdetail = new Adminaccounts();
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
+
         // Instantiate Blogcomments model
         $blogCommentsModel = new Blogcomments();
+        $usercomentnotloggedin = new Blogcommentsnotloggedin();
 
         if ($req->posted()) {
             $files = $req->files();
-            $sesid = $ses->user("user_id");
-            $userID = $sesid;
             $postid = $id;
             $postData = $req->POST();
 
-            // Call addblogcomment method on the Blogcomments model instance
-            $blogCommentsModel->addblogcomment($postData, $files, $userID, $postid);
-
+            if ($ses->isLoggedIn()) {
+                $userID = $ses->user("user_id");
+                $blogCommentsModel->addblogcomment($postData, $files, $userID, $postid);
+            } else {
+                $userID = $ses->getSessionID();
+                $usercomentnotloggedin->addblogcommentnotloggedin($postData, $files, $userID, $postid);
+            }
             // Optionally redirect to the same page to prevent form resubmission on refresh
             // redirect('Blogview/'.$id);
         }
 
-        if (!is_object($data['rowpost'])) {
-            // Handle case where post is not found, e.g., redirect or show an error message
-            redirect('Blog'); // Example: redirect to posts list
-        }
-
-
         $data["pager"] = $pager;
         $data["user"] = $blogCommentsModel;
+        $data["usernotloggedin"] = $usercomentnotloggedin;
 
         $this->view('publicviews/publicblog/blogviewpage', $data);
     }
