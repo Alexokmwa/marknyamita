@@ -178,6 +178,12 @@
   --bs-form-invalid-color: #ea868f;
   --bs-form-invalid-border-color: #ea868f;
 }
+/* blogview start*/
+.myrepliesclass{
+  margin-left: 20px;
+color: blue;
+}
+/* blogview end */
 
 *,
 *::before,
