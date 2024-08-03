@@ -18,7 +18,10 @@ trait Model
     public $order_type 	= "desc";
     public $order_column = "id" ;
     public $order_columnadmin = "adminID" ;
+    public $order_columnusers = "user_id" ;
     public $order_columncategories = "categoryID" ;
+    public $order_columncomment = "commentID" ;
+    public $order_columncommentreplyID = "replyID" ;
     public $order_columnpost = "postID" ;
     public $errors 		= [];
 
@@ -26,6 +29,21 @@ trait Model
     {
 
         $query = "select * from $this->table order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
+    public function findAllcommentreplies()
+    {
+
+        $query = "select * from $this->table order by $this->order_columncommentreplyID $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
+
+    public function findAllusers()
+    {
+
+        $query = "select * from $this->table order by $this->order_columnusers $this->order_type limit $this->limit offset $this->offset";
 
         return $this->query($query);
     }
@@ -90,6 +108,27 @@ trait Model
         $query = trim($query, " && ");
 
         $query .= " order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+        $data = array_merge($data, $data_not);
+
+        return $this->query($query, $data);
+    }
+    public function wherecomment($data, $data_not = [])
+    {
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+        $query = "select * from $this->table where ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . " && ";
+        }
+
+        foreach ($keys_not as $key) {
+            $query .= $key . " != :". $key . " && ";
+        }
+
+        $query = trim($query, " && ");
+
+        $query .= " order by $this->order_columncomment $this->order_type limit $this->limit offset $this->offset";
         $data = array_merge($data, $data_not);
 
         return $this->query($query, $data);
