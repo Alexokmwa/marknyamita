@@ -196,6 +196,7 @@ Tag and share END -->
                         src="assets/images/avatar/01.html" alt="avatar">
                     <div>
                         <p><?= htmlspecialchars($comment->Content) ?></p>
+						
                         <div class="mb-2">
 						<?php if (!empty($comment->usercommentimage)): ?>
     <div class="col-12">
@@ -235,7 +236,71 @@ Tag and share END -->
                             <a href="#" class="myrepliesclass text-body fw-normal reply-btn" data-bs-toggle="collapse"
                                 data-bs-target="#replies-<?= $comment->commentID ?>">Replies</a>
                         </div>
-
+						<?php if( $ses->user("user_id")=== $comment->user_id):?>
+						<div class="mb-3">
+						<a href="#" class="btn btn-primary myrepliesclass  fw-normal " data-bs-toggle="collapse"
+						data-bs-target="#edit-<?= $comment->commentID ?>">Edit</a>
+						<div class="collapse" id="edit-<?= $comment->commentID ?>">
+						<form id="editBlogCommentReplyForm" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="form_type" value="edit_blog_comment">
+                                    <input type="hidden" name="commentID" value="<?= $comment->commentID ?>">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Name *</label>
+                                        <input name="name" type="text" class="form-control">
+                                        <div class="text-danger" id="nameError">
+                                            <?= $user->getError('name') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email *</label>
+                                        <input name="email" type="email" class="form-control">
+                                        <div class="text-danger" id="emailError">
+                                            <?= $user->getError('email') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Your Comment *</label>
+                                        <textarea name="Content" class="form-control" rows="3"></textarea>
+                                        <div class="text-danger" id="ContentError">
+                                            <?= $user->getError('Content') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="position-relative">
+                                                <h6 class="my-2">
+                                                    Upload post image here, or
+                                                    <a href="#!" class="text-primary">Browse</a>
+                                                </h6>
+                                                <label class="w-100" style="cursor:pointer;">
+                                                    <span>
+                                                        <input onchange="display_image(this.files[0])" class="form-control stretched-link" type="file" id="image" name="usercommentimage">
+                                                    </span>
+                                                    <div>
+                                                        <img src="<?= get_image() ?>" alt="img" class="img-thumbnail js-image-preview" style="height:auto;width:150px;">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="text-danger" id="usercommentimageError">
+                                                <?= $user->getError('usercommentimage') ?>
+                                            </div>
+                                            <p class="small mb-0 mt-2">
+                                                <b>Note:</b> Only JPG, JPEG and PNG.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">edit reply</button>
+                                    </div>
+                                </form>
+						</div>
+						<!-- <form id="deletereplyForm" method="post" >
+						<input type="hidden" name="form_type" value="delete_blog_comment">
+						<input type="hidden" name="delID" value="<?=$comment->commentID?>">
+						<button type="submit" class="btn btn-danger">delete reply</button>
+                </form> -->
+						</div>
+						<?php endif?>
                         <!-- Reply Form Start -->
                         <div class="collapse" id="replyForm-<?= $comment->commentID ?>">
                             <?php if ($ses->isLoggedIn()): ?>
@@ -389,9 +454,75 @@ Tag and share END -->
                         <div class="mb-2">
                             <h5 class="m-0"><?= htmlspecialchars($commentreply->namereply, ENT_QUOTES, 'UTF-8') ?></h5>
                             <span class="me-3 small"><?= date('F j, Y \a\t g:i a', strtotime($commentreply->CreatedAt)) ?></span>
+							
                         </div>
                     </div>
                 </div>
+				<?php if( $ses->user("user_id")=== $commentreply->user_id):?>
+						<div class="mb-3">
+						<a href="#" class="btn btn-primary myrepliesclass  fw-normal " data-bs-toggle="collapse"
+						data-bs-target="#edit-<?= $commentreply->replyID ?>">Edit</a>
+						<div class="collapse" id="edit-<?= $commentreply->replyID?>">
+						<form id="editBlogCommentReplyForm" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="form_type" value="edit_blog_comment_reply">
+                                    <input type="hidden" name="replyID" value="<?= $commentreply->replyID ?>">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Name *</label>
+                                        <input name="namereply" type="text" class="form-control">
+                                        <div class="text-danger" id="namereplyError">
+                                            <?= $user->getError('namereply') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email *</label>
+                                        <input name="emailreply" type="email" class="form-control">
+                                        <div class="text-danger" id="emailreplyError">
+                                            <?= $user->getError('emailreply') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Your Comment *</label>
+                                        <textarea name="Contentreply" class="form-control" rows="3"></textarea>
+                                        <div class="text-danger" id="ContentreplyError">
+                                            <?= $user->getError('Contentreply') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="position-relative">
+                                                <h6 class="my-2">
+                                                    Upload post image here, or
+                                                    <a href="#!" class="text-primary">Browse</a>
+                                                </h6>
+                                                <label class="w-100" style="cursor:pointer;">
+                                                    <span>
+                                                        <input onchange="display_image(this.files[0])" class="form-control stretched-link" type="file" id="image" name="usercommentimage">
+                                                    </span>
+                                                    <div>
+                                                        <img src="<?= get_image() ?>" alt="img" class="img-thumbnail js-image-preview" style="height:auto;width:150px;">
+                                                    </div>
+                                                </label>
+                                            </div>
+                                            <div class="text-danger" id="usercommentimageError">
+                                                <?= $user->getError('usercommentimage') ?>
+                                            </div>
+                                            <p class="small mb-0 mt-2">
+                                                <b>Note:</b> Only JPG, JPEG and PNG.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">edit reply</button>
+                                    </div>
+                                </form>
+						</div>
+						<!-- <form id="deletereplyForm" method="post" >
+						<input type="hidden" name="form_type" value="delete_blog_reply_comment">
+						<input type="hidden" name="delID" value="<?=$comment->commentID?>">
+						<button type="submit" class="btn btn-danger">delete reply</button>
+                </form> -->
+						</div>
+						<?php endif?>
                 <!-- Comment children level 2 end -->
             <?php endif; ?>
         <?php endforeach; ?>
@@ -460,6 +591,7 @@ Tag and share END -->
 										<a href="#" class="myrepliesclass text-body fw-normal reply-btn " data-bs-toggle="collapse"
                                 data-bs-target="#replies-<?= $commentnotlogged->commentID ?>">Replies</a>
 								</div>
+								
 								<!-- Reply Form Start -->
 								<div class="collapse" id="replyForm-<?=$commentnotlogged->commentID?>">
 						<?php if ($ses->isLoggedIn()): ?>
@@ -629,8 +761,10 @@ Tag and share END -->
                         </div>
                     </div>
                 </div>
+
                 <!-- Comment children level 2 end -->
-            <?php endif; ?>
+				
+				<?php endif; ?>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
