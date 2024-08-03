@@ -5,6 +5,7 @@ namespace app\models;
 defined('ROOTPATH') or exit('Access Denied!');
 use app\core\Model;
 use app\models\Image;
+use app\models\Session;
 
 class Blogcomments
 {
@@ -21,12 +22,11 @@ class Blogcomments
         'user_id',
         'Content',
         'usercommentimage',
-
     ];
 
     protected $validationRules = [
         'name' => [
-            'alpha',
+            'alpha_space',
             'required',
         ],
         'email' => [
@@ -36,11 +36,6 @@ class Blogcomments
         'Content' => [
             'required',
         ],
-        'usercommentimage' => [
-            'required',
-        ],
-
-
     ];
 
     public function addblogcomment($data, $files, $userID, $postid)
@@ -50,6 +45,7 @@ class Blogcomments
             $data['date_created'] = date("Y-m-d H:i:s");
             $data["user_id"] = $userID;
             $data["postID"] = $postid;
+            $data["usercommentimage"] = "";
 
             if (!empty($files["usercommentimage"]["name"])) {
                 $folder = "public/commentuploads/";
@@ -65,17 +61,18 @@ class Blogcomments
                         $image = new Image();
                         $image->resize($data["usercommentimage"], 700);
                     }
-                    $this->insert($data);
-                    redirect('Blogview/'.$postid);
-
                 } else {
-                    $this->errors["usercommentimage"] = "the file type is not supported";
+                    $this->errors["usercommentimage"] = "The file type is not supported.";
                 }
             }
-        } else {
-            $this->addError('usercommentimage', "no image found, upload at least one image");
-            $this->addError('name', "no image found, upload at least one image");
 
+            if (empty($this->errors)) {
+                $this->insert($data);
+                $ses = new Session();
+                $ses->set('comment_success', 'Your comment has been posted successfully.');
+                
+                redirect('Blogview/'.$postid);
+            }
         }
     }
 }
