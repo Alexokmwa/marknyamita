@@ -269,6 +269,66 @@ trait Model
         return false;
 
     }
+    public function updatecomment($id, $data, $id_column = 'commentID')
+    {
+
+        /** remove unwanted data **/
+        if(!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+
+                if(!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+
+        $this->query($query, $data);
+        return false;
+
+    }
+    public function updatecommentreply($id, $data, $id_column = 'replyID')
+    {
+
+        /** remove unwanted data **/
+        if(!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+
+                if(!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+
+        $this->query($query, $data);
+        return false;
+
+    }
     public function updatebloglikes($id, $data, $id_column = 'likeID')
     {
 
@@ -311,6 +371,26 @@ trait Model
 
     }
     public function deleteblog($id, $id_column = 'postID')
+    {
+
+        $data[$id_column] = $id;
+        $query = "delete from $this->table where $id_column = :$id_column ";
+        $this->query($query, $data);
+
+        return false;
+
+    }
+    public function deletecomment($id, $id_column = 'commentID')
+    {
+
+        $data[$id_column] = $id;
+        $query = "delete from $this->table where $id_column = :$id_column ";
+        $this->query($query, $data);
+
+        return false;
+
+    }
+    public function deletecommentreply($id, $id_column = 'replyID')
     {
 
         $data[$id_column] = $id;
