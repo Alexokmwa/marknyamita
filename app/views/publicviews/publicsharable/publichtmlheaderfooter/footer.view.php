@@ -8,7 +8,8 @@
 
 
 <!-- Sticky.js (using CDN) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js" integrity="sha512-somehash" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"></script>
+
 <!-- vanilla lazy load -->
 <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.5.2/dist/lazyload.min.js"></script>
 
