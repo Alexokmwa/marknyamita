@@ -1,9 +1,4 @@
-/**
-* Blogzine - Blog and Magazine Bootstrap 5 Theme
-*
-* @author Webestica (https://www.webestica.com/)
-* @version 1.3.2
-**/
+
 
 
 /* ===================
