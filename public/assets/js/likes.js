@@ -49,6 +49,9 @@ var post = {
             obj.likes = "";
 
             post.liked_element.querySelector(".js-likes-count").innerHTML = obj.likes;
-            }
+        }
+        // added to relod page 
+        // location.reload(); 
+        // added end   
             }
 }
