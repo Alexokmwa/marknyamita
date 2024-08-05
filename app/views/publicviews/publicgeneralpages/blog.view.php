@@ -10,26 +10,27 @@ renderpageHeader();
 
 <nav class="myclassallignsecondnav navbar navbar-expand-xl navbar-light navbar-sticky header-static pt-2">
 	<div class="container-fluid">
-		
+
 		<ul class="navbar-nav  navbar-nav-scroll mx-auto d-flex flex-row flex-nowrap">
-<!-- Nav Search -->
+			<!-- Nav Search -->
 			<li class="nav-item  me-3"><a class="nav-link" href="dashboard.html"></i>Dashboard</a></li>
 			<li class="nav-item me-3"><a class="nav-link" href="dashboard.html"></i>Dashboard</a></li>
 			<li class="nav-item me-3"><a class="nav-link" href="dashboard.html"></i>Dashboard</a></li>
-		
-		</a></li>
+
+			</a></li>
 		</ul>
 		<div class="nav-item dropdown nav-search dropdown-toggle-icon-none d-md-none">
-							<a class="nav-link pe-0 dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="bi bi-search fs-4"> </i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
-							  <form class="input-group">
-								<input class="form-control border-success" type="search" placeholder="Search" aria-label="Search">
-								<button class="btn btn-success m-0" type="submit">Search</button>
-							  </form>
-							</div>
-						</div>
+			<a class="nav-link pe-0 dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown"
+				aria-expanded="false">
+				<i class="bi bi-search fs-4"> </i>
+			</a>
+			<div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
+				<form class="input-group">
+					<input class="form-control border-success" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-success m-0" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </nav>
 
@@ -249,29 +250,29 @@ Main content START -->
 											</div>
 											<?php
 
-                                          $ses = new Session();
+						                  $ses = new Session();
 
-											$postlikes='';
-											$postlikesnotlogged='';
-											
-											if($ses->isLoggedIn()){
+						    $postlikes = '';
+						    $postlikesnotlogged = '';
 
-												$like_color = $likes->userLiked(user('user_id'), $rowpost->postID) ? "#fd0dd8" : "#0d6efd";
-																	$postlikes = $likes->getLikes($rowpost->postID);
-																	if($postlikes == 0) {
-																		$postlikes = "";
-																	}
-										}else{
+						    if($ses->isLoggedIn()) {
+
+						        $like_color = $likes->userLiked(user('user_id'), $rowpost->postID) ? "#fd0dd8" : "#0d6efd";
+						        $postlikes = $likes->getLikes($rowpost->postID);
+						        if($postlikes == 0) {
+						            $postlikes = "";
+						        }
+						    } else {
 
 
-											$like_color = $likesnotlogged->getLikesnotloggedin(nonLoggedUser('user_id'),$rowpost->postID) ? "#fd0dd8" : "#0d6efd";
-																									$postlikesnotlogged = $likesnotlogged->getLikesnotloggedin($rowpost->postID);
-																									if($postlikesnotlogged == 0) {
-																										$postlikesnotlogged = "";
-																									}
-																									
-										}
-										$totalLikes=(int)$postlikes+(int)$postlikesnotlogged
+						        $like_color = $likesnotlogged->getLikesnotloggedin(nonLoggedUser('user_id'), $rowpost->postID) ? "#fd0dd8" : "#0d6efd";
+						        $postlikesnotlogged = $likesnotlogged->getLikesnotloggedin($rowpost->postID);
+						        if($postlikesnotlogged == 0) {
+						            $postlikesnotlogged = "";
+						        }
+
+						    }
+						    $totalLikes = (int)$postlikes + (int)$postlikesnotlogged
 						    ?>
 											<div onclick="post.like('<?=$rowpost->postID?>',this)"
 												class="likes me-3">
@@ -453,7 +454,7 @@ Main content END -->
 
 				if (xhr.readyState == 4) {
 					post.posting = false;
-					post.handle_result(xhr.responseText);
+					alert(xhr.responseText);
 				}
 			});
 
