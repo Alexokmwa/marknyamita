@@ -49,19 +49,19 @@ class Blogview extends Controller
         $adminpostdetail = new Adminaccounts();
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
 
-        
+
         if ($req->posted()) {
             $files = $req->files();
             $postid = $id;
             $postData = $req->POST();
-            $commentid =$req->POST("commentID");
-            $commentID=$req->POST("delID");
-            $commentidreply =$req->POST("replyID");
+            $commentid = $req->POST("commentID");
+            $commentID = $req->POST("delID");
+            $commentidreply = $req->POST("replyID");
             $idupdate = $commentid;
             $idupdatereply = $commentidreply;
-        //    show($commentid);
+            //    show($commentid);
             $formType = $postData['form_type']; // Get the form type
-        
+
             if ($ses->isLoggedIn()) {
                 $userID = $ses->user("user_id");
                 switch ($formType) {
@@ -69,23 +69,23 @@ class Blogview extends Controller
                         $blogCommentsModel->addblogcomment($postData, $files, $userID, $postid);
                         break;
                     case 'edit_blog_comment':
-                        $blogCommentsModel->editblogcomment($idupdate,$postData, $files, $userID, $postid);
+                        $blogCommentsModel->editblogcomment($idupdate, $postData, $files, $userID, $postid);
                         break;
-                        case 'delete_blog_comment':
-                            $blogCommentsModel->deleteblogcomment($commentID,$postid);
+                    case 'delete_blog_comment':
+                        $blogCommentsModel->deleteblogcomment($commentID, $postid);
                         break;
                     case 'add_blog_comment_reply':
                         $blogCommentsModelreplies->addblogcommentreply($postData, $commentid, $files, $userID, $postid);
                         break;
                     case 'edit_blog_comment_reply':
-                        $blogCommentsModelreplies->editblogcommentreply($idupdatereply,$postData, $commentid, $files, $userID, $postid);
+                        $blogCommentsModelreplies->editblogcommentreply($idupdatereply, $postData, $commentid, $files, $userID, $postid);
                         break;
                     case 'delete_blog_reply_comment':
-                        $blogCommentsModelreplies->deletereply($commentID,$postid);
+                        $blogCommentsModelreplies->deletereply($commentID, $postid);
                         break;
-                    
+
                     case 'add_blog_comment_reply_comment_from_notlogged':
-                        $usercomentnotloggedinreplies->addblogcommentnotloggedinreply($postData,$commentid, $files, $userID, $postid);
+                        $usercomentnotloggedinreplies->addblogcommentnotloggedinreply($postData, $commentid, $files, $userID, $postid);
                         break;
                 }
             } else {
@@ -95,17 +95,17 @@ class Blogview extends Controller
                         $usercomentnotloggedin->addblogcommentnotloggedin($postData, $files, $userID, $postid);
                         break;
                     case 'add_blog_comment_reply_not_logged_in':
-                        $usercomentnotloggedinreplies->addblogcommentnotloggedinreply($postData,$commentid, $files, $userID, $postid);
+                        $usercomentnotloggedinreplies->addblogcommentnotloggedinreply($postData, $commentid, $files, $userID, $postid);
                         break;
                     case 'add_blog_comment_reply_not_logged_in_fromloggeduser':
                         $blogCommentsModelreplies->addblogcommentreply($postData, $commentid, $files, $userID, $postid);
                         break;
-                    
-                        
+
+
                 }
             }
         }
-        
+
 
         $data["pager"] = $pager;
         $data["user"] = $blogCommentsModel;
