@@ -81,11 +81,14 @@ class Adminpostsmodel
                         $image->resize($data["imageurl"], 700);
                     }
                     $this->insert($data);
+
+
+
                     redirectadmin("Adminpostlist");
-                }else{
-                    $this->errors["imageurl"] ="the file type is not supported";
+                } else {
+                    $this->errors["imageurl"] = "the file type is not supported";
                 }
-            } 
+            }
         } else {
             $this->addError('imageurl', "no image found, upload at least one image");
             $this->addError('category', "select category");
