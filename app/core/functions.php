@@ -154,14 +154,16 @@ function get_imageadminblog(mixed $file = '', string $type = 'post'): string
     }
 
 }
-function get_username($username = '', $default = 'no user name found') {
+function get_username($username = '', $default = 'no user name found')
+{
     if (!empty($username)) {
         return $username;
     } else {
         return $default;
     }
 }
-function get_email($email = '', $default = 'no email found') {
+function get_email($email = '', $default = 'no email found')
+{
     if (!empty($email)) {
         return $email;
     } else {
@@ -808,22 +810,38 @@ function adminsupportrenderMainNav()
     }
 }
 // notification
-function addnotifications($data){
-     
+function addnotifications($data)
+{
+
     $notif = new Notificationmodel();
     $data['date_created'] = date("Y-m-d H:i:s");
 
     $notif->insert($data);
 
 }
-function getnotifications(){
-     
+function getnotifications()
+{
+
     $notif = new Notificationmodel();
     $ses = new Adminsession();
     $userID = $ses ->adminuser('adminID');
 
-    $rows=$notif->where(['ownerid'=>$userID,'seen'=>0]);
-    if($rows){
+    $rows = $notif->where(['ownerid' => $userID,'seen' => 0]);
+    if($rows) {
+        return count($rows);
+    }
+    return 0;
+
+}
+function getnotificationspublic()
+{
+
+    $notif = new Notificationmodel();
+    $ses = new Session();
+    $userID = 0;
+
+    $rows = $notif->where(['ownerid' => $userID,'seen' => 0]);
+    if($rows) {
         return count($rows);
     }
     return 0;
@@ -831,7 +849,8 @@ function getnotifications(){
 }
 
 
-function time_elapsed_string($datetime, $full = false) {
+function time_elapsed_string($datetime, $full = false)
+{
     $now = new DateTime();
     $ago = new DateTime($datetime);
     $diff = $now->diff($ago);
@@ -854,5 +873,3 @@ function time_elapsed_string($datetime, $full = false) {
 
     return trim($string) . ($full ? '' : ' ago');
 }
-
-
