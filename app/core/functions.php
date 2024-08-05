@@ -5,6 +5,7 @@ defined('ROOTPATH') or exit('Access Denied!');
 
 use app\models\Session;
 use app\models\Adminsession;
+use app\models\Notificationmodel;
 use app\models\Image;
 
 /** check which php extensions are required **/
@@ -806,3 +807,52 @@ function adminsupportrenderMainNav()
         echo "Footer file not found: " . $adminsupportmainnav;
     }
 }
+// notification
+function addnotifications($data){
+     
+    $notif = new Notificationmodel();
+    $data['date_created'] = date("Y-m-d H:i:s");
+
+    $notif->insert($data);
+
+}
+function getnotifications(){
+     
+    $notif = new Notificationmodel();
+    $ses = new Adminsession();
+    $userID = $ses ->adminuser('adminID');
+
+    $rows=$notif->where(['ownerid'=>$userID,'seen'=>0]);
+    if($rows){
+        return count($rows);
+    }
+    return 0;
+
+}
+
+
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime();
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $string = '';
+    $units = [
+        'y' => 'year',
+        'm' => 'month',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    ];
+
+    foreach ($units as $k => $v) {
+        if ($diff->$k) {
+            $string .= $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '') . ' ';
+        }
+    }
+
+    return trim($string) . ($full ? '' : ' ago');
+}
+
+
