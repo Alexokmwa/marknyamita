@@ -45,7 +45,7 @@ class Blog extends Controller
         $data["image"] = new Image();
         $data["likes"] = new Postlikesmodal();
         $data["likesnotlogged"] = new Postlikesmodalnotloggedin();
-        
+
         $data["pager"] = $pager;
 
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
