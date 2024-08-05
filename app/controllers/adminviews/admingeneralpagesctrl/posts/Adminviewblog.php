@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\models\Notificationmodel;
 
 // deny acess to app files and folders access.
 defined('ROOTPATH') or exit('Access Denied!');
@@ -30,8 +31,13 @@ class Adminviewblog extends Admincontroller
             // Handle case where post is not found, e.g., redirect or show an error message
             redirectadmin('Blog'); // Example: redirect to posts list
         }
+if(!empty($_GET['seen']) && !empty($_GET['notif'])){
+    $notif_id = (int)$_GET['notif'];
+    $notif = new Notificationmodel();
+    $notif->update($notif_id,['seen'=>1]);
 
-        // show($data);
+}
+        // show($notif_id);
         $this ->adminview('adminviews/admingeneralpages/adminpost/Adminviewblog', $data);
     }
 }
