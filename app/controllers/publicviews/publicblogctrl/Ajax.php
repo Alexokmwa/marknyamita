@@ -45,11 +45,40 @@ class Ajax extends Controller
                     }
 
                     $userlikes->updatebloglikes($row->likeID, ['disabled' => $disabled]);
+                 // notification
+                 $item_row = $userlikes->getRow('SELECT adminID from blogposts where postID  = :id limit 1',['id'=>$post_data["postID"]]);
+                 if($item_row && $disabled == 0){
+
+                     $arr['ownerid']=$item_row->adminID;
+                     $arr['userID']=$post_data['user_id'];
+                     $arr['Itemid']=$post_data['postID'];
+                     $arr['type']='like';
+                     if($arr['ownerid'] != $arr['userID']){
+
+                         addnotifications($arr);
+                     }
+                 }
                 } else {
                     $post_data['disabled'] = 0;
                     $userlikes->insert($post_data);
 
                     $info['liked'] = true;
+
+                     // notification
+                     $item_row = $userlikes->getRow('SELECT adminID from blogposts where postID  = :id 1',['id'=>$post_data["postID"]]);
+                    //  show($item_row);
+                     if($item_row){
+ 
+                         $arr['ownerid']=$item_row->adminID;
+                         $arr['userID']=$post_data['user_id'];
+                         $arr['Itemid']=$post_data['postID'];
+                         $arr['type']='like';
+                         if($arr['ownerid'] != $arr['userID']){
+ 
+                             addnotifications($arr);
+                         }
+                         show($arr);
+                     }
                 }
                 $info['likes'] = $userlikes->getLikes($post_data['postID']);
 
@@ -86,11 +115,37 @@ class Ajax extends Controller
                     }
 
                     $userlikesnotlogged->updatebloglikes($row->likeID, ['disabled' => $disabled]);
+                 // notification
+                //  $item_row = $userlikesnotlogged->getRow('select user_id from users where id = :id limit 1',['id'=>$post_data["postID"]]);
+                //  if($item_row && $disabled == 0){
+
+                //      $arr['ownerid']=$item_row->user_id;
+                //      $arr['userID']=$post_data['user_id'];
+                //      $arr['Itemid']=$post_data['postID'];
+                //      $arr['type']='like';
+                //      if($arr['ownerid'] != $arr['userID']){
+
+                //          addnotifications($arr);
+                //      }
+                //  }
                 } else {
                     $post_data['disabled'] = 0;
                     $userlikesnotlogged->insert($post_data);
 
                     $info['liked'] = true;
+                    // notification
+                    // $item_row = $userlikesnotlogged->getRow('select user_id from users where id = :id limit 1',['id'=>$post_data["postID"]]);
+                    // if($item_row){
+
+                    //     $arr['ownerid']=$item_row->user_id;
+                    //     $arr['userID']=$post_data['user_id'];
+                    //     $arr['Itemid']=$post_data['postID'];
+                    //     $arr['type']='like';
+                    //     if($arr['ownerid'] != $arr['userID']){
+
+                    //         addnotifications($arr);
+                    //     }
+                    // }
                 }
                 $info['likes'] = $userlikesnotlogged->getLikesnotloggedin($post_data['postID']);
 
