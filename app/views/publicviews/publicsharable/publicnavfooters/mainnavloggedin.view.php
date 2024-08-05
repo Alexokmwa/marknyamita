@@ -158,7 +158,7 @@ Header START -->
 							</div>
 							<!-- Button -->
 							<div class="card-footer bg-transparent border-0 py-3 text-center position-relative">
-								<a href="#" class="stretched-link">See all incoming activity</a>
+							<a href="<?=ROOT?>Notifications" class="stretched-link">See all incoming activity</a>	
 							</div>
 						</div>
 						
