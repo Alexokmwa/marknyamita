@@ -133,6 +133,7 @@ Post list START -->
 											<th scope="col" class="border-0">Category</th>
 											<th scope="col" class="border-0">Status</th>
 											<th scope="col" class="border-0">view</th>
+											<th scope="col" class="border-0">ntfc</th>
 											<th scope="col" class="border-0 rounded-end">Action</th>
 										</tr>
 									</thead>
@@ -177,6 +178,11 @@ Post list START -->
 											<td>
 												<span class="badge bg-success bg-opacity-10 text-success mb-2"><a
 														href="<?=ROOTADMIN?>Adminviewblog/<?=$rowpost->postID?>">view</a></span>
+											</td>
+											<td>
+												<span class="badge bg-success bg-opacity-10 text-success mb-2"><a
+														href="<?=ROOTADMIN?>Adminviewblog/<?=$rowpost->postID?>?itemid=<?=$rowpost->postID?>"><i
+															class="bi bi-bell-fill"></i></a></span>
 											</td>
 											<!-- Table data -->
 											<td>
