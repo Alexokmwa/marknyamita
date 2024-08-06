@@ -125,6 +125,32 @@ trait Model
 
         return $this->query($query, $data);
     }
+    public function wherecategory($data, $data_not = [])
+{
+    $keys = array_keys($data);
+    $keys_not = array_keys($data_not);
+    $query = "SELECT * FROM $this->table WHERE ";
+
+    // Handle `data` conditions
+    foreach ($keys as $key) {
+        $query .= "$key = :$key AND ";
+    }
+
+    // Handle `data_not` conditions
+    foreach ($keys_not as $key) {
+        $query .= "$key != :$key AND ";
+    }
+
+    // Remove trailing `AND`
+    $query = rtrim($query, " AND ");
+
+    $query .= " ORDER BY $this->order_columnpost $this->order_type LIMIT $this->limit OFFSET $this->offset";
+
+    $data = array_merge($data, $data_not);
+
+    return $this->query($query, $data);
+}
+
     public function wherecomment($data, $data_not = [])
     {
         $keys = array_keys($data);
