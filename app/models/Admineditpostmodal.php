@@ -90,6 +90,10 @@ class Admineditpostmodal
                         }
                     }
                     $this->updateblog($idupdate, $data);
+                    $ses = new Adminsession();
+
+                    $ses->set('comment_success', 'POST edited successfully');
+                    redirectadmin("Adminpostlist");
                     redirectadmin("Adminpostlist");
                 } else {
                     $this->errors["imageurl"] = "the file type is not supported";

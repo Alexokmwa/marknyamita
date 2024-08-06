@@ -4,6 +4,7 @@ namespace app\models;
 
 defined('ROOTPATH') or exit('Access Denied!');
 use app\core\Model;
+use app\models\Adminsession;
 use app\models\Image;
 
 class Adminpostsmodel
@@ -82,9 +83,13 @@ class Adminpostsmodel
                     }
                     $this->insert($data);
 
+                    $ses = new Adminsession();
 
-
+                    $ses->set('comment_success', 'POST created successfully');
                     redirectadmin("Adminpostlist");
+    
+                  
+
                 } else {
                     $this->errors["imageurl"] = "the file type is not supported";
                 }
