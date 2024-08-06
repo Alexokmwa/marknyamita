@@ -2,6 +2,8 @@
 /**
  * header nav file combined inclusion.
  */
+
+
 adminrenderpageHeader();
 ?>
 
@@ -150,7 +152,7 @@ adminrenderpageHeader();
 													</span>
 													<div>
 														<img src="<?= get_imageadmin() ?>"
-															alt="img" class="img-thumbnail js-image-preview">
+															alt="img" class="img-thumbnail js-image-preview" style="height:auto;width:200px;">
 													</div>
 												</label>
 											</div>
