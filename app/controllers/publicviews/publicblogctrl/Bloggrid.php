@@ -11,7 +11,9 @@ use app\models\Admincategories;
 use app\models\Adminaccounts;
 use app\models\Image;
 use app\models\Pager;
-
+use app\models\Postlikesmodal;
+use app\models\Postlikesmodalnotloggedin;
+use app\models\Request;
 /**
  * Bloggrid class
  */
@@ -28,9 +30,22 @@ class Bloggrid extends Controller
         $offset = $pager->offset;
         $userpost->limit = $limit;
         $userpost->offset = $offset;
-        $data['rowpost'] = $userpost->findAllposts();
+        $data['rowpost'] =[];
+        $req = new Request();
+        if ($req->posted()) {
+            $selectedCategory = $req->POST();
+            $categoryValue = isset($selectedCategory['category']) ? $selectedCategory['category'] : '';
+        
+            // Fetch filtered posts
+            $data['rowpost'] = $userpost->wherecategory(['category' => $categoryValue]);
+        } else {
+            // Fetch default posts if no filter applied
+            $data['rowpost'] = $userpost->findAllposts();
+        }
         $adminpostdetail = new Adminaccounts();
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
+        $data["likes"] = new Postlikesmodal();
+        $data["likesnotlogged"] = new Postlikesmodalnotloggedin();
         $data["image"] = new Image();
         $data["pager"] = $pager;
 

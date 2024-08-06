@@ -11,7 +11,9 @@ use app\models\Admincategories;
 use app\models\Adminaccounts;
 use app\models\Image;
 use app\models\Pager;
-
+use app\models\Postlikesmodal;
+use app\models\Postlikesmodalnotloggedin;
+use app\models\Request;
 /**
  * Bloggridsearch class
  */
@@ -23,7 +25,7 @@ class Bloggridsearch extends Controller
         $data['row'] = $user->findAllcategories();
         $userpost = new Adminpostsmodel();
         // pager
-        $limit = 24;
+        $limit = 10;
         $pager = new pager($limit);
         $offset = $pager->offset;
         $userpost->limit = $limit;
@@ -45,9 +47,23 @@ class Bloggridsearch extends Controller
             $data['rowpost'] = $userpost->query($query,['findblogpublic'=>$find]);
 
         }
+        $data['rowpost'] =[];
+        $req = new Request();
+        if ($req->posted()) {
+            $selectedCategory = $req->POST();
+            $categoryValue = isset($selectedCategory['category']) ? $selectedCategory['category'] : '';
+        
+            // Fetch filtered posts
+            $data['rowpost'] = $userpost->wherecategory(['category' => $categoryValue]);
+        } else {
+            // Fetch default posts if no filter applied
+            $data['rowpost'] = $userpost->findAllposts();
+        }
         // $data['rowpost'] = $userpost->findAllposts();
         $adminpostdetail = new Adminaccounts();
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
+        $data["likes"] = new Postlikesmodal();
+        $data["likesnotlogged"] = new Postlikesmodalnotloggedin();
         $data["image"] = new Image();
         $data["pager"] = $pager;
 

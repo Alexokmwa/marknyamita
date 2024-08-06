@@ -13,6 +13,7 @@ use app\models\Image;
 use app\models\Pager;
 use app\models\Postlikesmodal;
 use app\models\Postlikesmodalnotloggedin;
+use app\models\Request;
 
 /**
  * Blog class
@@ -36,9 +37,23 @@ class Blog extends Controller
         $offset = $pager->offset;
         $userpost->limit = $limit;
         $userpost->offset = $offset;
+        $req = new Request();
+        $req = new Request();
+        $data['rowpost'] =[];
+        $req = new Request();
+        if ($req->posted()) {
+            $selectedCategory = $req->POST();
+            $categoryValue = isset($selectedCategory['category']) ? $selectedCategory['category'] : '';
+        
+            // Fetch filtered posts
+            $data['rowpost'] = $userpost->wherecategory(['category' => $categoryValue]);
+        } else {
+            // Fetch default posts if no filter applied
+            $data['rowpost'] = $userpost->findAllposts();
+        }
+        
 
         // get posts
-        $data['rowpost'] = $userpost->findAllposts();
 
         // get admin
         $adminpostdetail = new Adminaccounts();
