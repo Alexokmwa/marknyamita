@@ -38,9 +38,9 @@ $successMessage = $ses->pop('comment_success');
 	<div class="container-fluid">
 		<ul class="navbar-nav  navbar-nav-scroll mx-auto d-flex flex-row flex-nowrap">
 
-			<li class="nav-item  me-3"><a class="nav-link" href="dashboard.html"></i>Dashboard</a></li>
-			<li class="nav-item me-3"><a class="nav-link" href="dashboard.html"></i>Dashboard</a></li>
-			<li class="nav-item me-3"><a class="nav-link" href="dashboard.html"></i>Dashboard</a></li>
+			<li class="nav-item  me-3"><a class="nav-link" href="<?= ROOT ?>Blog"></i>all blogs</a></li>
+			<li class="nav-item me-3"><a class="nav-link" href="<?= ROOT ?>Blogview/<?= $rowpost->postID ?>#comment"></i>comment</a></li>
+			<li class="nav-item me-3"><a class="nav-link" href="<?= ROOT ?>Blogview/<?= $rowpost->postID ?>#comments"></i>comments</a></li>
 		</ul>
 	</div>
 </nav>
@@ -120,7 +120,7 @@ Main START -->
 					<!-- Author info END -->
 
 					<!-- Next prev post START -->
-					<div class="row g-0 mt-5 mx-0 border-top border-bottom">
+					<div class="d-flex flex-row g-0 mt-5 mx-0 border-top border-bottom">
 						<div class="col-sm-6 py-3 py-md-4">
 							<div class="d-flex align-items-center position-relative">
 								<!-- Icon -->
@@ -129,17 +129,15 @@ Main START -->
 								</div>
 								<!-- Title -->
 								<div class="ms-3">
-									<h5 class="m-0"> <a href="#" class="stretched-link btn-link text-reset">Around the
-											web: 20 fabulous infographics about business</a></h5>
+									<h5 class="m-0"> <a href="<?=$rowpost->postID-1?>" class="stretched-link btn-link text-reset">Previous post</a></h5>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-6 py-3 py-md-4 text-sm-end">
 							<div class="d-flex align-items-center position-relative">
 								<!-- Title -->
-								<div class="me-3">
-									<h5 class="m-0"> <a href="#" class="stretched-link btn-link text-reset">12 worst
-											types of business accounts you follow on Twitter</a></h5>
+								<div class="me-3 "style="margin-left:270px">
+									<h5 class="m-0"> <a href="<?=$rowpost->postID+1?>" class="stretched-link btn-link text-reset">Next post</a></h5>
 								</div>
 								<!-- Icon -->
 								<div class="bg-primary py-1">
@@ -177,14 +175,14 @@ Tag and share END -->
 						<!-- Tags -->
 						<ul class="list-inline text-primary-hover mt-0 mt-lg-3">
 							<li class="list-inline-item">
-								<a class="text-body" href="#">#agency</a>
+								<a class="text-body" href="#!">#<?=$rowpost->tags?></a>
 							</li>
 
 						</ul>
 
 					</div>
 
-					<div class="mt-5 js-comments">
+					<div class="mt-5 js-comments" id="comments">
 						<!-- <h3><?=$totalcomment?> comments</h3> -->
 
 						<!-- Comment level 1 -->
@@ -247,26 +245,31 @@ Tag and share END -->
 										data-bs-target="#replies-<?= $comment->commentID ?>">Replies</a>
 								</div>
 								<?php if($ses->user("user_id") === $comment->user_id):?>
+									
+								
 								<div class="mb-3">
 									<a href="#" class="btn btn-primary myrepliesclass  fw-normal "
 										data-bs-toggle="collapse"
 										data-bs-target="#edit-<?= $comment->commentID ?>">Edit</a>
 									<div class="collapse"
 										id="edit-<?= $comment->commentID ?>">
+										<?php if(!empty($rowcreatorusers)):?>
+											<?php if($ses->user("user_id") === $rowcreatorusers->user_id):?>
 										<form id="editBlogCommentReplyForm" method="post" enctype="multipart/form-data">
 											<input type="hidden" name="form_type" value="edit_blog_comment">
 											<input type="hidden" name="commentID"
 												value="<?= $comment->commentID ?>">
 											<div class="col-md-6">
 												<label class="form-label">Name *</label>
-												<input name="name" type="text" class="form-control">
+												<i class="text-danger">name detected</i>
+												<input name="name" type="text" class="form-control"value="<?=$rowcreatorusers->username?>"disabled>
 												<div class="text-danger" id="nameError">
 													<?= $user->getError('name') ?>
 												</div>
 											</div>
 											<div class="col-md-6">
-												<label class="form-label">Email *</label>
-												<input name="email" type="email" class="form-control">
+												<label class="form-label">Email *</label><i class="text-danger">email detected</i>
+												<input name="email" type="email" class="form-control"value="<?=$rowcreatorusers->email?>"disabled>
 												<div class="text-danger" id="emailError">
 													<?= $user->getError('email') ?>
 												</div>
@@ -310,6 +313,8 @@ Tag and share END -->
 												<button type="submit" class="btn btn-primary">edit reply</button>
 											</div>
 										</form>
+										<?php endif?>
+										<?php endif?>
 									</div>
 									<!-- <form id="deletereplyForm" method="post" >
 						<input type="hidden" name="form_type" value="delete_blog_comment">
@@ -321,21 +326,29 @@ Tag and share END -->
 								<!-- Reply Form Start -->
 								<div class="collapse"
 									id="replyForm-<?= $comment->commentID ?>">
+
 									<?php if ($ses->isLoggedIn()): ?>
+										<?php 
+						$commentuserid = $ses->user('user_id');
+						?>
+						<?php if (!empty($rowcreatorusers)): ?>
+							
+							<?php if ($commentuserid === $rowcreatorusers->user_id): ?>
 									<form id="addBlogCommentReplyForm" method="post" enctype="multipart/form-data">
 										<input type="hidden" name="form_type" value="add_blog_comment_reply">
 										<input type="hidden" name="commentID"
 											value="<?= $comment->commentID ?>">
 										<div class="col-md-6">
-											<label class="form-label">Name *</label>
-											<input name="namereply" type="text" class="form-control">
+											<label class="form-label">Name *</label><i class="text-danger">name detected</i>
+											<input name="namereply" type="text" class="form-control"value="<?=$rowcreatorusers->username?> " disabled>
 											<div class="text-danger" id="namereplyError">
 												<?= $user->getError('namereply') ?>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<label class="form-label">Email *</label>
-											<input name="emailreply" type="email" class="form-control">
+											<i class="text-danger">email detected</i>
+											<input name="emailreply" type="email" class="form-control"value="<?=$rowcreatorusers->email?> " disabled>
 											<div class="text-danger" id="emailreplyError">
 												<?= $user->getError('emailreply') ?>
 											</div>
@@ -354,6 +367,7 @@ Tag and share END -->
 														Upload post image here, or
 														<a href="#!" class="text-primary">Browse</a>
 													</h6>
+													<i class="text-danger">image is optional</i>
 													<label class="w-100" style="cursor:pointer;">
 														<span>
 															<input onchange="display_image(this.files[0])"
@@ -379,6 +393,8 @@ Tag and share END -->
 											<button type="submit" class="btn btn-primary">Post reply</button>
 										</div>
 									</form>
+									<?php endif?>
+									<?php endif?>
 									<?php else: ?>
 									<form id="addBlogCommentReplyForm" method="post" enctype="multipart/form-data">
 										<input type="hidden" name="form_type"
@@ -509,6 +525,8 @@ Tag and share END -->
 											data-bs-target="#edit-<?= $commentreply->replyID ?>">Edit</a>
 										<div class="collapse"
 											id="edit-<?= $commentreply->replyID?>">
+											<?php if(!empty($rowcreatorusers)):?>
+											<?php if($ses->user("user_id") === $rowcreatorusers->user_id):?>
 											<form id="editBlogCommentReplyForm" method="post"
 												enctype="multipart/form-data">
 												<input type="hidden" name="form_type" value="edit_blog_comment_reply">
@@ -516,14 +534,15 @@ Tag and share END -->
 													value="<?= $commentreply->replyID ?>">
 												<div class="col-md-6">
 													<label class="form-label">Name *</label>
-													<input name="namereply" type="text" class="form-control">
+													<i class="text-danger">name detected</i>
+													<input name="namereply" type="text" class="form-control"value="<?=$rowcreatorusers->username?>"disabled>
 													<div class="text-danger" id="namereplyError">
 														<?= $user->getError('namereply') ?>
 													</div>
 												</div>
 												<div class="col-md-6">
-													<label class="form-label">Email *</label>
-													<input name="emailreply" type="email" class="form-control">
+													<label class="form-label">Email *</label><i class="text-danger">email detected</i>
+													<input name="emailreply" type="email" class="form-control"value="<?=$rowcreatorusers->email?>"disabled>
 													<div class="text-danger" id="emailreplyError">
 														<?= $user->getError('emailreply') ?>
 													</div>
@@ -543,6 +562,7 @@ Tag and share END -->
 																Upload post image here, or
 																<a href="#!" class="text-primary">Browse</a>
 															</h6>
+															<i class="text-danger">image is optional</i>
 															<label class="w-100" style="cursor:pointer;">
 																<span>
 																	<input onchange="display_image(this.files[0])"
@@ -568,6 +588,8 @@ Tag and share END -->
 													<button type="submit" class="btn btn-primary">edit reply</button>
 												</div>
 											</form>
+											<?php endif?>
+											<?php endif?>
 										</div>
 										<!-- <form id="deletereplyForm" method="post" >
 						<input type="hidden" name="form_type" value="delete_blog_reply_comment">
@@ -658,14 +680,20 @@ Tag and share END -->
 								<div class="collapse"
 									id="replyForm-<?=$commentnotlogged->commentID?>">
 									<?php if ($ses->isLoggedIn()): ?>
-
+														<?php 
+										$commentuserid = $ses->user('user_id');
+										?>
+										<?php if (!empty($rowcreatorusers)): ?>
+											
+											<?php if ($commentuserid === $rowcreatorusers->user_id): ?>
 									<form id="addBlogCommentReplyNotLoggedInForm" method="post"
 										enctype="multipart/form-data">
 										<input type="hidden" name="form_type"
 											value="add_blog_comment_reply_comment_from_notlogged">
 										<div class="col-md-6">
 											<label class="form-label">Name *</label>
-											<input name="namereply" type="text" class="form-control">
+											<i class="text-danger">name detected</i>
+											<input name="namereply" type="text" class="form-control"value="<?=$rowcreatorusers->username?>"disabled>
 											<div class="text-danger" id="namereplyError" Required>
 												<?= $user->getError('namereply') ?>
 											</div>
@@ -673,8 +701,8 @@ Tag and share END -->
 												value="<?=$commentnotlogged->commentID?>">
 										</div>
 										<div class="col-md-6">
-											<label class="form-label">Email *</label>
-											<input name="emailreply" type="email" class="form-control">
+											<label class="form-label">Email *</label><i class="text-danger">email detected</i>
+											<input name="emailreply" type="email" class="form-control"value="<?=$rowcreatorusers->email?>"disabled>
 											<div class="text-danger" id="emailreplyError" Required>
 												<?= $user->getError('emailreply') ?>
 											</div>
@@ -718,6 +746,8 @@ Tag and share END -->
 											<button type="submit" class="btn btn-primary">Post comment</button>
 										</div>
 									</form>
+									<?php endif?>
+									<?php endif?>
 									<?php else:?>
 										<form id="addBlogCommentReplyNotLoggedInForm" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="form_type" value="add_blog_comment_reply_not_logged_in">
@@ -867,8 +897,14 @@ Tag and share END -->
 
 
 				<?php if ($ses->isLoggedIn()): ?>
+					<?php 
+						$commentuserid = $ses->user('user_id');
+						?>
+						<?php if (!empty($rowcreatorusers)): ?>
+							
+							<?php if ($commentuserid === $rowcreatorusers->user_id): ?>
 				<!-- Reply START -->
-				<div>
+				<div id="#comment">
 					<h3>Leave a reply</h3>
 					<small>Your email address will not be published. Required fields are marked
 						<span class="text-danger">*</span>
@@ -880,8 +916,10 @@ Tag and share END -->
 						<div class="col-md-6">
 							<label class="form-label">Name
 								<span class="text-danger">*</span>
+								<i class="text-danger">name detected</i>
+
 							</label>
-							<input name="name" type="text" class="form-control">
+							<input name="name" type="text" class="form-control" value="<?=$rowcreatorusers->username?>" disabled>
 							<div class="text-danger" id="nameError">
 								<?= $user->getError('name') ?>
 							</div>
@@ -889,8 +927,9 @@ Tag and share END -->
 						<div class="col-md-6">
 							<label class="form-label">Email
 								<span class="text-danger">*</span>
+								<i class="text-danger">email detected</i>
 							</label>
-							<input name="email" type="email" class="form-control">
+							<input name="email" type="email" class="form-control" value="<?=$rowcreatorusers->email?> " disabled>
 							<div class="text-danger" id="emailError">
 								<?= $user->getError('email') ?>
 							</div>
@@ -912,6 +951,7 @@ Tag and share END -->
 										please Upload comment image here, or
 										<a href="#!" class="text-primary">Browse</a>
 									</h6>
+									<i class="text-danger">image is optional</i>
 									<label class="w-100" style="cursor:pointer;">
 										<span>
 											<input onchange="display_image(this.files[0])"
@@ -938,10 +978,12 @@ Tag and share END -->
 						</div>
 					</form>
 				</div>
+				<?php endif?>
+				<?php endif?>
 				<!-- Reply END -->
 				<?php else: ?>
 				<!-- Reply START -->
-				<div>
+				<div id="#comment">
 					<h3>Leave a reply</h3>
 					<small>Your email address will not be published. Required fields are marked
 						<span class="text-danger">*</span>
@@ -984,6 +1026,7 @@ Tag and share END -->
 										please Upload comment image here, or
 										<a href="#!" class="text-primary">Browse</a>
 									</h6>
+									<i class="text-danger">image is optional</i>
 									<label class="w-100" style="cursor:pointer;">
 										<span>
 											<input onchange="display_image(this.files[0])"
