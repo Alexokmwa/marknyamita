@@ -49,6 +49,9 @@ class Adminviewblog extends Admincontroller
                 $arr['type'] = 'blogpost';
                 if ($arr['ownerid'] != $arr['userID']) {
                     addnotifications($arr);
+                    $ses = new Adminsession();
+
+                    $ses->set('comment_success', 'notification sent successfully');
                 }
             }
         }
