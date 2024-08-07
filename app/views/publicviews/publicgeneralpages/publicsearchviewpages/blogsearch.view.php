@@ -253,26 +253,21 @@ Main content START -->
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">
-                                <div class="likes me-3">
-                                    <a href="#!" class="text-reset">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                             fill="blue" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-                                        </svg>
-                                        <span class="ms-2 fs-6">24</span>
-                                    </a>
-                                </div>
-                                <?php
+							<?php
                                 $ses = new Session();
                                 $postlikes = '';
                                 $postlikesnotlogged = '';
-
+								$postcomments = "";
+								$postcommentsnotlogged = "";
                                 if ($ses->isLoggedIn()) {
                                     $like_color = $likes->userLiked(user('user_id'), $rowpost->postID) ? "#fd0dd8" : "#0d6efd";
                                     $postlikes = $likes->getLikes($rowpost->postID);
                                     if ($postlikes == 0) {
                                         $postlikes = "";
+                                    }
+                                    $postcomments = $comments->getcomments($rowpost->postID);
+                                    if ($postcomments == 0) {
+                                        $postcomments = "";
                                     }
                                 } else {
                                     $like_color = $likesnotlogged->getLikesnotloggedin(nonLoggedUser('user_id'), $rowpost->postID) ? "#fd0dd8" : "#0d6efd";
@@ -280,9 +275,25 @@ Main content START -->
                                     if ($postlikesnotlogged == 0) {
                                         $postlikesnotlogged = "";
                                     }
+                                    $postcommentsnotlogged = $commentsnotlogged->getcommentsnotlogged($rowpost->postID);
+                                    if ($postcommentsnotlogged == 0) {
+                                        $postcommentsnotlogged = "";
+                                    }
                                 }
-                                $totalLikes = (int)$postlikes + (int)$postlikesnotlogged
+                                $totalLikes = (int)$postlikes + (int)$postlikesnotlogged;
+                                $totalcomments = (int)$postcomments  + (int)$postcommentsnotlogged;
                                 ?>
+                                <div onclick="window.location= '<?= ROOT ?>Blogview/<?= $rowpost->postID ?>#comments'" class="likes me-3">
+                                    <a href="#!" class="text-reset">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             fill="blue" class="bi bi-chat-left-dots-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm5 4a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                        </svg>
+                                        <span class="ms-2 fs-6"><?=$totalcomments?></span>
+                                    </a>
+                                </div>
+                                
                                 <div onclick="post.like('<?= $rowpost->postID ?>', this)" class="likes me-3">
                                     <a href="#!" class="text-reset">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
