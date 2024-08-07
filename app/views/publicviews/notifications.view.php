@@ -3,9 +3,36 @@
  * header nav file combined inclusion.
  */
 renderpageHeader();
-?>
 
-<main>
+use app\models\Adminsession;
+
+$ses = new Adminsession();
+$successMessage = $ses->pop('comment_success');
+
+
+?>
+<?php if ($successMessage): ?>
+<div class="position-fixed  top-0 end-0 p-3" style="z-index: 1050;">
+	<div id="toastSuccess" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+		data-bs-autohide="true" data-bs-delay="5000">
+		<div class="toast-header bg-success">
+			<strong class="me-auto">Success</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+		<div class="toast-body">
+			<?= $successMessage ?>
+		</div>
+	</div>
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', (event) => {
+		var toastEl = document.getElementById('toastSuccess');
+		var toast = new bootstrap.Toast(toastEl);
+		toast.show();
+	});
+</script>
+<?php endif; ?>
+<main class="mysmbottomspace">
 	<div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
 		<?php $num = getnotificationspublic() ?>
 		<?php if ($num): ?>
@@ -66,6 +93,15 @@ renderpageHeader();
 						</div>
 					</div>
 				</a>
+				<?php if($row->seen == 1):?>
+				<form id="deletenotif" method="post" >
+				<input type="hidden" name="form_type" value="delete_notification">
+				<input type="hidden" name="id" value="<?= $row->id ?>">
+				<button type="submit" class="btn btn-danger" >clear</button>
+				</form>
+
+				
+<?php endif?>
 			</li>
 			<?php endforeach; ?>
 		</ul>
