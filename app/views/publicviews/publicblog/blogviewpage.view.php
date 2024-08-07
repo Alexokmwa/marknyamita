@@ -897,12 +897,13 @@ Tag and share END -->
 
 
 				<?php if ($ses->isLoggedIn()): ?>
+					
 					<?php 
 						$commentuserid = $ses->user('user_id');
 						?>
-						<?php if (!empty($rowcreatorusers)): ?>
+						<?php foreach ($data['rowcreatorusers'] as $rowcreatorusers): ?>
 							
-							<?php if ($commentuserid === $rowcreatorusers->user_id): ?>
+							<?php if ($commentuserid === $rowcreatorusers->user_id):?>
 				<!-- Reply START -->
 				<div id="#comment">
 					<h3>Leave a reply</h3>
@@ -979,7 +980,7 @@ Tag and share END -->
 					</form>
 				</div>
 				<?php endif?>
-				<?php endif?>
+				<?php endforeach?>
 				<!-- Reply END -->
 				<?php else: ?>
 				<!-- Reply START -->
