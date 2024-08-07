@@ -310,10 +310,12 @@ Main content START -->
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
+			
+				<?php endif; ?>
     <?php endforeach; ?>
-<?php else: ?>
-    <p>No posts found for the selected category.</p>
+	<?php else: ?>
+				<p class="text-danger">No blogs found for the search.</p>
+				<p>go to blogs <a href="<?=ROOT?>Blog">Blogs</a></p>
 <?php endif; ?>
 
 						<!-- Card item END -->

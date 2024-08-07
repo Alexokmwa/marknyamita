@@ -317,7 +317,10 @@ Main content START -->
 							<?php endif; ?>
 
 							<?php endforeach; ?>
-							<?php endif; ?>
+							<?php else: ?>
+				<p class="text-danger">No blogs found for the search.</p>
+				<p>go to blogs <a href="<?=ROOT?>Bloggrid">Blogs</a></p>
+<?php endif; ?>
 							<!-- Card item END -->
 							<!-- Pagination START -->
 							<div>
