@@ -144,7 +144,7 @@ Header START -->
 									class="badge bg-danger bg-opacity-10 text-danger ms-2"><?=$num?>
 									new</span></h6>
 							<?php endif?>
-							<a class="small" href="#">Clear all</a>
+							<!-- <a class="small" href="#">Clear all</a> -->
 						</div>
 						<div class="card-body p-0">
 							<ul class="list-group list-unstyled list-group-flush">

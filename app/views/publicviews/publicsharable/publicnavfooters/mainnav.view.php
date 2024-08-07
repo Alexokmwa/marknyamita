@@ -18,7 +18,7 @@ Header START -->
 		  </button>
 
 			<!-- Main navbar START -->
-			<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="collapse navbar-collapse pt-4 pt-md-0" id="navbarCollapse">
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
 					
 					<!-- Nav item 1 home link-->
