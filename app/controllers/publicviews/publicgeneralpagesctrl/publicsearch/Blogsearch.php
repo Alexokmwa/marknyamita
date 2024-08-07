@@ -14,6 +14,8 @@ use app\models\Pager;
 use app\models\Request;
 use app\models\Postlikesmodal;
 use app\models\Postlikesmodalnotloggedin;
+use app\models\Blogcommentsnotloggedin;
+use app\models\Blogcomments;
 /**
  * Blogsearch class
  */
@@ -27,7 +29,8 @@ class Blogsearch extends Controller
         // retrive categories data
         $user = new Admincategories();
         $data['row'] = $user->findAllcategories();
-
+        $data["comments"] = new Blogcomments();
+        $data["commentsnotlogged"] = new Blogcommentsnotloggedin();
         $userpost = new Adminpostsmodel();
 
         // pager
@@ -53,18 +56,18 @@ class Blogsearch extends Controller
             $data['rowpost'] = $userpost->query($query,['findblogpublic'=>$find]);
 
         }
-        $data['rowpost'] =[];
-        $req = new Request();
-        if ($req->posted()) {
-            $selectedCategory = $req->POST();
-            $categoryValue = isset($selectedCategory['category']) ? $selectedCategory['category'] : '';
-        
-            // Fetch filtered posts
-            $data['rowpost'] = $userpost->wherecategory(['category' => $categoryValue]);
-        } else {
-            // Fetch default posts if no filter applied
-            $data['rowpost'] = $userpost->findAllposts();
-        }
+        else{
+            $req = new Request();
+            if ($req->posted()) {
+                $selectedCategory = $req->POST();
+                $categoryValue = isset($selectedCategory['category']) ? $selectedCategory['category'] : '';
+            
+                // Fetch filtered posts
+                $data['rowpost'] = $userpost->wherecategory(['category' => $categoryValue]);
+            } else {
+                // Fetch default posts if no filter applied
+                $data['rowpost'] = $userpost->findAllposts();
+            }}
         // get posts
         // $data['rowpost'] = $userpost->findAllposts();
 

@@ -1,6 +1,8 @@
 <?php
 
 namespace app\controllers;
+use app\models\Blogcommentsnotloggedin;
+use app\models\Blogcomments;
 
 // deny acess to app files and folders access.
 defined('ROOTPATH') or exit('Access Denied!');
@@ -58,6 +60,8 @@ class Blog extends Controller
         // get admin
         $adminpostdetail = new Adminaccounts();
         $data["image"] = new Image();
+        $data["comments"] = new Blogcomments();
+        $data["commentsnotlogged"] = new Blogcommentsnotloggedin();
         $data["likes"] = new Postlikesmodal();
         $data["likesnotlogged"] = new Postlikesmodalnotloggedin();
 

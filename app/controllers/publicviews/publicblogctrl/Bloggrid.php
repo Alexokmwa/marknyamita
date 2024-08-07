@@ -14,6 +14,8 @@ use app\models\Pager;
 use app\models\Postlikesmodal;
 use app\models\Postlikesmodalnotloggedin;
 use app\models\Request;
+use app\models\Blogcommentsnotloggedin;
+use app\models\Blogcomments;
 /**
  * Bloggrid class
  */
@@ -23,6 +25,8 @@ class Bloggrid extends Controller
     {
         $user = new Admincategories();
         $data['row'] = $user->findAllcategories();
+        $data["comments"] = new Blogcomments();
+        $data["commentsnotlogged"] = new Blogcommentsnotloggedin();
         $userpost = new Adminpostsmodel();
         // pager
         $limit = 10;

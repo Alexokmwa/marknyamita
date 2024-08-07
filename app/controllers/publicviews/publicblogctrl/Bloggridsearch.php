@@ -14,6 +14,8 @@ use app\models\Pager;
 use app\models\Postlikesmodal;
 use app\models\Postlikesmodalnotloggedin;
 use app\models\Request;
+use app\models\Blogcommentsnotloggedin;
+use app\models\Blogcomments;
 /**
  * Bloggridsearch class
  */
@@ -23,6 +25,8 @@ class Bloggridsearch extends Controller
     {
         $user = new Admincategories();
         $data['row'] = $user->findAllcategories();
+        $data["comments"] = new Blogcomments();
+        $data["commentsnotlogged"] = new Blogcommentsnotloggedin();
         $userpost = new Adminpostsmodel();
         // pager
         $limit = 10;
@@ -46,8 +50,7 @@ class Bloggridsearch extends Controller
             limit $limit offset $offset" ;
             $data['rowpost'] = $userpost->query($query,['findblogpublic'=>$find]);
 
-        }
-        $data['rowpost'] =[];
+        }else{
         $req = new Request();
         if ($req->posted()) {
             $selectedCategory = $req->POST();
@@ -58,7 +61,7 @@ class Bloggridsearch extends Controller
         } else {
             // Fetch default posts if no filter applied
             $data['rowpost'] = $userpost->findAllposts();
-        }
+        }}
         // $data['rowpost'] = $userpost->findAllposts();
         $adminpostdetail = new Adminaccounts();
         $data['rowcreator'] = $adminpostdetail->findAlladmin();
