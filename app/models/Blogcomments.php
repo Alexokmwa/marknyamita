@@ -161,4 +161,27 @@ class Blogcomments
         }
 
     }
+    public function getcomments(int $postID)
+    {
+       $query = "
+    SELECT 
+        COALESCE(pl.likes_count, 0) + COALESCE(pnl.likes_count, 0) AS total_likes
+    FROM 
+        (SELECT postID, COUNT(*) AS likes_count
+         FROM comments
+         WHERE postID = :postID
+         GROUP BY postID) AS pl
+    LEFT JOIN 
+        (SELECT postID, COUNT(*) AS likes_count
+         FROM commentsnotloggedin
+         WHERE postID = :postID
+         GROUP BY postID) AS pnl
+    ON pl.postID = pnl.postID
+    GROUP BY pl.postID;
+    ";
+
+    $result = $this->query($query, ['postID' => $postID]);
+
+    return $result[0]->total_likes ?? 0;
+    }
 }
