@@ -90,15 +90,8 @@ Main contain START -->
                             <li class="avatar avatar-xs">
                                 <img class="avatar-img rounded-circle" src="assets/images/avatar/01.html" alt="avatar">
                             </li>
-                            <li class="avatar avatar-xs">
-                                <img class="avatar-img rounded-circle" src="assets/images/avatar/02.html" alt="avatar">
-                            </li>
-                            <li class="avatar avatar-xs">
-                                <img class="avatar-img rounded-circle" src="assets/images/avatar/03.html" alt="avatar">
-                            </li>
-                            <li class="avatar avatar-xs">
-                                <div class="avatar-img rounded-circle bg-primary"><i class="fas fa-plus text-white position-absolute top-50 start-50 translate-middle"></i></div>
-                            </li>
+                            
+                            
                         </ul>
                     </div>
                 </div>
