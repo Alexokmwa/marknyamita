@@ -157,7 +157,7 @@ Post edit START -->
 																value="<?= old_value('imageurl') ?>">
 														</span>
 														<div>
-															<img src=" <?= get_imageadmin() ?>"
+															<img src=" <?=get_imageadmin($rowpost->imageurl, 'post')?>"
 																alt="img" class="img-thumbnail js-image-preview"style="height:auto;width:200px;">
 														</div>
 													</label>
