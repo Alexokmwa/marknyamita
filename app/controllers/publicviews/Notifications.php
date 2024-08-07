@@ -7,6 +7,7 @@ defined('ROOTPATH') or exit('Access Denied!');
 use app\core\Controller;
 use app\models\Adminsession;
 use app\models\Notificationmodel;
+use app\models\Request;
 
 class Notifications extends Controller
 {
@@ -28,6 +29,27 @@ class Notifications extends Controller
                 $data['rowspublic'][$key]->user_row =  $check_user;
                 $data['rowspublic'][$key]->item_rowblog = $check_postphoto ;
             }
+
+        }
+        // delete notification
+        $req = new Request();
+        if ($req->posted()) {
+            $postData = $req->POST();
+            $notif_id= $req->POST("id");
+
+            $formType = $postData['form_type']; // Get the form type
+
+            $notif = new Notificationmodel();
+            switch ($formType) {
+                case 'delete_notification':
+                    # code...
+                    $notif->delete($notif_id);
+                    break;
+            }
+            $ses = new Adminsession();
+
+            $ses->set('comment_success', 'notification deleted successfully');
+       redirect("Notifications");
 
         }
         // show();
