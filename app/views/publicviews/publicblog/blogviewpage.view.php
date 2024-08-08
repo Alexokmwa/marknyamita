@@ -39,8 +39,8 @@ $successMessage = $ses->pop('comment_success');
 		<ul class="navbar-nav  navbar-nav-scroll mx-auto d-flex flex-row flex-nowrap">
 
 			<li class="nav-item  me-3"><a class="nav-link" href="<?= ROOT ?>Blog"></i>all blogs</a></li>
-			<li class="nav-item me-3"><a class="nav-link" href="<?= ROOT ?>Blogview/<?= $rowpost->postID ?>#comment"></i>comment</a></li>
-			<li class="nav-item me-3"><a class="nav-link" href="<?= ROOT ?>Blogview/<?= $rowpost->postID ?>#comments"></i>comments</a></li>
+			<li class="nav-item me-3"><a class="nav-link" href="<?= ROOT ?>Blogview/<?= $rowpost->postID ?? 'no blog'?>#comment"></i>comment</a></li>
+			<li class="nav-item me-3"><a class="nav-link" href="<?= ROOT ?>Blogview/<?= $rowpost->postID ?? 'no blog'?>#comments"></i>comments</a></li>
 		</ul>
 	</div>
 </nav>
