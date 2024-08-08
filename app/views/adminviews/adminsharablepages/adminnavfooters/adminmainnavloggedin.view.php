@@ -31,7 +31,8 @@ Header START -->
 					<!-- Nav item 1 Demos -->
 					<li class="nav-item"><a class="nav-link"
 							href="<?=ROOTADMIN?>Admindashboard"><i
-								class="bi bi-house-door me-1"></i>Dashboard</a></li>
+								class="bi bi-house-door me-1"></i>Dashboard</a>
+					</li>
 
 					<!-- Nav item 2 Post -->
 					<li class="nav-item dropdown">
@@ -51,6 +52,46 @@ Header START -->
 							<li> <a class="dropdown-item"
 									href="<?=ROOTADMIN?>Admineditpost">Edit
 									Post</a> </li>
+						</ul>
+					</li>
+					<!-- Nav item 3 libarary -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"><i class="bi bi-play-btn-fill"></i>Library</a>
+						<ul class="dropdown-menu" aria-labelledby="postMenu">
+							<!-- dropdown submenu -->
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Adminpostlist">Library
+									List</a> </li>
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Adminpostcategories">Library
+									Categories</a> </li>
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Admincreatepost">Create
+									Library Post</a> </li>
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Admineditpost">Edit
+									Library Post</a> </li>
+						</ul>
+					</li>
+					<!-- Nav item 3 events -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"><i class="bi bi-calendar-event"></i>Events</a>
+						<ul class="dropdown-menu" aria-labelledby="postMenu">
+							<!-- dropdown submenu -->
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Adminpostlist">Events
+									List</a> </li>
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Adminpostcategories">Event
+									Categories</a> </li>
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Admincreatepost">Create
+									a Event</a> </li>
+							<li> <a class="dropdown-item"
+									href="<?=ROOTADMIN?>Admineditpost">Edit
+									Event</a> </li>
 						</ul>
 					</li>
 
@@ -81,24 +122,7 @@ Header START -->
 					</li>
 					<!-- Nav item 4 Pages -->
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"><i class="bi bi-folder me-1"></i>More</a>
-						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
-							<li> <a class="dropdown-item" href="dashboard-author-list.html">Author List</a></li>
-							<li> <a class="dropdown-item" href="dashboard-author-single.html">Author Single</a></li>
-							<li> <a class="dropdown-item" href="dashboard-edit-profile.html">Edit Profile</a></li>
-							<li> <a class="dropdown-item" href="dashboard-reviews.html">Reviews</a></li>
-							<li> <a class="dropdown-item" href="dashboard-settings.html">Settings</a></li>
-							<li class="dropdown-divider"></li>
-							<li> <a class="dropdown-item" href="https://support.primesoftwares.tech/" target="_blank">
-									<i class="text-warning fa-fw bi bi-life-preserver me-2"></i>Support</a></li>
-							<li> <a class="dropdown-item" href="docs/index.html" target="_blank"> <i
-										class="text-danger fa-fw bi bi-card-text me-2"></i>Documentation</a></li>
-							<li class="dropdown-divider"></li>
-
-						</ul>
-					</li>
+					
 				</ul>
 
 				<!-- Search dropdown START -->
