@@ -23,6 +23,7 @@ class Admincreatepost extends Admincontroller
         $user = new Admincategories();
         $data['row'] = $user->findAllcategories();
         $adminModel = new Adminpostsmodel();
+        $getcategoryid = new Admincategories();
 
         $req = new Request();
         if ($req->posted()) {
@@ -30,11 +31,14 @@ class Admincreatepost extends Admincontroller
             $files = $req->files();
             $postData = $req->POST();
             $postDataquil = $req->POST("postbody");
-
+            
+            $categoryID = $req->POST("categoryID");
+            $categoryname = $req->POST("categoryname");
             // Ensure adminID is set in POST data
             $postData["adminID"] = $adminID;
             $postData["postbody"] = $postDataquil; // Store plain text content
-            $adminModel->adminaddpost($postData, $files, $adminID);
+            $adminModel->adminaddpost($postData, $files, $adminID, $categoryID,$categoryname);
+            show($postData);
         }
 
         $data['admin'] = $adminModel;
