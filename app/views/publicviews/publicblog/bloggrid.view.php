@@ -310,6 +310,8 @@ Main content START -->
 							<?php endif; ?>
 
 							<?php endforeach; ?>
+							<?php else: ?>
+								<p class="text-danger">No blog posts found .</p>
 							<?php endif; ?>
 							<!-- Card item END -->
 							<!-- Pagination START -->
