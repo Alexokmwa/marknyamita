@@ -25,7 +25,9 @@ JS libraries, plugins and custom scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?=ROOTADMIN?>assets/adminassets/js/functions.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/password.js"></script>
-<script src="<?=ROOTADMIN?>assets/js/editpost.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/deletecategory.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/restore.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/admintrashcategories.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/deletepost.js"></script>
 
 </body>
