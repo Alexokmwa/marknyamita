@@ -72,7 +72,7 @@ trait Model
     // Method to count all posts
     public function countAllposts()
     {
-        $query = "SELECT COUNT(*) as total FROM {$this->table}";
+        $query = "SELECT COUNT(*) as total FROM {$this->table} where poststatus = 'active'";
         $result = $this->query($query);
         return $result[0]->total ?? 0;
     }
