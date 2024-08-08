@@ -28,6 +28,8 @@ class Adminpostcategories extends Admincontroller
         $data['row'] = $user->findAllcategories();
         $data['getcategories'] = new Adminpostsmodel();
         $data['admintitle'] = "Admin Categories";
+        $countcategorisnumber = new Admincategories();
+        $data['countcategorisnumber'] = $countcategorisnumber->countcategories();
         $data['admin'] = new Admincategories();
 
         $req = new Request();
