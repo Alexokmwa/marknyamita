@@ -26,6 +26,7 @@ class Adminpostsmodel
         'category',
         'status',
         'featured',
+        'categoryID',
     ];
 
     protected $validationRules = [
@@ -60,12 +61,14 @@ class Adminpostsmodel
         'featured' => [],
     ];
 
-    public function adminaddpost($data, $files, $adminID)
+    public function adminaddpost($data, $files, $adminID, $categoryID,$categoryname)
     {
         if ($this->validate($data)) {
             $data['date'] = date("Y-m-d H:i:s");
             $data['date_created'] = date("Y-m-d H:i:s");
             $data["adminID"] = $adminID;
+            $data["categoryID"] = $categoryID;
+            $data["category"] = $categoryname;
 
             if (!empty($files["imageurl"]["name"])) {
                 $folder = "admin/adminuploads/";
@@ -87,8 +90,8 @@ class Adminpostsmodel
 
                     $ses->set('comment_success', 'POST created successfully');
                     redirectadmin("Adminpostlist");
-    
-                  
+
+
 
                 } else {
                     $this->errors["imageurl"] = "the file type is not supported";
@@ -101,4 +104,16 @@ class Adminpostsmodel
             $this->addError('status', "select post status");
         }
     }
+    public function getCategoriesNumber(string $category)
+    {
+        // Define the query
+        $query = "SELECT COUNT(postID) as total FROM blogposts WHERE category = :category";
+
+        // Execute the query with the provided postID
+        $result = $this->query($query, ['category' => $category]);
+
+        // Return the total count of categories or 0 if not found
+        return $result[0]->total ?? 0;
+    }
+
 }
