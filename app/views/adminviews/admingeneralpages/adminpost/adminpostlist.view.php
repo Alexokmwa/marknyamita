@@ -47,8 +47,31 @@ Post list START -->
 					<div class="d-sm-flex justify-content-sm-between align-items-center">
 						<h1 class="mb-2 mb-sm-0 h2">Post List <span
 								class="badge bg-primary bg-opacity-10 text-primary">todo</span></h1>
+								<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
+									
+    <?php 
+    $buttonDisplayed = false; // Flag to track button display
+    foreach ($data['rowpost'] as $rowpost): 
+        if ($rowpost->poststatus == 'deleted' && !$buttonDisplayed): 
+            $buttonDisplayed = true; // Set flag to true once button is displayed
+    ?>
+	<?php
+        $ses = new Adminsession();
+				    $sesidadmin = $ses->adminuser("adminID");
+				    ;
+				    ?>
+								<?php if($sesidadmin === $rowpost->adminID):?>
+
+						<a href="<?= ROOTADMIN ?>Posttrash">
+							<button class="bi-trash btn btn-danger">trash bin</button>
+						</a>
+						<?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
 						<a href="<?=ROOTADMIN?>Admincreatepost"
 							class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Add a post</a>
+
 					</div>
 				</div>
 			</div>
@@ -168,6 +191,7 @@ Post list START -->
 									<!-- Table body START -->
 									<?php if (is_array($data['rowpost']) && count($data['rowpost'])): ?>
 									<?php foreach ($data['rowpost'] as $rowpost): ?>
+									<?php if($rowpost->poststatus == 'active'): ?>
 									<tbody class="border-top-0">
 										<!-- Table item -->
 										<tr>
@@ -187,7 +211,7 @@ Post list START -->
 												</h6>
 												<?php endif; ?>
 												<?php endforeach; ?>
-												
+
 												<?php endif; ?>
 											</td>
 											<!-- Table data -->
@@ -228,9 +252,10 @@ Post list START -->
 											</td>
 										</tr>
 									</tbody>
+									<?php endif; ?>
 									<?php endforeach; ?>
 									<?php else: ?>
-										<p class="text-danger text-center">no blogs</p>
+									<p class="text-danger text-center">no blogs</p>
 									<?php endif; ?>
 									<!-- Table body END -->
 
