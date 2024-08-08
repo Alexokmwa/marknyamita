@@ -187,6 +187,7 @@ Post list START -->
 												</h6>
 												<?php endif; ?>
 												<?php endforeach; ?>
+												
 												<?php endif; ?>
 											</td>
 											<!-- Table data -->
@@ -228,6 +229,8 @@ Post list START -->
 										</tr>
 									</tbody>
 									<?php endforeach; ?>
+									<?php else: ?>
+										<p class="text-danger text-center">no blogs</p>
 									<?php endif; ?>
 									<!-- Table body END -->
 
