@@ -1,4 +1,5 @@
 <?php
+
 namespace app\controllers;
 
 defined('ROOTPATH') or exit('Access Denied!');
@@ -31,17 +32,41 @@ class Admindeletepost extends Admincontroller
         $deleteModel = new Admindeletepostmodel();
         $req = new Request();
 
-        if ($req->posted() && isset($_POST['deletepost'])) {
-            $postID = filter_input(INPUT_POST, 'postdeleteid', FILTER_SANITIZE_NUMBER_INT);
-            $result = $deleteModel->deletePost($postID);
-            if ($result){
-               echo 200;
-            }else{
-              echo 500;
+        if ($req->posted()) {
+            if(isset($_POST['deleteposttotrash'])) {
+                $postID = filter_input(INPUT_POST, 'deleteposttotrashid', FILTER_SANITIZE_NUMBER_INT);
+                $result = $deleteModel->deletePosttotrash($postID);
+                if ($result) {
+                    echo 200;
+                } else {
+                    echo 500;
+                }
+
+
+                exit;
+            } elseif(isset($_POST['restorepost'])) {
+                $postID = filter_input(INPUT_POST, 'restorepostid', FILTER_SANITIZE_NUMBER_INT);
+                $result = $deleteModel->restorepostfromtrash($postID);
+                if ($result) {
+                    echo 200;
+                } else {
+                    echo 500;
+                }
+
+
+                exit;
+            }elseif(isset($_POST['deleteposttrash'])) {
+                $postID = filter_input(INPUT_POST, 'deleteposttrashid', FILTER_SANITIZE_NUMBER_INT);
+                $result = $deleteModel->deletePost($postID);
+                if ($result) {
+                    echo 200;
+                } else {
+                    echo 500;
+                }
+
+
+                exit;
             }
-            
-           
-exit;
         }
 
         $data['admintitle'] = "Admin delete Post";
