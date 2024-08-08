@@ -105,6 +105,8 @@ $successMessage = $ses->pop('comment_success');
 			</li>
 			<?php endforeach; ?>
 		</ul>
+		<?php else: ?>
+			<p class="text-danger text-center">no notification</p>
 		<?php endif; ?>
 	</div>
 </main>
