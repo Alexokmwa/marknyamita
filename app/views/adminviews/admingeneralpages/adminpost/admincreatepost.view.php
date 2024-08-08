@@ -158,7 +158,7 @@ adminrenderpageHeader();
 												</label>
 											</div>
 											<div class="text-danger" id="imageurlError">
-												<?= $admin->getError('imageurl') ?>
+												<?=$admin->getError('imageurl') ?>
 											</div>
 											<p class="small mb-0 mt-2">
 												<b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 600px
@@ -168,36 +168,38 @@ adminrenderpageHeader();
 										</div>
 									</div>
 									<div class="col-lg-5">
-    <!-- Category -->
-    <div class="mb-3">
-        <label class="form-label">Category</label>
-        <select class="form-select" id="categorySelect" name="categoryname" aria-label="Default select example" required>
-            <option value="" disabled selected>--Select--</option>
-            <?php if (is_array($data['row']) && count($data['row'])): ?>
-                <?php foreach ($data['row'] as $row): ?>
-                    <option
-                        value="<?= esc($row->categoryname) ?>"
-                        data-id="<?= esc($row->categoryID) ?>"
-                        <?= old_value('categoryname') === esc($row->categoryname) ? 'selected' : '' ?>>
-                        <?= esc($row->categoryname) ?>
-                    </option>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </select>
-        <input type="hidden" id="categoryID" name="categoryID" value="<?= old_value('categoryID') ?>">
-        <div class="text-danger" id="categoryError">
-            <?= $admin->getError('category') ?>
-        </div>
-    </div>
-</div>
+										<!-- Category -->
+										<div class="mb-3">
+											<label class="form-label">Category</label>
+											<select class="form-select" id="categorySelect" name="categoryname"
+												aria-label="Default select example" required>
+												<option value="" disabled selected>--Select--</option>
+												<?php if (is_array($data['row']) && count($data['row'])): ?>
+												<?php foreach ($data['row'] as $row): ?>
+												<option
+													value="<?= esc($row->categoryname) ?>"
+													data-id="<?= esc($row->categoryID) ?>"
+													<?= old_value('categoryname') === esc($row->categoryname) ? 'selected' : '' ?>>
+													<?= esc($row->categoryname) ?>
+												</option>
+												<?php endforeach; ?>
+												<?php endif; ?>
+											</select>
+											<input type="hidden" id="categoryID" name="categoryID"
+												value="<?= old_value('categoryID') ?>">
+											<div class="text-danger" id="categoryError">
+												<?=$admin->getError('category') ?>
+											</div>
+										</div>
+									</div>
 
-<script>
-    document.getElementById('categorySelect').addEventListener('change', function() {
-        var selectedOption = this.options[this.selectedIndex];
-        var selectedCategoryID = selectedOption.getAttribute('data-id');
-        document.getElementById('categoryID').value = selectedCategoryID;
-    });
-</script>
+									<script>
+										document.getElementById('categorySelect').addEventListener('change', function() {
+											var selectedOption = this.options[this.selectedIndex];
+											var selectedCategoryID = selectedOption.getAttribute('data-id');
+											document.getElementById('categoryID').value = selectedCategoryID;
+										});
+									</script>
 
 									<div class="col-lg-7">
 										<!-- Tags -->
@@ -246,7 +248,7 @@ adminrenderpageHeader();
 											</label>
 										</div>
 									</div>
-									
+
 
 									<!-- Create post button -->
 									<div class="col-md-12 text-start">
