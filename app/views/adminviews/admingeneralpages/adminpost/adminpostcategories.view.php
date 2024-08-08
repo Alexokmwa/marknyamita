@@ -21,7 +21,7 @@ Main contain START -->
 					<!-- Title -->
 					<div class="d-sm-flex justify-content-sm-between align-items-center">
 						<h1 class="mb-2 mb-sm-0 h2">Categories <span
-								class="badge bg-primary bg-opacity-10 text-primary">07</span></h1>
+								class="badge bg-primary bg-opacity-10 text-primary"><?=$countcategorisnumber?></span></h1>
 								<?php if (is_array($data['row']) && count($data['row'])): ?>
     <?php 
     $buttonDisplayed = false; // Flag to track button display
