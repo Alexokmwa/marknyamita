@@ -27,6 +27,7 @@ class Adminpostsmodel
         'status',
         'featured',
         'categoryID',
+        'poststatus',
     ];
 
     protected $validationRules = [
@@ -61,7 +62,7 @@ class Adminpostsmodel
         'featured' => [],
     ];
 
-    public function adminaddpost($data, $files, $adminID, $categoryID,$categoryname)
+    public function adminaddpost($data, $poststatus, $files, $adminID, $categoryID, $categoryname)
     {
         if ($this->validate($data)) {
             $data['date'] = date("Y-m-d H:i:s");
@@ -69,6 +70,7 @@ class Adminpostsmodel
             $data["adminID"] = $adminID;
             $data["categoryID"] = $categoryID;
             $data["category"] = $categoryname;
+            $data["poststatus"] = $poststatus;
 
             if (!empty($files["imageurl"]["name"])) {
                 $folder = "admin/adminuploads/";
