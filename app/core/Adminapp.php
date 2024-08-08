@@ -38,6 +38,7 @@ class Adminapp
             "../app/controllers/adminviews/admingeneralpagesctrl/pages/",
             "../app/controllers/adminviews/admingeneralpagesctrl/posts/",
             "../app/controllers/adminviews/admingeneralpagesctrl/posts/postssearchpages/",
+            "../app/controllers/adminviews/admingeneralpagesctrl/posts/trashbinpages/",
 
         ];
 
