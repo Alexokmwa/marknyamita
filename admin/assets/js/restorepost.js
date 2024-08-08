@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.deleteposttrash').click(function (e) { 
+    $('.restorepost').click(function (e) { 
         e.preventDefault();
         var id = $(this).attr('value');
         swal({
@@ -15,8 +15,8 @@ $(document).ready(function () {
                 type: "POST",
                 url: "../admin/Admindeletepost",
                 data: {
-                    deleteposttrashid: id,
-                    deleteposttrash: true
+                    restorepostid: id,
+                    restorepost: true
                 },
                 success: function (response) {
                     // Handle success response here
@@ -24,7 +24,7 @@ $(document).ready(function () {
                     if (response === 200){
                         swal("Success!", "Product deleted successfully!", "success")
                         .then(() => {
-                            window.location.href = "../admin/Posttrash"; // Adjust URL as necessary
+                            window.location.href = "../admin/Adminpostlist"; // Adjust URL as necessary
                         });
                     }
                     else if (response === 500){
@@ -38,7 +38,7 @@ $(document).ready(function () {
                 }
              });
             } else {
-              swal("Your data is safe!");
+              swal("Your restore failed!");
             }
           });
     });

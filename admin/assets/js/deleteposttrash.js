@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    $('.deleteposttrash').click(function (e) { 
+    $('.deleteposttotrash').click(function (e) { 
         e.preventDefault();
         var id = $(this).attr('value');
         swal({
             title: "confirm delete",
-            text: "Once deleted,you can not undo",
+            text: "Once deleted,you can undo or restore",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -13,10 +13,10 @@ $(document).ready(function () {
             if (willDelete) {
              $.ajax({
                 type: "POST",
-                url: "../admin/Admindeletepost",
+                url: "Admindeletepost",
                 data: {
-                    deleteposttrashid: id,
-                    deleteposttrash: true
+                    deleteposttotrashid: id,
+                    deleteposttotrash: true
                 },
                 success: function (response) {
                     // Handle success response here
@@ -24,7 +24,7 @@ $(document).ready(function () {
                     if (response === 200){
                         swal("Success!", "Product deleted successfully!", "success")
                         .then(() => {
-                            window.location.href = "../admin/Posttrash"; // Adjust URL as necessary
+                            window.location.href = "../Adminpostlist"; // Adjust URL as necessary
                         });
                     }
                     else if (response === 500){
