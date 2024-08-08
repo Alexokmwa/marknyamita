@@ -76,6 +76,12 @@ trait Model
         $result = $this->query($query);
         return $result[0]->total ?? 0;
     }
+    public function countcategories()
+    {
+        $query = "SELECT COUNT(*) as total FROM {$this->table} where categorystatus = 'active'";
+        $result = $this->query($query);
+        return $result[0]->total ?? 0;
+    }
     public function countAllcomments()
     {
         $query = "SELECT COUNT(*) as total FROM {$this->table} ";
