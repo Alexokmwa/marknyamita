@@ -28,6 +28,8 @@ JS libraries, plugins and custom scripts -->
 <script src="<?=ROOTADMIN?>assets/js/deletecategory.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/restore.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/admintrashcategories.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/deleteposttrash.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/restorepost.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/deletepost.js"></script>
 
 </body>
