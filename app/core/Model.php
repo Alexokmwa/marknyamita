@@ -126,30 +126,30 @@ trait Model
         return $this->query($query, $data);
     }
     public function wherecategory($data, $data_not = [])
-{
-    $keys = array_keys($data);
-    $keys_not = array_keys($data_not);
-    $query = "SELECT * FROM $this->table WHERE ";
+    {
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+        $query = "SELECT * FROM $this->table WHERE ";
 
-    // Handle `data` conditions
-    foreach ($keys as $key) {
-        $query .= "$key = :$key AND ";
+        // Handle `data` conditions
+        foreach ($keys as $key) {
+            $query .= "$key = :$key AND ";
+        }
+
+        // Handle `data_not` conditions
+        foreach ($keys_not as $key) {
+            $query .= "$key != :$key AND ";
+        }
+
+        // Remove trailing `AND`
+        $query = rtrim($query, " AND ");
+
+        $query .= " ORDER BY $this->order_columnpost $this->order_type LIMIT $this->limit OFFSET $this->offset";
+
+        $data = array_merge($data, $data_not);
+
+        return $this->query($query, $data);
     }
-
-    // Handle `data_not` conditions
-    foreach ($keys_not as $key) {
-        $query .= "$key != :$key AND ";
-    }
-
-    // Remove trailing `AND`
-    $query = rtrim($query, " AND ");
-
-    $query .= " ORDER BY $this->order_columnpost $this->order_type LIMIT $this->limit OFFSET $this->offset";
-
-    $data = array_merge($data, $data_not);
-
-    return $this->query($query, $data);
-}
 
     public function wherecomment($data, $data_not = [])
     {
@@ -249,6 +249,36 @@ trait Model
 
 
     public function update($id, $data, $id_column = 'id')
+    {
+
+        /** remove unwanted data **/
+        if(!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+
+                if(!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+
+        $this->query($query, $data);
+        return false;
+
+    }
+    public function updatecategory($id, $data, $id_column = 'categoryID')
     {
 
         /** remove unwanted data **/
@@ -409,6 +439,17 @@ trait Model
         return false;
 
     }
+    public function deletecategory($id, $id_column = "categoryID")
+    {
+
+        $data[$id_column] = $id;
+        $query = "delete from $this->table where $id_column = :$id_column ";
+        $this->query($query, $data);
+
+        return false;
+
+    }
+
     public function deleteblog($id, $id_column = 'postID')
     {
 
