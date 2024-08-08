@@ -161,6 +161,13 @@ Main contain START -->
 									</h5>
 									<h6 class="mb-0 fw-light">Total posts</h6>
 								</div>
+								<?php if (is_array($data['categorycreator']) && count($data['categorycreator'])): ?>
+												<?php foreach ($data['categorycreator'] as $categorycreator): ?>
+												<?php if ($row->admid === $categorycreator->adminID): ?>
+								<h6 class="mb-0 fw-light text-primary">By: <?= esc($categorycreator->firstname . " " . $categorycreator->lastname) ?></h6>
+								<?php endif; ?>
+								<?php endforeach; ?>
+								<?php endif; ?>
 								<?php
 
 				    }
