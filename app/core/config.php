@@ -29,11 +29,11 @@ if($_SERVER['SERVER_NAME'] === 'localhost') {
     define('DBPASS', '');
     define('DBDRIVER', '');
     // user root
-    define('ROOT', 'https://honmarknyamita.free.nf/marknyamita/Public/');
+    define('ROOT', 'https://b304-102-216-154-44.ngrok-free.app/marknyamita/Public/');
     // admin root
-    define('ROOTADMIN', 'https://honmarknyamita.free.nf/marknyamita/admin/');
+    define('ROOTADMIN', 'https://b304-102-216-154-44.ngrok-free.app/marknyamita/admin/');
     // admin support
-    define('ROOTADMINSUPPORT', 'https://honmarknyamita.free.nf/marknyamita/adminsupport/');
+    define('ROOTADMINSUPPORT', 'https://b304-102-216-154-44.ngrok-free.app/marknyamita/adminsupport/');
 }
 
 define('APP_NAMEADMIN', 'ADMIN');

@@ -24,7 +24,7 @@
           <li class="nav-item flex-grow-1">
             <a class="nav-link d-flex flex-column align-items-center" href="<?=ROOTADMIN?>Adminmedia">
             <i class="bi bi-play-btn-fill"></i>
-              <span class="d-block">Media</span>
+              <span class="d-block">Library</span>
             </a>
           </li>
           <li class="nav-item flex-grow-1">
