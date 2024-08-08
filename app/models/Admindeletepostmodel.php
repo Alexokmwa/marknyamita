@@ -5,6 +5,7 @@ namespace app\models;
 defined('ROOTPATH') or exit('Access Denied!');
 use app\core\Model;
 use Exception;
+
 class Admindeletepostmodel
 {
     use Model;
@@ -23,6 +24,8 @@ class Admindeletepostmodel
         'category',
         'status',
         'featured',
+        'categoryID',
+        'poststatus',
     ];
 
     protected $validationRules = [
@@ -56,29 +59,71 @@ class Admindeletepostmodel
         'featured' => [],
     ];
 
-    public function deletePost($postID)
-{
-    try {
-        // Fetch the current image URL from the database
-        $currentPost = $this->first([$this->primaryKey => $postID]);
+    public function deletePosttotrash($postID)
+    {
+        try {
+            // Fetch the current image URL from the database
+            $currentPost = $this->first([$this->primaryKey => $postID]);
 
-        if ($currentPost) {
-            $currentImageUrl = $currentPost->imageurl;
+            if ($currentPost) {
 
-            // Delete the old image if it exists
-            if ($currentImageUrl && file_exists($currentImageUrl)) {
-                unlink($currentImageUrl);
+
+
+                $this->updateblog($postID, ['poststatus' => 'deleted']);
+
+                return ['success' => true, 'message' => 'Delete successful'];
+            } else {
+                return ['success' => false, 'message' => 'Delete failed'];
             }
-
-            // Delete the post from the database
-            $this->deleteblog($postID);
-
-            return ['success' => true, 'message' => 'Delete successful'];
-        } else {
-            return ['success' => false, 'message' => 'Delete failed'];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
         }
-    } catch (Exception $e) {
-        return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
     }
-}
+    public function restorepostfromtrash($postID)
+    {
+        try {
+            // Fetch the current image URL from the database
+            $currentPost = $this->first([$this->primaryKey => $postID]);
+
+            if ($currentPost) {
+
+
+
+                $this->updateblog($postID, ['poststatus' => 'active']);
+
+
+                return ['success' => true, 'message' => 'Delete successful'];
+            } else {
+                return ['success' => false, 'message' => 'Delete failed'];
+            }
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
+        }
+    }
+    // delete post completely form trash
+    public function deletePost($postID)
+    {
+        try {
+            // Fetch the current image URL from the database
+            $currentPost = $this->first([$this->primaryKey => $postID]);
+
+            if ($currentPost) {
+                $currentImageUrl = $currentPost->imageurl;
+
+                // Delete the old image if it exists
+                if ($currentImageUrl && file_exists($currentImageUrl)) {
+                    unlink($currentImageUrl);
+                }
+
+                // Delete the post from the database
+                $this->deleteblog($postID);
+
+                return ['success' => true, 'message' => 'Delete successful'];
+            } else {
+                return ['success' => false, 'message' => 'Delete failed'];
+            }
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
+        }
+    }
 }
