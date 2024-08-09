@@ -39,7 +39,6 @@ class Admincreatepost extends Admincontroller
             $poststatus = 'active';
             $postData["postbody"] = $postDataquil; // Store plain text content
             $adminModel->adminaddpost($postData, $poststatus, $files, $adminID, $categoryID, $categoryname);
-            show($postData);
         }
 
         $data['admin'] = $adminModel;
