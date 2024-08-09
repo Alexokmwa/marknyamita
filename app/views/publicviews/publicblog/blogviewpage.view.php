@@ -316,11 +316,11 @@ Tag and share END -->
 										<?php endif?>
 										<?php endif?>
 									</div>
-									<!-- <form id="deletereplyForm" method="post" >
+									<form id="deletereplyForm" method="post" >
 						<input type="hidden" name="form_type" value="delete_blog_comment">
 						<input type="hidden" name="delID" value="<?=$comment->commentID?>">
 									<button type="submit" class="btn btn-danger">delete reply</button>
-									</form> -->
+									</form>
 								</div>
 								<?php endif?>
 								<!-- Reply Form Start -->
@@ -591,11 +591,11 @@ Tag and share END -->
 											<?php endif?>
 											<?php endif?>
 										</div>
-										<!-- <form id="deletereplyForm" method="post" >
+										<form id="deletereplyForm" method="post" >
 						<input type="hidden" name="form_type" value="delete_blog_reply_comment">
 						<input type="hidden" name="delID" value="<?=$comment->commentID?>">
 										<button type="submit" class="btn btn-danger">delete reply</button>
-										</form> -->
+										</form>
 									</div>
 									<?php endif?>
 									<!-- Comment children level 2 end -->
