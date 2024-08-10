@@ -94,10 +94,15 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.css">
 	<!-- tiny-slider cdn -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.4/dist/tiny-slider.css">
-<!-- glightbox -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-
-		<!-- Theme CSS -->
+	<!-- glightbox -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+	<!-- pyrl -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
+	<!-- swipper -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css"
+		integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css"
 		href="<?=ROOT?>/assets/asset/css/style.css">
 	<!-- custom -->

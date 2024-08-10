@@ -12,9 +12,12 @@
 
 <!-- vanilla lazy load -->
 <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.5.2/dist/lazyload.min.js"></script>
+<!-- swiper js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Template Functions (local file) -->
 <script src="<?=ROOT?>assets/asset/js/functions.js"></script>
+<script src="<?=ROOT?>assets/js/swiper.js"></script>
 <script src="<?=ROOT?>assets/js/password.js"></script>
 <script src="<?=ROOT?>assets/js/likes.js"></script>
 
