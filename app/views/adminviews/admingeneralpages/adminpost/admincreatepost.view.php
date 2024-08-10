@@ -82,58 +82,17 @@ adminrenderpageHeader();
 									</div>
 									<!-- Short description end -->
 
-									<!-- Quill start -->
-									<div class="col-md-12">
-										<!-- Subject -->
-										<div class="mb-3">
-											<label class="form-label">Post body</label>
-											<!-- Editor toolbar -->
-											<div class="bg-light border border-bottom-0 rounded-top py-3"
-												id="quilltoolbar">
-												<span class="ql-formats">
-													<select class="ql-size"></select>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-bold"></button>
-													<button class="ql-italic"></button>
-													<button class="ql-underline"></button>
-													<button class="ql-strike"></button>
-												</span>
-												<span class="ql-formats">
-													<select class="ql-color"></select>
-													<select class="ql-background"></select>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-code-block"></button>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-list" value="ordered"></button>
-													<button class="ql-list" value="bullet"></button>
-													<button class="ql-indent" value="-1"></button>
-													<button class="ql-indent" value="+1"></button>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-link"></button>
-													<button class="ql-image"></button>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-clean"></button>
-												</span>
+									<!-- edit area end -->
+									<div class="col-12">
+											<label class="form-label">postbody </label>
+											<textarea id="summernote" class="form-control"
+												rows="8" name="postbody"><?= old_value('postbody') ?></textarea>
 											</div>
-											<!-- Main toolbar -->
-											<div class="bg-body border rounded-bottom h-300 overflow-hidden"
-												id="quilleditor">
-												<!-- Quill editor content will be initialized here -->
-												<?= old_value('postbody') ?>
+											<div class="text-danger" id="postbodyError">
+												<?= $admin->getError('postbody') ?>
 											</div>
-											<input type="hidden" name="postbody" id="quilleditor-input">
-										</div>
 
-										<div class="text-danger" id="postbodyError">
-											<?= $admin->getError('postbody') ?>
-										</div>
-									</div>
-									<!-- End Quill -->
+									<!-- edit area end -->
 
 									<div class="col-lg-7">
 										<div class="mb-3">
@@ -290,27 +249,11 @@ adminrenderHtmlFooter();
 ?>
 
 <script>
-	var quill = new Quill('#quilleditor', {
-		modules: {
-			toolbar: '#quilltoolbar'
-		},
-		theme: 'snow'
-	});
+      $('#summernote').summernote({
+    placeholder: 'Post content',
+    tabsize: 2,
+    height: 300,
+    dialogsInBody: true, // This option appends dialogs to the body instead of the summernote container
+});
 
-	// Load old value into the Quill editor if available
-	var
-		oldPostBody = <?= json_encode(old_value('postbody', '')) ?> ;
-	if (oldPostBody) {
-		quill.setContents(JSON.parse(oldPostBody));
-	}
-
-	document.querySelector('#postForm').onsubmit = function() {
-		// Clean up the content: remove empty <p> tags
-		// Extract HTML content from Quill editor
-		var postbody = quill.root.innerHTML;
-		postbody = postbody.replace(/<p>\s*<\/p>/g, '');
-		// Optionally, remove all HTML tags
-		postbody = quill.getText(); // Use plain text if you prefer
-		document.getElementById('quilleditor-input').value = postbody;
-	};
 </script>
