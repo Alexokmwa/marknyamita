@@ -5,9 +5,8 @@
 renderpageHeader();
 ?>
 
-<!-- <h1 class="myclassmargintop">public login view page design of tabs and subpages goes here</h1>
-<h1>Login page view</h1> -->
-<div>
+
+<div class="pattern">
 	<div class="mysmbottomspace">
 
 		<div class="card shadow container-fluid border col-lg-5 col-md-6 pt-2 ">
@@ -75,6 +74,7 @@ renderpageHeader();
 		</div>
 
 	</div>
+
 	<div>
 		<?php
                 /**

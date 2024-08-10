@@ -17,4 +17,6 @@
     top: 50%;
     transform: translateY(-50%)
 }
-
+.pattern{
+    background: url('../images/formbackground.png');  background-repeat: repeat; 
+}

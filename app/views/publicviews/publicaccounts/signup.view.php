@@ -5,7 +5,7 @@
 renderpageHeader();
 ?>
 
-<div class="patternsquare">
+<div class="pattern">
 	<div class="mysmbottomspace">
 
 
