@@ -30,14 +30,10 @@ class Admincreatepost extends Admincontroller
             $adminID = $ses->adminuser("adminID");
             $files = $req->files();
             $postData = $req->POST();
-            $postDataquil = $req->POST("postbody");
 
             $categoryID = $req->POST("categoryID");
             $categoryname = $req->POST("categoryname");
-            // Ensure adminID is set in POST data
-            $postData["adminID"] = $adminID;
             $poststatus = 'active';
-            $postData["postbody"] = $postDataquil; // Store plain text content
             $adminModel->adminaddpost($postData, $poststatus, $files, $adminID, $categoryID, $categoryname);
         }
 

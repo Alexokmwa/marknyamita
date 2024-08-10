@@ -40,19 +40,18 @@ class Admineditpost extends Admincontroller
             $adminID = $ses->adminuser("adminID");
             $files = $req->files();
             $postData = $req->POST();
-            $postDataquil = $req->POST("postbody");
             $idupdate = $rowid->postID;
-            // Ensure adminID is set in POST data
-            $postData["adminID"] = $adminID;
-            $postData["postbody"] = $postDataquil; // Store plain text content
-            $adminModel->admineditpost($idupdate, $postData, $files, $adminID);
+            $categoryID = $req->POST("categoryID");
+            $categoryname = $req->POST("categoryname");
+            $poststatus = 'active';
+            $adminModel->admineditpost($idupdate,$postData, $poststatus, $files, $adminID, $categoryID, $categoryname);
         
+            show($postData);
         }
 
         $data['admin'] = $adminModel;
         $data['admintitle'] = "Admin Editpost";
 
-        // show($data);
         $this ->adminview('adminviews/admingeneralpages/adminpost/admineditpost', $data);
     }
 }
