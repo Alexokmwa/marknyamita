@@ -90,7 +90,7 @@ Inner intro START -->
 	    ?>
 					<img class="rounded mt-5 img-fluid"
 						src="<?=$imageSrc?>" alt="Image"
-						style="object-fit: contain;width: 100%; height: auto;">
+						style="object-fit: cover;width: 2300PX; height: 200PX;">
 				</div>
 			</div>
 		</div>
@@ -105,8 +105,7 @@ Main START -->
 			<div class="row">
 				<!-- Main Content START -->
 				<div class="col-lg-9 mx-auto">
-					<p><span
-							class="dropcap bg-primary bg-opacity-10 text-primary px-2">R</span><?=$rowpost->postbody?>
+					<p><?=add_root_to_images($rowpost->postbody)?>
 
 					</p>
 
