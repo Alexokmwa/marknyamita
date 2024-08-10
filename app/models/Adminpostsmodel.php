@@ -65,9 +65,12 @@ class Adminpostsmodel
     public function adminaddpost($data, $poststatus, $files, $adminID, $categoryID, $categoryname)
     {
         if ($this->validate($data)) {
+            $blogimages = remove_images_from_content($data["postbody"]);
+            $blogimages =  remove_root_from_content($blogimages);
             $data['date'] = date("Y-m-d H:i:s");
             $data['date_created'] = date("Y-m-d H:i:s");
             $data["adminID"] = $adminID;
+            $data["postbody"] = $blogimages;
             $data["categoryID"] = $categoryID;
             $data["category"] = $categoryname;
             $data["poststatus"] = $poststatus;

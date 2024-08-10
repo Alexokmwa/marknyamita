@@ -25,6 +25,8 @@ class Admineditpostmodal
         'category',
         'status',
         'featured',
+        'categoryID',
+        'poststatus',
     ];
 
     protected $validationRules = [
@@ -58,12 +60,18 @@ class Admineditpostmodal
         'featured' => [],
     ];
 
-    public function admineditpost($idupdate, $data, $files, $adminID)
+    public function admineditpost($idupdate,$data, $poststatus, $files, $adminID, $categoryID, $categoryname)
     {
         if ($this->validate($data)) {
+            $blogimages = remove_images_from_content($data["postbody"]);
+            $blogimages =  remove_root_from_content($blogimages);
             $data['date'] = date("Y-m-d H:i:s");
             $data['date_updated'] = date("Y-m-d H:i:s");
             $data["adminID"] = $adminID;
+            $data["postbody"] = $blogimages;
+            $data["categoryID"] = $categoryID;
+            $data["category"] = $categoryname;
+            $data["poststatus"] = $poststatus;
 
             // Fetch the current image URL from the database
             $currentPost = $this->first([$this->primaryKey => $idupdate]);
@@ -102,12 +110,8 @@ class Admineditpostmodal
         } else {
             $this->addError('imageurl', "no image found, upload at least one image");
             $this->addError('category', "select category");
-            $this->addError('postbody', "please write main blog content");
             $this->addError('status', "select post status");
-            $this->addError('postname', "input post name");
-            $this->addError('tags', "input tag name");
-            $this->addError('shortdescription', "input tag shortdescription");
-            $this->addError('posttype', "input tag posttype");
+           
         }
     }
 }
