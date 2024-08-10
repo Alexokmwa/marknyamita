@@ -68,64 +68,26 @@ Post edit START -->
 									<!-- Short description -->
 									<div class="col-12">
 										<div class="mb-3">
-											<label class="form-label" name="shortdescription">Short description </label>
+											<label class="form-label">Short description </label>
 											<textarea class="form-control"
-												rows="3"><?= old_value('shortdescription', esc($rowpost->shortdescription) ?? '') ?></textarea>
+												rows="3" name="shortdescription"><?= old_value('shortdescription', esc($rowpost->shortdescription) ?? '') ?></textarea>
 											<div class="text-danger" id="shortdescriptionError">
 												<?= $admin->getError('shortdescription') ?>
 											</div>
 										</div>
 									</div>
-
-									<!-- Main toolbar -->
-									<div class="col-md-12">
-										<!-- Subject -->
-										<div class="mb-3">
-											<label class="form-label">Post body</label>
-											<!-- Editor toolbar -->
-											<div class="bg-light border border-bottom-0 rounded-top py-3"
-												id="quilltoolbar">
-												<span class="ql-formats">
-													<select class="ql-size"></select>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-bold"></button>
-													<button class="ql-italic"></button>
-													<button class="ql-underline"></button>
-													<button class="ql-strike"></button>
-												</span>
-												<span class="ql-formats">
-													<select class="ql-color"></select>
-													<select class="ql-background"></select>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-code-block"></button>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-list" value="ordered"></button>
-													<button class="ql-list" value="bullet"></button>
-													<button class="ql-indent" value="-1"></button>
-													<button class="ql-indent" value="+1"></button>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-link"></button>
-													<button class="ql-image"></button>
-												</span>
-												<span class="ql-formats">
-													<button class="ql-clean"></button>
-												</span>
+								<!-- edit area end -->
+									<div class="col-12">
+											<label class="form-label">postbody </label>
+											<textarea id="summernote" class="form-control"
+												rows="8" name="postbody"><?= old_value('postbody', add_root_to_images($rowpost->postbody) ?? '') ?></textarea>
 											</div>
-											<!-- Main toolbar -->
-											<div class="bg-body border rounded-bottom h-300 overflow-hidden"
-												id="quilleditor">
-												<?= old_value('postbody', esc($rowpost->postbody) ?? '')?>
+											<div class="text-danger" id="postbodyError">
+												<?= $admin->getError('postbody') ?>
 											</div>
 
-											<input type="hidden" name="postbody" id="quilleditor-input"
-												value="<?=old_value('postbody', esc($rowpost->postbody) ?? '')?>">
-
-										</div>
-									</div>
+									<!-- edit area end -->
+									
 									<div class="col-lg-7 mt-4">
 										<div class="mb-3">
 											<!-- Image -->
@@ -173,28 +135,39 @@ Post edit START -->
 												4:3 to fit our thumbnails/previews.</p>
 										</div>
 									</div>
-									<div class="col-lg-5 mt-4">
+									<div class="col-lg-5">
 										<!-- Category -->
 										<div class="mb-3">
 											<label class="form-label">Category</label>
-											<select class="form-select" name="category"
-												aria-label="Default select example">
-												<option value="" disabled>--Select--</option>
-												<?php if (isset($data['row']) && is_array($data['row']) && count($data['row'])): ?>
-												<?php foreach ($data['row'] as $category): ?>
+											<select class="form-select" id="categorySelect" name="categoryname"
+												aria-label="Default select example" required>
+												<option value="" disabled selected>--Select--</option>
+												<?php if (is_array($data['row']) && count($data['row'])): ?>
+												<?php foreach ($data['row'] as $row): ?>
 												<option
-													value="<?= esc($category->categoryname) ?>"
-													<?=old_value('category') === esc(($rowpost->category == $category->categoryname)) ? 'selected' : '' ?>>
-													<?= esc($category->categoryname) ?>
+													value="<?= esc($row->categoryname) ?>"
+													data-id="<?= esc($row->categoryID) ?>"
+													<?= old_value('categoryname') === esc($row->categoryname) ? 'selected' : '' ?>>
+													<?= esc($row->categoryname) ?>
 												</option>
 												<?php endforeach; ?>
 												<?php endif; ?>
 											</select>
+											<input type="hidden" id="categoryID" name="categoryID"
+												value="<?= old_value('categoryID') ?>">
 											<div class="text-danger" id="categoryError">
-												<?= $admin->getError('category') ?>
+												<?=$admin->getError('category') ?>
 											</div>
 										</div>
 									</div>
+
+									<script>
+										document.getElementById('categorySelect').addEventListener('change', function() {
+											var selectedOption = this.options[this.selectedIndex];
+											var selectedCategoryID = selectedOption.getAttribute('data-id');
+											document.getElementById('categoryID').value = selectedCategoryID;
+										});
+									</script>
 									<div class="col-lg-7">
 										<!-- Tags -->
 										<div class="mb-3">
@@ -288,26 +261,13 @@ adminrendersmfooter();
 adminrenderHtmlFooter();
 ?>
 <script>
-	var quill = new Quill('#quilleditor', {
-		modules: {
-			toolbar: '#quilltoolbar'
-		},
-		theme: 'snow'
-	});
+      $('#summernote').summernote({
+    placeholder: 'Post content',
+    tabsize: 2,
+    height: 300,
+    dialogsInBody: true, // This option appends dialogs to the body instead of the summernote container
+});
 
-	// Load old value into the Quill editor if available
-	var
-		oldPostBody = <?= json_encode(old_value('postbody', esc($rowpost->postbody) ?? '')) ?> ;
-	if (oldPostBody) {
-		quill.clipboard.dangerouslyPasteHTML(oldPostBody);
-	}
-
-	document.querySelector('#postForm').onsubmit = function() {
-		// Extract HTML content from Quill editor
-		var postbody = quill.root.innerHTML;
-		postbody = postbody.replace(/<p>\s*<\/p>/g, '');
-		// Optionally, remove all HTML tags
-		postbody = quill.getText(); // Use plain text if you prefer
-		document.getElementById('quilleditor-input').value = postbody;
-	};
 </script>
+
+	
