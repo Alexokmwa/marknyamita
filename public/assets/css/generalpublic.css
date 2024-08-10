@@ -1,3 +1,34 @@
 .mysmbottomspace{
     margin-bottom: 100px;
 }
+.mb-xl-9 {
+    margin-bottom: 5rem !important;
+  }
+.pb-7 {
+    padding-bottom: 3rem !important;
+}
+.p-lg-7 {
+    padding: 3rem !important;
+}
+.ls-md {
+    letter-spacing: 0.1em !important;
+}
+
+.pattern-square {
+    position: relative;
+}
+.pattern-square:after {
+    background-image: url(../images/pattern-square.svg);
+    background-position: top;
+    bottom: 0;
+    content: "";
+    height: 312px;
+    left: 0;
+    -webkit-mask-image: linear-gradient(0deg, transparent 35%, #000 75%);
+    mask-image: linear-gradient(0deg, transparent 35%, #000 75%);
+    padding: 40px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
