@@ -322,7 +322,7 @@ function add_root_to_images($contents)
             preg_match('/src="[^"]+/', $match, $matches2);
             if(!strstr($matches2[0], 'http')) {
 
-                $contents = str_replace($matches2[0], 'src="'.ROOT.'/'.str_replace('src="', "", $matches2[0]), $contents);
+                $contents = str_replace($matches2[0], 'src="'.ROOTADMIN.str_replace('src="', "", $matches2[0]), $contents);
             }
         }
 
@@ -330,9 +330,15 @@ function add_root_to_images($contents)
 
     return $contents;
 }
+function remove_root_from_content($content)
+{
+	
+	$content = str_replace(ROOTADMIN, "", $content);
 
+	return $content;
+}
 /** converts images from text editor content to actual files **/
-function remove_images_from_content($content, $folder = "uploads/")
+function remove_images_from_content($content, $folder = "admin/adminuploads/blogcontenimage/")
 {
 
     if(!file_exists($folder)) {
