@@ -44,9 +44,8 @@ class Admineditpost extends Admincontroller
             $categoryID = $req->POST("categoryID");
             $categoryname = $req->POST("categoryname");
             $poststatus = 'active';
-            $adminModel->admineditpost($idupdate,$postData, $poststatus, $files, $adminID, $categoryID, $categoryname);
-        
-            show($postData);
+            $adminModel->admineditpost($idupdate, $postData, $poststatus, $files, $adminID, $categoryID, $categoryname);
+
         }
 
         $data['admin'] = $adminModel;
