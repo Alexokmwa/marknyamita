@@ -27,12 +27,12 @@ class Admincategories
             'required',
         ],
         'categorydescription' => [
-            'alpha',
+            'alpha_symbol',
             'required',
         ],
     ];
 
-    public function adminaddcategory($data, $admid,$status)
+    public function adminaddcategory($data, $admid, $status)
     {
         $result = ['success' => false, 'errors' => $this->errors];
 
