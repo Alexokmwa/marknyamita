@@ -81,16 +81,16 @@ Header START -->
 						<ul class="dropdown-menu" aria-labelledby="postMenu">
 							<!-- dropdown submenu -->
 							<li> <a class="dropdown-item"
-									href="<?=ROOTADMIN?>Adminpostlist">Events
+									href="<?=ROOTADMIN?>Admineventlist">Events
 									List</a> </li>
 							<li> <a class="dropdown-item"
-									href="<?=ROOTADMIN?>Adminpostcategories">Event
+									href="<?=ROOTADMIN?>Admineventcategory">Event
 									Categories</a> </li>
 							<li> <a class="dropdown-item"
-									href="<?=ROOTADMIN?>Admincreatepost">Create
+									href="<?=ROOTADMIN?>Admincreateevent">Create
 									a Event</a> </li>
 							<li> <a class="dropdown-item"
-									href="<?=ROOTADMIN?>Admineditpost">Edit
+									href="<?=ROOTADMIN?>Admineditevent">Edit
 									Event</a> </li>
 						</ul>
 					</li>
@@ -122,7 +122,7 @@ Header START -->
 					</li>
 					<!-- Nav item 4 Pages -->
 
-					
+
 				</ul>
 
 				<!-- Search dropdown START -->
