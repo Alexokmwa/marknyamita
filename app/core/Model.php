@@ -18,6 +18,7 @@ trait Model
     public $order_type 	= "desc";
     public $order_column = "id" ;
     public $order_columnadmin = "adminID" ;
+    public $order_columnevent = "eventID" ;
     public $order_columnusers = "user_id" ;
     public $order_columncategories = "categoryID" ;
     public $order_columncomment = "commentID" ;
@@ -61,11 +62,25 @@ trait Model
 
         return $this->query($query);
     }
+    public function findAlleventcategories()
+    {
+
+        $query = "select * from $this->table order by $this->order_columnevent $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
 
     public function findAllposts()
     {
 
         $query = "select * from $this->table order by $this->order_columnpost $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
+    public function findAllevents()
+    {
+
+        $query = "select * from $this->table order by $this->order_columnevent $this->order_type limit $this->limit offset $this->offset";
 
         return $this->query($query);
     }
@@ -315,6 +330,36 @@ trait Model
 
     }
     public function updateblog($id, $data, $id_column = 'postID')
+    {
+
+        /** remove unwanted data **/
+        if(!empty($this->allowedColumns)) {
+            foreach ($data as $key => $value) {
+
+                if(!in_array($key, $this->allowedColumns)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        $keys = array_keys($data);
+        $query = "update $this->table set ";
+
+        foreach ($keys as $key) {
+            $query .= $key . " = :". $key . ", ";
+        }
+
+        $query = trim($query, ", ");
+
+        $query .= " where $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+
+        $this->query($query, $data);
+        return false;
+
+    }
+    public function updateevent($id, $data, $id_column = 'eventID')
     {
 
         /** remove unwanted data **/

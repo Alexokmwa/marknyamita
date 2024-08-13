@@ -332,10 +332,10 @@ function add_root_to_images($contents)
 }
 function remove_root_from_content($content)
 {
-	
-	$content = str_replace(ROOTADMIN, "", $content);
 
-	return $content;
+    $content = str_replace(ROOTADMIN, "", $content);
+
+    return $content;
 }
 /** converts images from text editor content to actual files **/
 function remove_images_from_content($content, $folder = "admin/adminuploads/blogcontenimage/")
@@ -387,9 +387,58 @@ function remove_images_from_content($content, $folder = "admin/adminuploads/blog
     return $new_content;
 
 }
+function remove_images_from_contentevent($content, $folder = "admin/eventsuploads/eventcontenimage/")
+{
+
+    if(!file_exists($folder)) {
+        mkdir($folder, 0777, true);
+        file_put_contents($folder."index.php", "Access Denied!");
+    }
+
+    //remove images from content
+    preg_match_all('/<img[^>]+>/', $content, $matches);
+    $new_content = $content;
+
+    if(is_array($matches) && count($matches) > 0) {
+
+        $image_class = new Image();
+        foreach ($matches[0] as $match) {
+
+            if(strstr($match, "http")) {
+                //ignore images with links already
+                continue;
+            }
+
+            // get the src
+            preg_match('/src="[^"]+/', $match, $matches2);
+
+            // get the filename
+            preg_match('/data-filename="[^\"]+/', $match, $matches3);
+
+            if(strstr($matches2[0], 'data:')) {
+
+                $parts = explode(",", $matches2[0]);
+                $basename = $matches3[0] ?? 'basename.jpg';
+                $basename = str_replace('data-filename="', "", $basename);
+
+                $filename = $folder . "img_" . sha1(rand(0, 9999999999)) . $basename;
+
+                $new_content = str_replace($parts[0] . ",". $parts[1], 'src="'.$filename, $new_content);
+                file_put_contents($filename, base64_decode($parts[1]));
+
+                //resize image
+                $image_class->resize($filename, 1000);
+            }
+
+        }
+    }
+
+    return $new_content;
+
+}
 
 /** deletes images from text editor content **/
-function delete_images_from_content(string $content, string $content_new = ''): void
+function delete_images_from_contentevent(string $content, string $content_new = ''): void
 {
 
     //delete images from content
