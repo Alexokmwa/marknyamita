@@ -69,25 +69,25 @@ Post edit START -->
 									<div class="col-12">
 										<div class="mb-3">
 											<label class="form-label">Short description </label>
-											<textarea class="form-control"
-												rows="3" name="shortdescription"><?= old_value('shortdescription', esc($rowpost->shortdescription) ?? '') ?></textarea>
+											<textarea class="form-control" rows="3"
+												name="shortdescription"><?= old_value('shortdescription', esc($rowpost->shortdescription) ?? '') ?></textarea>
 											<div class="text-danger" id="shortdescriptionError">
 												<?= $admin->getError('shortdescription') ?>
 											</div>
 										</div>
 									</div>
-								<!-- edit area end -->
+									<!-- edit area end -->
 									<div class="col-12">
-											<label class="form-label">postbody </label>
-											<textarea id="summernote" class="form-control"
-												rows="8" name="postbody"><?= old_value('postbody', add_root_to_images($rowpost->postbody) ?? '') ?></textarea>
-											</div>
-											<div class="text-danger" id="postbodyError">
-												<?= $admin->getError('postbody') ?>
-											</div>
+										<label class="form-label">postbody </label>
+										<textarea id="summernote" class="form-control" rows="8"
+											name="postbody"><?= old_value('postbody', add_root_to_images($rowpost->postbody) ?? '') ?></textarea>
+									</div>
+									<div class="text-danger" id="postbodyError">
+										<?= $admin->getError('postbody') ?>
+									</div>
 
 									<!-- edit area end -->
-									
+
 									<div class="col-lg-7 mt-4">
 										<div class="mb-3">
 											<!-- Image -->
@@ -120,7 +120,8 @@ Post edit START -->
 														</span>
 														<div>
 															<img src=" <?=get_imageadmin($rowpost->imageurl, 'post')?>"
-																alt="img" class="img-thumbnail js-image-preview"style="height:auto;width:200px;">
+																alt="img" class="img-thumbnail js-image-preview"
+																style="height:auto;width:200px;">
 														</div>
 													</label>
 												</div>
@@ -135,7 +136,7 @@ Post edit START -->
 												4:3 to fit our thumbnails/previews.</p>
 										</div>
 									</div>
-									<div class="col-lg-5">
+									<div class="col-lg-5 mt-4">
 										<!-- Category -->
 										<div class="mb-3">
 											<label class="form-label">Category</label>
@@ -147,14 +148,14 @@ Post edit START -->
 												<option
 													value="<?= esc($row->categoryname) ?>"
 													data-id="<?= esc($row->categoryID) ?>"
-													<?= old_value('categoryname') === esc($row->categoryname) ? 'selected' : '' ?>>
+													<?= old_value('categoryname', esc($rowpost->category)) === esc($row->categoryname) ? 'selected' : '' ?>>
 													<?= esc($row->categoryname) ?>
 												</option>
 												<?php endforeach; ?>
 												<?php endif; ?>
 											</select>
 											<input type="hidden" id="categoryID" name="categoryID"
-												value="<?= old_value('categoryID') ?>">
+												value="<?= old_value('categoryID', $rowpost->categoryID)?>">
 											<div class="text-danger" id="categoryError">
 												<?=$admin->getError('category') ?>
 											</div>
@@ -261,13 +262,10 @@ adminrendersmfooter();
 adminrenderHtmlFooter();
 ?>
 <script>
-      $('#summernote').summernote({
-    placeholder: 'Post content',
-    tabsize: 2,
-    height: 300,
-    dialogsInBody: true, // This option appends dialogs to the body instead of the summernote container
-});
-
+	$('#summernote').summernote({
+		placeholder: 'Post content',
+		tabsize: 2,
+		height: 300,
+		dialogsInBody: true, // This option appends dialogs to the body instead of the summernote container
+	});
 </script>
-
-	

@@ -18,7 +18,7 @@ adminrenderpageHeader();
 			<div class="row pb-4">
 				<div class="col-12">
 					<!-- Title -->
-					<h1 class="mb-0 h2">Create a post</h1>
+					<h1 class="mb-0 h2">Create an event</h1>
 				</div>
 			</div>
 			<div class="row">
@@ -32,82 +32,33 @@ adminrenderpageHeader();
 								<!-- Main form -->
 								<div class="row">
 									<div class="col-12">
-										<!-- Post name -->
+										<!-- event name name -->
 										<div class="mb-3">
-											<label class="form-label">Post name</label>
-											<input id="postName" type="text" class="form-control"
-												value="<?= old_value('postname') ?>"
-												name="postname">
-											<div class="text-danger" id="postnameError">
-												<?= $admin->getError('postname') ?>
+											<label class="form-label">Event name</label>
+											<input id="eventname" type="text" class="form-control"
+												value="<?= old_value('eventname') ?>"
+												name="eventname">
+											<div class="text-danger" id="eventnameError">
+												<?= $admin->getError('eventname') ?>
 											</div>
 										</div>
-										<!-- Post name end -->
+										<!-- event name name end -->
 									</div>
-
-									<!-- Post type START -->
-									<div class="col-12 ">
-										<div class="mb-3">
-											<label class="form-label">Post type</label>
-											<div class="d-flex flex-wrap gap-3 border border-primary p-2 rounded">
-												<!-- Post type item -->
-												<div class="flex-fill">
-													<input type="radio" class="btn-check" name="posttype" id="option"
-														value="1"
-														<?= old_checked('posttype', 1) ?>
-													required checked>
-													<label class="btn btn-outline-light w-100" for="option">
-														<div class="text-danger" id="posttypeError">
-															<?= $admin->getError('posttype') ?>
-														</div>
-														<i class="bi bi-chat-left-text fs-1"></i>
-														<span class="d-block"> Post </span>
-													</label>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Post type END -->
-
-									<!-- Short description -->
-									<div class="col-12">
-										<div class="mb-3">
-											<label class="form-label">Short description </label>
-											<textarea class="form-control" rows="3" placeholder="Add description"
-												name="shortdescription"><?= old_value('shortdescription') ?></textarea>
-											<div class="text-danger" id="shortdescriptionError">
-												<?= $admin->getError('shortdescription') ?>
-											</div>
-										</div>
-									</div>
-									<!-- Short description end -->
-
-									<!-- edit area end -->
-									<div class="col-12">
-										<label class="form-label">postbody </label>
-										<textarea id="summernote" class="form-control" rows="8"
-											name="postbody"><?= old_value('postbody') ?></textarea>
-									</div>
-									<div class="text-danger" id="postbodyError">
-										<?= $admin->getError('postbody') ?>
-									</div>
-
-									<!-- edit area end -->
-
+									<!-- event posta start -->
 									<div class="col-lg-7">
 										<div class="mb-3">
 											<!-- Image -->
 											<div class="position-relative">
 												<h6 class="my-2">
-													Upload post image here, or
+													Upload event graphic here, or
 													<a href="#!" class="text-primary">Browse</a>
 												</h6>
 												<label class="w-100" style="cursor:pointer;">
 													<span>
 														<input onchange="display_image(this.files[0])"
 															class="form-control stretched-link" type="file" id="image"
-															value="<?= old_value('imageurl') ?>"
-															name="imageurl">
+															value="<?= old_value('eventimage') ?>"
+															name="eventimage">
 													</span>
 													<div>
 														<img src="<?= get_imageadmin() ?>"
@@ -116,8 +67,8 @@ adminrenderpageHeader();
 													</div>
 												</label>
 											</div>
-											<div class="text-danger" id="imageurlError">
-												<?=$admin->getError('imageurl') ?>
+											<div class="text-danger" id="eventimageError">
+												<?=$admin->getError('eventimage') ?>
 											</div>
 											<p class="small mb-0 mt-2">
 												<b>Note:</b> Only JPG, JPEG and PNG. Our suggested dimensions are 600px
@@ -126,10 +77,12 @@ adminrenderpageHeader();
 											</p>
 										</div>
 									</div>
+									<!-- event posta end -->
+									<!-- event category  start -->
 									<div class="col-lg-5">
 										<!-- Category -->
 										<div class="mb-3">
-											<label class="form-label">Category</label>
+											<label class="form-label">Event Category</label>
 											<select class="form-select" id="categorySelect" name="categoryname"
 												aria-label="Default select example" required>
 												<option value="" disabled selected>--Select--</option>
@@ -159,21 +112,24 @@ adminrenderpageHeader();
 											document.getElementById('categoryID').value = selectedCategoryID;
 										});
 									</script>
-
-									<div class="col-lg-7">
-										<!-- Tags -->
+									<!-- event  category end -->
+									<!-- event location-->
+									<div class="col-lg-6">
+										<!-- eventlocation -->
 										<div class="mb-3">
-											<label class="form-label">Tags</label>
-											<textarea class="form-control" rows="1" name="tags"
-												placeholder="business, sports ..."><?= old_value('tags') ?></textarea>
-											<div class="text-danger" id="tagsError">
-												<?= $admin->getError('tags') ?>
+											<label class="form-label">location</label>
+											<textarea class="form-control" rows="1" name="eventlocation"
+												placeholder="business, sports ..."><?= old_value('eventlocation') ?></textarea>
+											<div class="text-danger" id="eventlocationError">
+												<?= $admin->getError('eventlocation') ?>
 											</div>
 											<small>Maximum of 14 keywords. Keywords should all be in lowercase and
 												separated by commas. e.g. javascript, react, marketing.</small>
 										</div>
 									</div>
-									<div class="col-lg-5">
+									<!-- event location-->
+									<!-- event status start -->
+									<div class="col-lg-6">
 										<!-- Category -->
 										<div class="mb-3">
 											<label class="form-label">status</label>
@@ -192,6 +148,114 @@ adminrenderpageHeader();
 											</div>
 										</div>
 									</div>
+									<!-- event status end -->
+									<!-- event type start -->
+									<div class="col-lg-6">
+										<!-- Category -->
+										<div class="mb-3">
+											<label class="form-label">event type</label>
+											<select class="form-select" id="eventList" name="eventtype">
+												<option value="" disabled <?= old_value('eventtype') == '' ? 'selected' : '' ?>>Type
+													of event</option>
+												<option value="Conferences" <?= old_value('eventtype') == 'Conferences' ? 'selected' : '' ?>>Conferences
+												</option>
+												<option value="Online" <?= old_value('eventtype') == 'Online' ? 'selected' : '' ?>>Online
+												</option>
+												<option value="Livestream" <?= old_value('eventtype') == 'Livestream' ? 'selected' : '' ?>>Livestream
+												</option>
+												<option value="Video" <?= old_value('eventtype') == 'Video' ? 'selected' : '' ?>>Video
+												</option>
+											</select>
+											<div class="text-danger" id="eventtypeError">
+												<?= $admin->getError('eventtype') ?>
+											</div>
+										</div>
+									</div>
+									<!-- event type end -->
+									<!-- event schedule start -->
+									<div class="col-lg-6">
+										<!-- Category -->
+										<div class="mb-3">
+											<label class="form-label">event schedule</label>
+											<select class="form-select" id="eventList" name="eventschedule">
+												<option value="" disabled <?= old_value('eventschedule') == '' ? 'selected' : '' ?>>event
+													schedule</option>
+												<option value="Past" <?= old_value('eventschedule') == 'Past' ? 'selected' : '' ?>>Past
+												</option>
+												<option value="current" <?= old_value('eventschedule') == 'current' ? 'selected' : '' ?>>current
+												</option>
+												<option value="upcomming" <?= old_value('eventschedule') == 'upcomming' ? 'selected' : '' ?>>upcomming
+												</option>
+											</select>
+											<div class="text-danger" id="eventscheduleError">
+												<?= $admin->getError('eventschedule') ?>
+											</div>
+										</div>
+									</div>
+									<!-- event schedule end -->
+									<!-- event start time start-->
+									<div class="col-lg-6">
+										<!-- Category -->
+										<div class="mb-3">
+											<label class="form-label">start time</label>
+
+
+											<input type="time" class="form-control" id="timeInput" name="timestart"
+												value="<?=old_value('timestart')?>"
+												required>
+
+											<div class="text-danger" id="timestartError">
+												<?= $admin->getError('timestart') ?>
+											</div>
+										</div>
+									</div>
+									<!-- event start time end -->
+									<!-- event end time start-->
+									<div class="col-lg-6">
+										<!-- Category -->
+										<div class="mb-3">
+											<label class="form-label">End time</label>
+
+
+											<input type="time" class="form-control" id="timeInput" name="endtime"
+												value="<?=old_value('endtime')?>"
+												required>
+
+											<div class="text-danger" id="endtimeError">
+												<?= $admin->getError('endtime') ?>
+											</div>
+										</div>
+									</div>
+									<!-- event end time end -->
+									<!-- event date start -->
+									<div class="col-lg-12">
+										<!-- Category -->
+										<div class="mb-3">
+
+											<label for="dateInput" class="form-label">Select Date</label>
+											<input type="date" class="form-control" id="dateInput" name="eventdate"
+												value="<?=old_value('eventdate')?>"
+												required>
+											<div class="text-danger" id="eventdateError">
+												<?= $admin->getError('eventdate') ?>
+											</div>
+										</div>
+									</div>
+									<!-- event date end -->
+									<!-- edit area START -->
+									<div class="col-12">
+										<label class="form-label">eventdescription </label>
+										<textarea id="summernote" class="form-control" rows="8"
+											name="eventdescription"><?= old_value('eventdescription') ?></textarea>
+									</div>
+									<div class="text-danger" id="eventdescriptionError">
+										<?= $admin->getError('eventdescription') ?>
+									</div>
+
+									<!-- edit area end -->
+
+
+
 
 									<div class="col-12">
 										<div class="form-check mb-3">
