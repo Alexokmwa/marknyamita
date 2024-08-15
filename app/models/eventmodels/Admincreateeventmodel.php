@@ -31,6 +31,7 @@ class Admincreateeventmodel
         'endtime',
         'eventdescription',
         'featured',
+        'eventcharges',
     ];
 
     protected $validationRules = [
@@ -70,6 +71,9 @@ class Admincreateeventmodel
             'required',
         ],
         'eventdescription' => [
+            'required',
+        ],
+        'eventcharges' => [
             'required',
         ],
         'featured' => [],

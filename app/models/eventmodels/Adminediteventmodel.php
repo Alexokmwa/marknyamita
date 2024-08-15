@@ -31,6 +31,8 @@ class Adminediteventmodel
         'endtime',
         'eventdescription',
         'featured',
+        'eventcharges',
+
     ];
 
     protected $validationRules = [
@@ -51,6 +53,9 @@ class Adminediteventmodel
             'alpha_numeric_symbol',
         ],
         'status' => [
+            'required',
+        ],
+        'eventcharges' => [
             'required',
         ],
         'eventtype' => [
