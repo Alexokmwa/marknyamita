@@ -77,6 +77,13 @@ trait Model
 
         return $this->query($query);
     }
+    public function findAllcomments()
+    {
+
+        $query = "select * from $this->table order by $this->order_columncomment $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
     public function findAllevents()
     {
 
@@ -491,6 +498,16 @@ trait Model
 
     }
     public function deletecategory($id, $id_column = "categoryID")
+    {
+
+        $data[$id_column] = $id;
+        $query = "delete from $this->table where $id_column = :$id_column ";
+        $this->query($query, $data);
+
+        return false;
+
+    }
+    public function deleteevent($id, $id_column = "eventID")
     {
 
         $data[$id_column] = $id;

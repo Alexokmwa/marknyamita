@@ -33,25 +33,6 @@ class Admindeleteeventcategorymodel
         ],
     ];
 
-
-    public function restoreeventcategory($categoryID)
-    {
-        try {
-            // Fetch the current image URL from the database
-            $currentPost = $this->first([$this->primaryKey => $categoryID]);
-
-            if ($currentPost) {
-                // Delete the post from the database
-                $this->updatecategory($categoryID, ['categorystatus' => 'active']);
-
-                return ['success' => true, 'message' => 'Delete successful'];
-            } else {
-                return ['success' => false, 'message' => 'Delete failed'];
-            }
-        } catch (Exception $e) {
-            return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
-        }
-    }
     public function addeventtotrashcategory($categoryID)
     {
         try {
@@ -70,6 +51,25 @@ class Admindeleteeventcategorymodel
             return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
         }
     }
+    public function restoreeventcategory($categoryID)
+    {
+        try {
+            // Fetch the current image URL from the database
+            $currentPost = $this->first([$this->primaryKey => $categoryID]);
+
+            if ($currentPost) {
+                // Delete the post from the database
+                $this->updatecategory($categoryID, ['categorystatus' => 'active']);
+
+                return ['success' => true, 'message' => 'Delete successful'];
+            } else {
+                return ['success' => false, 'message' => 'Delete failed'];
+            }
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
+        }
+    }
+    
     public function deleteeventcategory($categoryID)
     {
         try {
