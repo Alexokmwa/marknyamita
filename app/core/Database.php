@@ -5,9 +5,10 @@ namespace app\core;
 // deny acess to app files and folders access.
 defined('ROOTPATH') or exit('Access Denied!');
 use PDO;
-
+use PDOException;
 trait Database
 {
+
     private function connect()
     {
         $string = "mysql:hostname =".DBHOST.";dbname=".DBNAME;

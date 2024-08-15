@@ -51,7 +51,7 @@ class Postlikesmodalnotloggedin
     GROUP BY pl.postID;
     ";
 
-    $result = $this->query($query, ['postID' => $postID]);
+    $result = $this->query($query,['postID' => $postID]);
 
     return $result[0]->total_likes ?? 0;
     }

@@ -40,6 +40,7 @@ class Adminapp
             "../app/controllers/adminviews/admingeneralpagesctrl/posts/",
             "../app/controllers/adminviews/admingeneralpagesctrl/posts/postssearchpages/",
             "../app/controllers/adminviews/admingeneralpagesctrl/posts/trashbinpages/",
+            "../app/controllers/adminviews/admineventsctrl/Eventtrashrecords/",
 
         ];
 
