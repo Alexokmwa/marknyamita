@@ -30,6 +30,13 @@ JS libraries, plugins and custom scripts -->
 <script src="<?=ROOTADMIN?>assets/js/deleteposttrash.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/restorepost.js"></script>
 <script src="<?=ROOTADMIN?>assets/js/deletepost.js"></script>
+<!-- events sweetalert -->
+<script src="<?=ROOTADMIN?>assets/js/deleteeventcategorytotrash.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/restoreeventcategory.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/deleteeventcategory.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/deleteeventtotrash.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/restoreevent.js"></script>
+<script src="<?=ROOTADMIN?>assets/js/deleteevent.js"></script>
 
 </body>
 
