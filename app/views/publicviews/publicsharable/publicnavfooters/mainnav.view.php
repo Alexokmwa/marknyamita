@@ -82,8 +82,11 @@ Header START -->
 					<a class="btn btn-primary-soft btn-round mb-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
 						<i class="bi bi-bell fa-fw"></i>
 					</a>
+					<?php $num = getnotificationspublic() ?>
+		<?php if ($num): ?>
 					<!-- Notification dote -->
 					<span class="notif-badge animation-blink"></span>
+					<?php endif ?>
 
 					<!-- Notification dropdown menu START -->
 					<div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0">

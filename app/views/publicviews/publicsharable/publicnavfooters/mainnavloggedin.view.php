@@ -84,8 +84,10 @@ Header START -->
 						<i class="bi bi-bell fa-fw"></i>
 					</a>
 					<!-- Notification dote -->
+					<?php $num = getnotificationspublic() ?>
+					<?php if ($num): ?>
 					<span class="notif-badge animation-blink"></span>
-
+					<?php endif ?>
 					<!-- Notification dropdown menu START -->
 					<div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0">
 						<div class="card bg-transparent">
