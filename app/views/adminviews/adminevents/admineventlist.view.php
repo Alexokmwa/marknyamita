@@ -194,17 +194,17 @@ Post list START -->
 											<!-- Table data -->
 											<td>
 												<span class="badge bg-success bg-opacity-10 text-success mb-2"><a
-														href="<?=ROOTADMIN?>Adminviewblog/<?=$rowpost->postID?>">view</a></span>
+														href="<?=ROOTADMIN?>Adminviewevent/<?=$rowpost->eventID?>">view</a></span>
 											</td>
 											<td>
 												<span class="badge bg-success bg-opacity-10 text-success mb-2"><a
-														href="<?=ROOTADMIN?>Adminviewblog/<?=$rowpost->postID?>?itemid=<?=$rowpost->postID?>"><i
+														href="<?=ROOTADMIN?>Adminviewevent/<?=$rowpost->eventID?>?itemid=<?=$rowpost->eventID?>"><i
 															class="bi bi-bell-fill"></i></a></span>
 											</td>
 											<!-- Table data -->
 											<td>
 												<div class="d-flex gap-2">
-													<a href="<?=ROOTADMIN?>Admindeletepost/<?=$rowpost->postID?>"
+													<a href="<?=ROOTADMIN?>Adminvieweventdelete/<?=$rowpost->eventID?>"
 														class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip"
 														data-bs-placement="top" title="Delete"><i
 															class="bi bi-trash"></i></a>
@@ -219,7 +219,7 @@ Post list START -->
 									<?php endif; ?>
 									<?php endforeach; ?>
 									<?php else: ?>
-									<p class="text-danger text-center">no blogs</p>
+									<p class="text-danger text-center">no events</p>
 									<?php endif; ?>
 									<!-- Table body END -->
 

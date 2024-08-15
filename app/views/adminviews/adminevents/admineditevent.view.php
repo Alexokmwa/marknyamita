@@ -228,7 +228,7 @@ adminrenderpageHeader();
 									</div>
 									<!-- event end time end -->
 									<!-- event date start -->
-									<div class="col-lg-12">
+									<div class="col-lg-6">
 										<!-- Category -->
 										<div class="mb-3">
 
@@ -242,11 +242,25 @@ adminrenderpageHeader();
 										</div>
 									</div>
 									<!-- event date end -->
+									<!-- event date end -->
+									<div class="col-6">
+										<!-- event charges -->
+										<div class="mb-3">
+											<label class="form-label">Event charges</label>
+											<input id="eventcharges" type="text" class="form-control"
+												value="<?= old_value('eventcharges', $rowpost->eventcharges) ?>"
+												name="eventcharges">
+											<div class="text-danger" id="eventchargesError">
+												<?= $admin->getError('eventcharges') ?>
+											</div>
+										</div>
+										<!-- event charges end -->
+									</div>
 									<!-- edit area START -->
 									<div class="col-12">
 										<label class="form-label">eventdescription </label>
 										<textarea id="summernote" class="form-control" rows="8"
-											name="eventdescription"><?= old_value('eventdescription', add_root_to_images($rowpost->eventdescription) )?></textarea>
+											name="eventdescription"><?= old_value('eventdescription', add_root_to_images($rowpost->eventdescription))?></textarea>
 									</div>
 									<div class="text-danger" id="eventdescriptionError">
 										<?= $admin->getError('eventdescription') ?>
@@ -271,7 +285,7 @@ adminrenderpageHeader();
 
 									<!-- Create post button -->
 									<div class="col-md-12 text-start">
-										<button class="btn btn-primary w-100" type="submit">Create post</button>
+										<button class="btn btn-primary w-100" type="submit">Edit event</button>
 									</div>
 								</div>
 							</form>
