@@ -54,45 +54,63 @@ $successMessage = $ses->pop('comment_success');
 			    ?>
 			<li class="d-flex align-items-center text-decoration-none pt-2 mb-3"
 				style="background-color: <?= $color ?>">
-				<a href="<?= ROOT ?>Blogview/<?= $row->Itemid ?>?seen=1&notif=<?= $row->id ?>"
-					class="d-flex align-items-center text-decoration-none w-100" style="background-color:inherit;">
-					<div class="me-3">
-						<div class="avatar avatar-sm">
-							<img class="avatar-img rounded-circle"
-								src="<?= isset($row->user_row) && $row->user_row ? get_imageadmin($row->user_row->adminimage) : '' ?>"
-								alt="avatar">
-						</div>
-					</div>
-					<div class="flex-grow-1">
-						<h6 class="mb-1 text-center">
-							<?= isset($row->user_row) && $row->user_row ? htmlspecialchars($row->user_row->username) : 'Unknown User' ?>
-							<?php
-			                        switch ($row->type) {
-			                            case 'blogpost':
-			                                echo 'made a post<br/><i>' . esc($row->item_rowblog->postname) . '</i>';
-			                                break;
-			                            default:
-			                                // handle other cases if necessary
-			                                break;
-			                        }
-			    ?>
-						</h6>
-						<span class="small text-center"><i class="bi bi-clock"></i>
-							<?= $timeAgo ?></span>
-						<span class="small text-center ms-3"
-							style="color: <?= $colortext ?>"><?= $text ?></span>
-					</div>
-					<div class="d-flex align-items-center ms-3">
-						<div class="me-3">
-							<div class="avatar avatar-sm">
-								<?php $postpic = ROOTADMIN . esc($row->item_rowblog->imageurl); ?>
-								<img class="avatar-img rounded-circle"
-									src="<?= $postpic ?>"
-									alt="avatar">
-							</div>
-						</div>
-					</div>
-				</a>
+				<?php
+$link = '';
+switch ($row->type) {
+    case 'blogpost':
+        $link = ROOT . "Blogview/" . $row->Itemid . "?seen=1&notif=" . $row->id;
+        break;
+    case 'eventpost':
+        $link = ROOT . "Sigleevent/" . $row->Itemid . "?seen=1&notif=" . $row->id;
+        break;
+    default:
+        // handle other cases if necessary
+        break;
+}
+?>
+
+<a href="<?= $link ?>" class="d-flex align-items-center text-decoration-none w-100" style="background-color:inherit;">
+    <div class="me-3">
+        <div class="avatar avatar-sm">
+            <img class="avatar-img rounded-circle"
+                src="<?= isset($row->user_row) && $row->user_row ? get_imageadmin($row->user_row->adminimage) : '' ?>"
+                alt="avatar">
+        </div>
+    </div>
+    <div class="flex-grow-1">
+        <h6 class="mb-1 text-center">
+            <?= isset($row->user_row) && $row->user_row ? htmlspecialchars($row->user_row->username) : 'Unknown User' ?>
+            <?php
+                switch ($row->type) {
+                    case 'blogpost':
+                        echo 'made a post<br/><i>' . esc($row->item_rowblog->postname) . '</i>';
+                        break;
+                    case 'eventpost':
+                        echo 'created an event<br/><i>' . esc($row->item_rowblog->postname ?? $row->item_rowevent->eventname) . '</i>';
+                        break;
+                    default:
+                        // handle other cases if necessary
+                        break;
+                }
+            ?>
+        </h6>
+        <span class="small text-center"><i class="bi bi-clock"></i>
+            <?= $timeAgo ?></span>
+        <span class="small text-center ms-3"
+            style="color: <?= $colortext ?>"><?= $text ?></span>
+    </div>
+    <div class="d-flex align-items-center ms-3">
+        <div class="me-3">
+            <div class="avatar avatar-sm">
+                <?php $postpic = ROOTADMIN . esc($row->item_rowblog->imageurl ?? $row->item_rowevent->eventimage); ?>
+                <img class="avatar-img rounded-circle"
+                    src="<?= $postpic ?>"
+                    alt="avatar">
+            </div>
+        </div>
+    </div>
+</a>
+
 				<?php if($row->seen == 1):?>
 				<form id="deletenotif" method="post" >
 				<input type="hidden" name="form_type" value="delete_notification">

@@ -62,7 +62,7 @@ Post list START -->
 						            ?>
 						<?php if($sesidadmin === $rowpost->adminID):?>
 
-						<a href="<?= ROOTADMIN ?>Posttrash">
+						<a href="<?= ROOTADMIN ?>Eventtrash">
 							<button class="bi-trash btn btn-danger">trash bin</button>
 						</a>
 						<?php endif; ?>
@@ -70,7 +70,7 @@ Post list START -->
 						<?php endforeach; ?>
 						<?php endif; ?>
 						<a href="<?=ROOTADMIN?>Admincreateevent"
-							class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Add a post</a>
+							class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>Add an event</a>
 
 					</div>
 				</div>

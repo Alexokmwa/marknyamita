@@ -7,6 +7,7 @@ use app\models\Adminsession;
 $ses = new Adminsession();
 $successMessage = $ses->pop('comment_success');
 
+adminrenderpageHeader();
 
 ?>
 <?php if ($successMessage): ?>

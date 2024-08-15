@@ -36,7 +36,7 @@ Main contain START -->
 						            ;
 						            ?>
 						<?php if($sesidadmin === $row->admid):?>
-						<a href="<?= ROOTADMIN ?>Categorytrash">
+						<a href="<?= ROOTADMIN ?>Eventcategorytrash">
 							<button class="bi-trash btn btn-danger">trash bin</button>
 						</a>
 						<?php endif; ?>
@@ -124,8 +124,8 @@ Main contain START -->
 				    ?>
 								<?php if($sesidadmin === $row->admid):?>
 								<form id="postForm" method="post" class=" ms-auto">
-									<button class="btn btn-round btn-danger deletetrasheventcategory" type="submit"
-										name="deletetrasheventcategory"
+									<button class="btn btn-round btn-danger deletecategorytotrash" type="submit"
+										name="deletecategorytotrash"
 										value="<?=$row->categoryID?>"><i
 											class="bi bi-trash"></i></button>
 								</form>

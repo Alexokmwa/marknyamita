@@ -26,8 +26,10 @@ class Notifications extends Controller
                 $check_user = $notif->getRow("SELECT * FROM admins WHERE adminID = :id limit 1", ['id' => $row->userID]);
                 $check_postphoto = $notif->getRow("SELECT * FROM blogposts WHERE adminID = :id limit 1", ['id' => $row->userID]);
                 $check_postphoto = $notif->getRow("SELECT * FROM blogposts WHERE postID = :id limit 1", ['id' => $row->Itemid]);
+                $check_postphotoevent = $notif->getRow("SELECT * FROM events WHERE eventID = :id limit 1", ['id' => $row->Itemid]);
                 $data['rowspublic'][$key]->user_row =  $check_user;
                 $data['rowspublic'][$key]->item_rowblog = $check_postphoto ;
+                $data['rowspublic'][$key]->item_rowevent = $check_postphotoevent ;
             }
 
         }
