@@ -152,7 +152,8 @@ Header START -->
 						<i class="bi bi-bell fa-fw"></i>
 					</a>
 					<?php $num = getnotifications()?>
-					<?php if($num):?>
+					<?php $commentnum=getcommentnotifications()?>
+					<?php if($num || $commentnum):?>
 					<!-- Notification dote -->
 					<span class="notif-badge animation-blink"></span>
 					<?php endif?>
