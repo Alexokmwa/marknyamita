@@ -76,7 +76,7 @@ class Blogcomments
                     $arr['Itemid'] = $postid;
                     $arr['type'] = 'comment';
                     if ($arr['ownerid'] != $arr['userID']) {
-                        addnotifications($arr);
+                        commentaddnotifications($arr);
                     }
                 }
 
@@ -163,7 +163,7 @@ class Blogcomments
     }
     public function getcomments(int $postID)
     {
-       $query = "
+        $query = "
     SELECT 
         COALESCE(pl.likes_count, 0) + COALESCE(pnl.likes_count, 0) AS total_likes
     FROM 
@@ -180,8 +180,8 @@ class Blogcomments
     GROUP BY pl.postID;
     ";
 
-    $result = $this->query($query, ['postID' => $postID]);
+        $result = $this->query($query, ['postID' => $postID]);
 
-    return $result[0]->total_likes ?? 0;
+        return $result[0]->total_likes ?? 0;
     }
 }
