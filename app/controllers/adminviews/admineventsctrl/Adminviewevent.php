@@ -39,10 +39,10 @@ class Adminviewevent extends Admincontroller
                 $arr['Itemid'] = $itemid ;
                 $arr['type'] = 'eventpost';
                 if ($arr['ownerid'] != $arr['userID']) {
-                    addnotifications($arr);
+                    eventaddnotifications($arr);
                     $ses = new Adminsession();
 
-                    $ses->set('comment_success', 'notification sent successfully');
+                    $ses->set('comment_success', 'event notification sent successfully');
                 }
             }
         }
