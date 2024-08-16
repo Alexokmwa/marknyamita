@@ -11,6 +11,7 @@ use app\core\Admincontroller;
 use app\models\Adminsession;
 use app\models\Adminpostsmodel;
 use app\models\Adminaccounts;
+use app\models\Commentnotfcationmodel;
 
 /**
  * admin Adminviewblog management class
@@ -38,6 +39,12 @@ class Adminviewblog extends Admincontroller
             $notif->update($notif_id, ['seen' => 1]);
 
         }
+        if(!empty($_GET['seen']) && !empty($_GET['notifcomment'])) {
+            $notif_id = (int)$_GET['notifcomment'];
+            $notif = new Commentnotfcationmodel();
+            $notif->update($notif_id, ['seen' => 1]);
+
+        }
         if(!empty($_GET['itemid'])) {
             $adminID = $ses->adminuser('adminID');
             $itemid = $_GET['itemid'];
@@ -48,10 +55,10 @@ class Adminviewblog extends Admincontroller
                 $arr['Itemid'] = $itemid ;
                 $arr['type'] = 'blogpost';
                 if ($arr['ownerid'] != $arr['userID']) {
-                    addnotifications($arr);
+                    blogaddnotifications($arr);
                     $ses = new Adminsession();
 
-                    $ses->set('comment_success', 'notification sent successfully');
+                    $ses->set('comment_success', 'blogpost notification sent successfully');
                 }
             }
         }
