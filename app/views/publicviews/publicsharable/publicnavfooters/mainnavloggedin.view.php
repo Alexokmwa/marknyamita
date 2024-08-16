@@ -85,7 +85,9 @@ Header START -->
 					</a>
 					<!-- Notification dote -->
 					<?php $num = getnotificationspublic() ?>
-					<?php if ($num): ?>
+					<?php $numevent = eventgetnotificationspublic() ?>
+		<?php if ($num || $numevent): ?>
+
 					<span class="notif-badge animation-blink"></span>
 					<?php endif ?>
 					<!-- Notification dropdown menu START -->
@@ -93,9 +95,12 @@ Header START -->
 						<div class="card bg-transparent">
 						<div class="card-header bg-transparent border-bottom p-3 d-flex justify-content-between align-items-center">
 		<?php $num = getnotificationspublic() ?>
-		<?php if ($num): ?>
+		<?php $numevent = eventgetnotificationspublic() ?>
+
+		<?php if ($num || $numevent): ?>
+		<?php $numtotal=$num + $numevent ?>
 		<h6 class="m-0">Notifications <span
-				class="badge bg-danger bg-opacity-10 text-danger ms-2"><?= $num ?>
+				class="badge bg-danger bg-opacity-10 text-danger ms-2"><?= $numtotal ?>
 				new</span></h6>
 		<?php endif ?>
 	</div>
