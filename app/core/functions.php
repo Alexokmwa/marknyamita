@@ -5,8 +5,11 @@ defined('ROOTPATH') or exit('Access Denied!');
 
 use app\models\Session;
 use app\models\Adminsession;
+use app\models\Blognotificationmodel;
 use app\models\Notificationmodel;
 use app\models\Image;
+use app\models\Commentnotfcationmodel;
+use app\models\Eventnotificationmodel;
 
 /** check which php extensions are required **/
 check_extensions();
@@ -874,6 +877,48 @@ function addnotifications($data)
     $notif->insert($data);
 
 }
+// sends new blog notificationto users
+function blogaddnotifications($data)
+{
+
+    $notif = new Blognotificationmodel();
+    $data['date_created'] = date("Y-m-d H:i:s");
+
+    $notif->insert($data);
+
+}
+function eventaddnotifications($data)
+{
+
+    $notif = new Eventnotificationmodel();
+    $data['date_created'] = date("Y-m-d H:i:s");
+
+    $notif->insert($data);
+
+}
+function commentaddnotifications($data)
+{
+
+    $notif = new Commentnotfcationmodel();
+    $data['date_created'] = date("Y-m-d H:i:s");
+
+    $notif->insert($data);
+
+}
+function getcommentnotifications()
+{
+
+    $notif = new Commentnotfcationmodel();
+    $ses = new Adminsession();
+    $userID = $ses ->adminuser('adminID');
+
+    $rows = $notif->where(['ownerid' => $userID,'seen' => 0]);
+    if($rows) {
+        return count($rows);
+    }
+    return 0;
+
+}
 function getnotifications()
 {
 
@@ -891,7 +936,21 @@ function getnotifications()
 function getnotificationspublic()
 {
 
-    $notif = new Notificationmodel();
+    $notif = new Blognotificationmodel();
+    $ses = new Session();
+    $userID = 0;
+
+    $rows = $notif->where(['ownerid' => $userID,'seen' => 0]);
+    if($rows) {
+        return count($rows);
+    }
+    return 0;
+
+}
+function eventgetnotificationspublic()
+{
+
+    $notif = new Eventnotificationmodel();
     $ses = new Session();
     $userID = 0;
 
