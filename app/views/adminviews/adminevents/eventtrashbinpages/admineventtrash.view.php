@@ -16,9 +16,11 @@ adminrenderpageHeader();
 		<p class="text-danger">Actions</p>
 
 	</div>
-	<span class="text-danger pt-3" style="text-align: center;">deletion of a event will lead to deletion of all
+	<?php if(!empty($row)):?>
+	<span class="text-danger text-center  pt-3" style="text-align: center;">deletion of a event will lead to deletion of all
 		realated comments and likes be sure you need to delete it</span>
-	<div class="card-body p-0">
+	<?php endif?>
+		<div class="card-body p-0">
 		<ul class="list-group list-unstyled list-group-flush">
 			<!-- Notif item -->
 			<?php if (is_array($data['row']) && count($data['row'])): ?>
@@ -65,7 +67,7 @@ adminrenderpageHeader();
 			<?php endforeach; ?>
 
 			<?php else: ?>
-			<p class="text-danger">no deleted post items in trash</p>
+			<p class="text-danger text-center ">no deleted post items in trash</p>
 			<?php endif; ?>
 
 

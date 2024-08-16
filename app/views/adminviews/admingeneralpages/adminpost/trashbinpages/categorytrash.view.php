@@ -16,7 +16,9 @@ adminrenderpageHeader();
 		<p class="text-danger">Actions</p>
 
 	</div>
-	<span class="text-danger pt-3"style="text-allign:center;">deletion of a category will lead to deletion of all realated posts be sure you need to delete or the category has no posts</span>
+	<?php if(!empty($row)):?>
+	<span class="text-danger text-center pt-3"style="text-allign:center;">deletion of a category will lead to deletion of all realated posts be sure you need to delete or the category has no posts</span>
+	<?php endif?>
 	<div class="card-body p-0">
 		<ul class="list-group list-unstyled list-group-flush">
 			<!-- Notif item -->
@@ -66,7 +68,7 @@ adminrenderpageHeader();
 			<?php endforeach; ?>
 
 			<?php else: ?>
-			<p class="text-danger">no deleted categories items in trash</p>
+			<p class="text-danger text-center ">no deleted categories items in trash</p>
 			<?php endif; ?>
 
 
