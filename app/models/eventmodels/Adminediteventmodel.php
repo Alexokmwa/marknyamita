@@ -82,6 +82,12 @@ class Adminediteventmodel
     public function admineditevent($idupdate, $data, $poststatus, $files, $adminID, $categoryID, $categoryname)
     {
         if ($this->validate($data)) {
+            $currentPost = $this->first([$this->primaryKey => $idupdate]);
+            if ($currentPost) {
+                $currenteventimage = $currentPost->eventimage;
+                $currenteventdescription = $currentPost->eventdescription;
+
+            }
             $blogimages = remove_images_from_contentevent($data["eventdescription"]);
             $blogimages =  remove_root_from_content($blogimages);
             $data['date'] = date("Y-m-d H:i:s");
@@ -92,10 +98,8 @@ class Adminediteventmodel
             $data["category"] = $categoryname;
             $data["poststatus"] = $poststatus;
 
-            $currentPost = $this->first([$this->primaryKey => $idupdate]);
-            if ($currentPost) {
-                $currenteventimage = $currentPost->eventimage;
-            }
+            // Delete images that are in the current post body but not in the updated post body
+            delete_images_from_contentevent($currenteventdescription, $data["eventdescription"]);
             if (!empty($files["eventimage"]["name"])) {
                 $folder = "admin/eventsuploads/";
                 if (!file_exists($folder)) {

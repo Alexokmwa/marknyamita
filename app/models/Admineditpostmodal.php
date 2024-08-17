@@ -60,9 +60,15 @@ class Admineditpostmodal
         'featured' => [],
     ];
 
-    public function admineditpost($idupdate,$data, $poststatus, $files, $adminID, $categoryID, $categoryname)
+    public function admineditpost($idupdate, $data, $poststatus, $files, $adminID, $categoryID, $categoryname)
     {
         if ($this->validate($data)) {
+            // Fetch the current image URL from the database
+            $currentPost = $this->first([$this->primaryKey => $idupdate]);
+            if ($currentPost) {
+                $currentImageUrl = $currentPost->imageurl;
+                $currentPostBody = $currentPost->postbody;
+            }
             $blogimages = remove_images_from_content($data["postbody"]);
             $blogimages =  remove_root_from_content($blogimages);
             $data['date'] = date("Y-m-d H:i:s");
@@ -73,11 +79,8 @@ class Admineditpostmodal
             $data["category"] = $categoryname;
             $data["poststatus"] = $poststatus;
 
-            // Fetch the current image URL from the database
-            $currentPost = $this->first([$this->primaryKey => $idupdate]);
-            if ($currentPost) {
-                $currentImageUrl = $currentPost->imageurl;
-            }
+            // Delete images that are in the current post body but not in the updated post body
+            delete_images_from_contentevent($currentPostBody, $data["postbody"]);
             if (!empty($files["imageurl"]["name"])) {
                 $folder = "admin/adminuploads/";
                 if (!file_exists($folder)) {
@@ -111,7 +114,7 @@ class Admineditpostmodal
             $this->addError('imageurl', "no image found, upload at least one image");
             $this->addError('category', "select category");
             $this->addError('status', "select post status");
-           
+
         }
     }
 }
