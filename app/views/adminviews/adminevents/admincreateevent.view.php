@@ -88,12 +88,14 @@ adminrenderpageHeader();
 												<option value="" disabled selected>--Select--</option>
 												<?php if (is_array($data['row']) && count($data['row'])): ?>
 												<?php foreach ($data['row'] as $row): ?>
+												<?php if ($row->categorystatus === 'active'): ?>
 												<option
 													value="<?= esc($row->categoryname) ?>"
 													data-id="<?= esc($row->categoryID) ?>"
 													<?= old_value('categoryname') === esc($row->categoryname) ? 'selected' : '' ?>>
 													<?= esc($row->categoryname) ?>
 												</option>
+												<?php endif; ?>
 												<?php endforeach; ?>
 												<?php endif; ?>
 											</select>
