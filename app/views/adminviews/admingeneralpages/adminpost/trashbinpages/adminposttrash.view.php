@@ -16,21 +16,26 @@ adminrenderpageHeader();
 		<p class="text-danger">Actions</p>
 
 	</div>
-	<?php if(!empty($row)):?>
-	<span class="text-danger text-center  pt-3" style="text-align: center;">deletion of a post will lead to deletion of all
-		realated comments and likes be sure you need to delete it</span>
-		<?php endif?>
-	
-		<div class="card-body p-0">
+
+
+	<div class="card-body p-0">
 		<ul class="list-group list-unstyled list-group-flush">
 			<!-- Notif item -->
 			<?php if (is_array($data['row']) && count($data['row'])): ?>
-			<?php foreach ($data['row'] as $row): ?>
-			<?php if ($row->poststatus == 'deleted'): ?>
 			<?php
-                    $datetime = $row->createdAt; // Fetching the datetime from the row object
-			    $timeAgo = time_elapsed_string($datetime);
-			    ?>
+    $deletedPostFound = false; // Initialize a flag to track if a deleted post is found
+
+			    foreach ($data['row'] as $row):
+			        if ($row->poststatus == 'deleted'):
+			            $deletedPostFound = true; // Set the flag to true since a deleted post is found
+			            ?>
+			<span class="text-danger pt-3" style="text-align:center;">deletion of a post will lead to deletion of
+				all
+				realated comments and likes be sure you need to delete it</span>
+			<?php
+			            $datetime = $row->createdAt; // Fetching the datetime from the row object
+			            $timeAgo = time_elapsed_string($datetime);
+			            ?>
 			<li>
 				<a href="#" class="list-group-item-action border-0 border-bottom d-flex p-3">
 					<div class="me-3">
@@ -38,38 +43,42 @@ adminrenderpageHeader();
 						</div>
 					</div>
 					<div>
-						<h6 class="mb-1"><?=$row->postname?></h6>
-						<span class="small"> <i
-								class="bi bi-clock"></i><?=$timeAgo?></span>
+						<h6 class="mb-1">
+							<?= htmlspecialchars($row->postname) ?>
+						</h6>
+						<span class="small"><i class="bi bi-clock"></i>
+							<?= htmlspecialchars($timeAgo) ?></span>
 					</div>
 					<?php
-        $ses = new Adminsession();
-			    $sesidadmin = $ses->adminuser("adminID");
-			    ;
-			    ?>
-					<?php if($sesidadmin === $row->adminID):?>
+			                    $ses = new Adminsession();
+			            $sesidadmin = $ses->adminuser("adminID");
+			            ?>
+					<?php if($sesidadmin === $row->adminID): ?>
 					<form id="restoreForm" method="post" class="ms-auto">
 						<button class="btn btn-primary restorepost" type="submit" name="restorepost"
-							value="<?= $row->postID ?>">Restore</button>
+							value="<?= htmlspecialchars($row->postID) ?>">Restore</button>
 					</form>
 
 					<form id="postFormdelete" method="post" class="ms-auto">
 						<button class="btn btn-danger deleteposttrash" type="submit" name="deleteposttrash"
-							value="<?=$row->postID?>">Delete
+							value="<?= htmlspecialchars($row->postID) ?>">Delete
 							post</button>
 					</form>
-
-					<?php endif?>
+					<?php endif ?>
 				</a>
-
-
 			</li>
 			<?php endif; ?>
 			<?php endforeach; ?>
 
-			<?php else: ?>
-			<p class="text-danger text-center ">no deleted post items in trash</p>
+			<!-- Display "no deleted post items in trash" message if no deleted post was found -->
+			<?php if (!$deletedPostFound): ?>
+			<p class="text-danger text-center">No deleted post items in trash</p>
 			<?php endif; ?>
+			<?php else: ?>
+			<!-- Display "no deleted post items in trash" message if no posts exist at all -->
+			<p class="text-danger text-center">No post items found</p>
+			<?php endif; ?>
+
 
 
 

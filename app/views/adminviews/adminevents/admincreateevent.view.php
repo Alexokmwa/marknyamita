@@ -247,7 +247,8 @@ adminrenderpageHeader();
 									<div class="col-6">
 										<!-- event charges -->
 										<div class="mb-3">
-											<label class="form-label">Event charges</label>
+											<label class="form-label">Event charges <i class="text-danger">edit event
+													charges</i></label>
 											<input id="eventcharges" type="text" class="form-control"
 												value="<?= old_value('eventcharges') ?>"
 												name="eventcharges">
