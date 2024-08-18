@@ -78,7 +78,9 @@ Post edit START -->
 									</div>
 									<!-- edit area end -->
 									<div class="col-12">
-										<label class="form-label">postbody </label>
+										<label class="form-label">postbody <i class="text-danger">do not
+												input same image
+												twice</i></label>
 										<textarea id="summernote" class="form-control" rows="8"
 											name="postbody"><?= old_value('postbody', add_root_to_images($rowpost->postbody) ?? '') ?></textarea>
 									</div>

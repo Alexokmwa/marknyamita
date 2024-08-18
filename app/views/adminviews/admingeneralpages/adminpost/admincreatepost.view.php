@@ -72,7 +72,7 @@ adminrenderpageHeader();
 									<!-- Short description -->
 									<div class="col-12">
 										<div class="mb-3">
-											<label class="form-label">Short description </label>
+											<label class="form-label">Short description ></label>
 											<textarea class="form-control" rows="3" placeholder="Add description"
 												name="shortdescription"><?= old_value('shortdescription') ?></textarea>
 											<div class="text-danger" id="shortdescriptionError">
@@ -82,9 +82,11 @@ adminrenderpageHeader();
 									</div>
 									<!-- Short description end -->
 
-									<!-- edit area end -->
+									<!-- edit area start -->
 									<div class="col-12">
-										<label class="form-label">postbody </label>
+										<label class="form-label">postbody <i class="text-danger">do not
+												input same image
+												twice</i> </label>
 										<textarea id="summernote" class="form-control" rows="8"
 											name="postbody"><?= old_value('postbody') ?></textarea>
 									</div>

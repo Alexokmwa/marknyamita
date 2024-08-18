@@ -258,7 +258,9 @@ adminrenderpageHeader();
 									</div>
 									<!-- edit area START -->
 									<div class="col-12">
-										<label class="form-label">eventdescription </label>
+										<label class="form-label">eventdescription <i class="text-danger">do not
+												input same image
+												twice</i></label>
 										<textarea id="summernote" class="form-control" rows="8"
 											name="eventdescription"><?= old_value('eventdescription', add_root_to_images($rowpost->eventdescription))?></textarea>
 									</div>
