@@ -115,6 +115,9 @@ class Admindeletepostmodel
                     unlink($currentImageUrl);
                 }
 
+                // Delete any images embedded in the event content
+                $currentContent = $currentPost->postbody;
+                delete_images_from_contentevent($currentContent);
                 // Delete the post from the database
                 $this->deleteblog($postID);
 

@@ -123,18 +123,21 @@ class Admindleteeventmodel
     public function admindeleteevent($eventID)
     {
         try {
-            // Fetch the current image URL from the database
+            // Fetch the current event data from the database
             $currentPost = $this->first([$this->primaryKey => $eventID]);
 
             if ($currentPost) {
+                // Delete the event image if it exists
                 $currenteventimage = $currentPost->eventimage;
-
-                // Delete the old image if it exists
                 if ($currenteventimage && file_exists($currenteventimage)) {
                     unlink($currenteventimage);
                 }
 
-                // Delete the post from the database
+                // Delete any images embedded in the event content
+                $currentContent = $currentPost->eventdescription;
+                delete_images_from_contentevent($currentContent);
+
+                // Delete the event from the database
                 $this->deleteevent($eventID);
 
                 return ['success' => true, 'message' => 'Delete successful'];
@@ -145,5 +148,6 @@ class Admindleteeventmodel
             return ['success' => false, 'message' => 'Error deleting post: ' . $e->getMessage()];
         }
     }
+
 
 }
