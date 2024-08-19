@@ -332,7 +332,7 @@ adminrenderHtmlFooter();
 
 <script>
 	$('#summernote').summernote({
-		placeholder: 'Post content',
+		placeholder: 'input event about and schedule',
 		tabsize: 2,
 		height: 300,
 		dialogsInBody: true, // This option appends dialogs to the body instead of the summernote container
