@@ -19,6 +19,7 @@ trait Model
     public $order_column = "id" ;
     public $order_columnadmin = "adminID" ;
     public $order_columnevent = "eventID" ;
+    public $order_columneventregister = "registration_id" ;
     public $order_columnusers = "user_id" ;
     public $order_columncategories = "categoryID" ;
     public $order_columncomment = "commentID" ;
@@ -88,6 +89,13 @@ trait Model
     {
 
         $query = "select * from $this->table order by $this->order_columnevent $this->order_type limit $this->limit offset $this->offset";
+
+        return $this->query($query);
+    }
+    public function findAlleventregister()
+    {
+
+        $query = "select * from $this->table order by $this->order_columneventregister $this->order_type limit $this->limit offset $this->offset";
 
         return $this->query($query);
     }
@@ -651,6 +659,13 @@ trait Model
                                 $this->errors[$column] = ucfirst($column) . " should only contain numeric digits without spaces";
                             }
                             break;
+                        case 'numericphone':
+                            if (!preg_match("/^\+[0-9]{1,12}$/", trim($data[$column]))) {
+                                $this->errors[$column] = ucfirst($column) . " should start with a '+' followed by up to 12 numeric digits without spaces, making a total of 13 characters.";
+                            }
+                            break;
+
+
                         case 'max_14_keywords_lowercase':
                             if (!preg_match("/^([a-zA-Z]+)(,[a-zA-Z]+){0,13}$/", trim($data[$column]))) {
                                 $this->errors[$column] = ucfirst($column) . " should contain a maximum of 14 keywords, all in alphabetic characters and separated by commas. E.g., 'JavaScript, React, Marketing'.";
