@@ -15,9 +15,7 @@ use app\models\Blogcommentsnotloggedin;
 use app\models\Blogloggedinreplies;
 use app\models\Blogloggedout;
 use app\models\Blognotificationmodel;
-use app\models\Eventnotificationmodel;
 use app\models\User;
-use app\models\Notificationmodel;
 
 class Blogview extends Controller
 {
@@ -110,11 +108,11 @@ class Blogview extends Controller
         }
         if(!empty($_GET['seen']) && !empty($_GET['notif'])) {
             $notif_id = (int)$_GET['notif'];
-            $notif = new Blognotificationmodel;
+            $notif = new Blognotificationmodel();
             $notif->update($notif_id, ['seen' => 1]);
 
         }
-        
+
 
         $data["pager"] = $pager;
         $data["user"] = $blogCommentsModel;
