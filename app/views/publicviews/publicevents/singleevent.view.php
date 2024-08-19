@@ -110,14 +110,16 @@ renderpageHeader();
 						</div>
 						<div class="ms-3">
 							<h5>Event charges</h5>
-							<p class="mb-0"><?=$eventpost->eventcharges?></p>
+							<p class="mb-0">
+								<?=$eventpost->eventcharges?>
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-7 col-md-12 order-2">
-					<h2 class="mb-4">Event About</h2>
+					<h2 class="mb-4">Event About and schedule</h2>
 					<p><?=add_root_to_images($eventpost->eventdescription)?>
 					</p>
 
@@ -130,54 +132,87 @@ renderpageHeader();
 								<h3 class="mb-0">Register for our next live group demo session</h3>
 							</div>
 							<form class="row g-3 needs-validation" novalidate method="post">
-    <div class="col-md-12">
-        <label for="eventFirstNameInput" class="form-label">
-            First Name <span class="text-danger">*</span>
-        </label>
-        <input type="text" class="form-control" id="eventFirstNameInput" name="first_name" required />
-        <div class="invalid-feedback">Please enter your first name.</div>
-    </div>
-    <div class="col-md-12">
-        <label for="eventLastNameInput" class="form-label">
-            Last Name <span class="text-danger">*</span>
-        </label>
-        <input type="text" class="form-control" id="eventLastNameInput" name="last_name" required />
-        <div class="invalid-feedback">Please enter your last name.</div>
-    </div>
-    <div class="col-md-12">
-        <label for="eventEmailInput" class="form-label">
-            Email <span class="text-muted">(optional)</span>
-        </label>
-        <input type="email" class="form-control" id="eventEmailInput" name="email" />
-        <div class="invalid-feedback">Please enter a valid email address.</div>
-    </div>
-    <div class="col-md-12">
-        <label for="eventPhoneInput" class="form-label">
-            Phone Number <span class="text-danger">*</span>
-        </label>
-        <input type="tel" class="form-control" id="eventPhoneInput" name="phone_number" required />
-        <div class="invalid-feedback">Please enter your phone number.</div>
-    </div>
-    <div class="col-md-12">
-        <label for="eventCountyInput" class="form-label">
-            County <span class="text-danger">*</span>
-        </label>
-        <input type="text" class="form-control" id="eventCountyInput" name="county" required />
-        <div class="invalid-feedback">Please enter your county.</div>
-    </div>
-    <div class="col-md-12">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="termsCheck" name="agree_terms" required />
-            <label class="form-check-label ms-2 fs-6" for="termsCheck">
-                By continuing, you agree to our <a href="#">Terms of Use</a> and have read our <a href="#">Privacy Policy</a>.
-            </label>
-            <div class="invalid-feedback">You must agree before submitting.</div>
-        </div>
-    </div>
-    <div class="d-grid">
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </div>
-</form>
+								<div class="col-md-12">
+									<label for="eventFirstNameInput" class="form-label">
+										First Name <span class="text-danger">*</span>
+									</label>
+									<input type="text" class="form-control" id="eventFirstNameInput" name="first_name"
+										value="<?=old_value('first_name')?>"
+										required />
+									<div class="text-danger">
+										<?=$user->getError('first_name')?>
+									</div>
+									<div class="invalid-feedback">Please enter your first name.</div>
+								</div>
+								<div class="col-md-12">
+									<label for="eventLastNameInput" class="form-label">
+										Last Name <span class="text-danger">*</span>
+									</label>
+									<input type="text" class="form-control" id="eventLastNameInput" name="last_name"
+										value="<?=old_value('last_name')?>"
+										required />
+									<div class="text-danger">
+										<?=$user->getError('last_name')?>
+									</div>
+									<div class="invalid-feedback">Please enter your last name.</div>
+								</div>
+								<div class="col-md-12">
+									<label for="eventEmailInput" class="form-label">
+										Email <span class="text-danger">*</span>
+									</label>
+									<input type="email" class="form-control" id="eventEmailInput" name="email"
+										value="<?=old_value('email')?>" />
+									<div class="text-danger">
+										<?=$user->getError('email')?>
+									</div>
+									<div class="invalid-feedback">Please enter a valid email address.</div>
+								</div>
+								<div class="col-md-12">
+									<label for="eventPhoneInput" class="form-label">
+										Phone Number <span class="text-danger">*</span>
+									</label>
+									<input type="tel" class="form-control" id="eventPhoneInput" name="phone_number"
+										value="<?=old_value('phone_number')?>"
+										required />
+									<div class="text-danger">
+										<?=$user->getError('phone_number')?>
+									</div>
+									<div class="invalid-feedback">Please enter your phone number.</div>
+								</div>
+								<div class="col-md-12">
+									<label for="eventCountyInput" class="form-label">
+										County <span class="text-danger">*</span>
+									</label>
+									<input type="text" class="form-control" id="eventCountyInput" name="county"
+										value="<?=old_value('county')?>"
+										required />
+									<div class="text-danger">
+										<?=$user->getError('county')?>
+									</div>
+									<div class="invalid-feedback">Please enter your county.</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-check">
+										<input
+											<?=old_checked('agree_terms', 1)?>
+										class="form-check-input" type="checkbox" id="termsCheck"
+										name="agree_terms"
+										value="1"
+										required />
+										<div class="text-danger">
+											<?=$user->getError('agree_terms')?>
+										</div>
+										<label class="form-check-label ms-2 fs-6" for="termsCheck">
+											By continuing, you agree to our <a href="#">Terms of Use</a> and have read
+											our <a href="#">Privacy Policy</a>.
+										</label>
+										<div class="invalid-feedback">You must agree before submitting.</div>
+									</div>
+								</div>
+								<div class="d-grid">
+									<button class="btn btn-primary" type="submit">Register</button>
+								</div>
+							</form>
 
 						</div>
 					</div>
